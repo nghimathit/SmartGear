@@ -1,0 +1,54 @@
+.info-member-page label {
+    display: inline-block;
+    color: #292f33;
+    padding-bottom: 10px;
+    width: 150px;
+}
+.info-member-page input[type="text"], .info-member-page input[type="tel"], .info-member-page input[type="email"], .info-member-page textarea {
+    padding: 10px 15px;
+    border: 1px solid #d4d4d4;
+    margin-bottom: 15px;
+    width: 350px;
+    border-radius: 5px;
+    line-height: normal;
+}
+.info-member-page #content {
+    width: 75%;
+    background: #fff;
+}
+#sidebar {
+    width: 18%;
+    padding: 10px;
+    background: white;
+}
+#list-cat li {
+    position: relative;
+}
+#list-cat li a {
+    position: relative;
+    display: block;
+    color: #333;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+}
+#list-cat li a:after {
+    position: absolute;
+    content: '\f105';
+    font-family: 'FontAwesome';
+    top: 10px;
+    right: 10px;
+    font-size: 13px;
+}
+.info-member-page button[type="submit"] {
+    display: inline-block;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #e45212;
+    padding: 10px 25px;
+    margin-left: 154px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: normal;
+}

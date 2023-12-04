@@ -1,0 +1,76 @@
+#form_reg{
+    width: 300px;
+    min-height: 549px;
+    margin: 0px auto;
+}
+label{
+    display: block;
+    margin: 0px 0px 5px 0px;
+}
+input{display: block; margin-bottom : 10px;
+}
+input[type='text'], input[type='password'], input[type='email']{
+    padding: 5px 10px;
+    border: 1px solid #dedede;  
+    width: 100%;
+}
+input[type='submit']{
+    margin-top: 20px;
+    display: block;
+    padding: 9px 10px;
+    text-align: center;
+    background: #4fa327;
+    border: none;
+    width: 100%;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+select{
+    padding: 6px 10px;
+    border: 1px solid #dedede; 
+    width: 100%;
+}
+#show_list_file { width:  200px; height: 200px; overflow: hidden;}
+#show_list_file img { max-width: 100%; max-height: 100%;}
+#show_list_file_1 { width:  200px; height: 200px; overflow: hidden;}
+#show_list_file_1 img { max-width: 100%; max-height: 100%;}
+#show_list_file_2 { width:  200px; height: 200px; overflow: hidden;}
+#show_list_file_2 img { max-width: 100%; max-height: 100%;}
+#show_list_file_3 { width:  200px; height: 200px; overflow: hidden;}
+#show_list_file_3 img { max-width: 100%; max-height: 100%;}
+#show_list_file_4 { width:  200px; height: 200px; overflow: hidden;}
+#show_list_file_4 img { max-width: 100%; max-height: 100%;}
+#show_list_file_5 { width:  200px; height: 200px; overflow: hidden;}
+#show_list_file_5 img { max-width: 100%; max-height: 100%;}
+#show_list_file_6 { width:  200px; height: 200px; overflow: hidden;}
+#show_list_file_6 img { max-width: 100%; max-height: 100%;}
+
+
+#upload_single_bt{
+    width: 70px;
+    background: #f1f1f1;
+}
+#upload_single_bt_1{
+    width: 70px;
+    background: #f1f1f1;
+}
+#upload_single_bt_2{
+    width: 70px;
+    background: #f1f1f1;
+}
+#upload_single_bt_3{
+    width: 70px;
+    background: #f1f1f1;
+}
+#upload_single_bt_4{
+    width: 70px;
+    background: #f1f1f1;
+}
+#upload_single_bt_5{
+    width: 70px;
+    background: #f1f1f1;
+}
+#upload_single_bt_6{
+    width: 70px;
+    background: #f1f1f1;
+}

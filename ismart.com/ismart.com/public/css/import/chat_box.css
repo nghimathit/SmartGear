@@ -1,0 +1,55 @@
+/*.mess
+{
+    height: 360px;
+    overflow: auto;
+    border: 1px solid #222;
+    width: 300px;
+    margin: 0 auto;
+    border-bottom: none;
+}
+.wrap
+{	
+    position: relative;
+    width: 300px;
+}
+.may1
+{
+    background-color: lightblue;
+    padding: 5px;
+    width: 200px;
+    float: left;
+    margin: 5px;
+    border: 1px dashed #ccc;
+
+}
+
+.may2
+{
+    background-color: lightsalmon;
+    padding: 5px;
+    width: 200px;
+    float: right;
+    margin: 5px;
+    border: 1px dashed #ccc;
+    color: #fff;
+}
+.title
+{
+    width: 301px;
+    background: #0099FF;
+    position: relative;
+}
+.tbchat
+{
+    width: 300px;
+}
+
+#body
+{
+    position: fixed;
+    top: 50%;
+    right: 2%;
+    float: left;
+    width: 300px;
+
+}*/

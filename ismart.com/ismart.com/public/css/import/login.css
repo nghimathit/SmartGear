@@ -1,0 +1,85 @@
+body{
+    font-size: 14px;
+    font-family: arial;
+    line-height: 23px;
+}
+.login-page {
+    padding: 75px 0px;
+    background: #f3f3f3;
+}
+.login h1{
+    color: #07adc6;
+    text-align: center;
+}
+.login{
+    width: 330px;
+    padding: 35px 25px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+}
+#form-login #username, #form-login #password{
+    display: block;
+    padding: 10px 10px;
+    width: 100%;
+    margin-bottom: 9px;
+    background: #f7f7f7;
+    border: none;
+}
+
+#form-login #btn_login {
+    display: block;
+    padding: 10px 0px;
+    width: 100%;
+    color:#fff;
+    text-align: center;
+    margin: 15px 0px 10px;
+    background: #f12a43;
+    border: none;
+    cursor: pointer;
+}
+.post_title{
+    font-size: 25px;
+    padding: 0px 0px 20px;
+    text-transform: uppercase;
+}
+#lost-pass{
+    color : #67a0b7;
+    text-decoration: underline;
+}
+.error{
+    color:red;
+    font-style: italic;
+}
+#user-login{
+    color: white; 
+    padding: 10px 14px;
+}
+.logout{
+    color: white;
+    padding: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.logout:hover{
+    color: red;
+}
+#not-account{
+    text-align: center;
+    font-size: 13px;
+    margin-top: 15px;
+}
+#not-account span {
+    color: #a0a0a0;
+}
+#not-account #reg {
+    color: #07adc6;
+}
+.thumb_login{
+    width: 500px;
+    height: 0px;
+}
+.thumb_login1{
+    width: 400px;
+    height: 0px;
+}
+
