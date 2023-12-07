@@ -29,14 +29,14 @@ if (isset($_POST['btn_add'])) {
     } else {
         $price_old = $_POST['price_old'];
     }
-//Ktra ten mô tả
+    //Ktra ten mô tả
     if (empty($_POST['product_desc'])) {
         $error['product_desc'] = "Bạn chưa nhập Mô tả";
     } else {
         $product_desc = $_POST['product_desc'];
     }
 
-//Ktra ndung
+    //Ktra ndung
     if (empty($_POST['product_content'])) {
         $error['product_content'] = "Bạn chưa nhập Chi tiết";
     } else {
@@ -55,7 +55,7 @@ if (isset($_POST['btn_add'])) {
         $target_file = $target_dir . basename($_FILES['file']['name']);
         // Kiểm tra kiểu file hợp lệ
         $type_file = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif');
+        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif', 'webp');
         if (!in_array(strtolower($type_file), $type_fileAllow)) {
             $error['file'] = "Bạn chưa upload hình ảnh";
         }
@@ -69,7 +69,7 @@ if (isset($_POST['btn_add'])) {
         $target_file = $target_dir . basename($_FILES['file_1']['name']);
         // Kiểm tra kiểu file hợp lệ
         $type_file = pathinfo($_FILES['file_1']['name'], PATHINFO_EXTENSION);
-        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif');
+        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif', 'webp');
         if (!in_array(strtolower($type_file), $type_fileAllow)) {
             $error['file_1'] = "Bạn chưa upload hình ảnh";
         }
@@ -83,7 +83,7 @@ if (isset($_POST['btn_add'])) {
         $target_file = $target_dir . basename($_FILES['file_2']['name']);
         // Kiểm tra kiểu file hợp lệ
         $type_file = pathinfo($_FILES['file_2']['name'], PATHINFO_EXTENSION);
-        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif');
+        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif', 'webp');
         if (!in_array(strtolower($type_file), $type_fileAllow)) {
             $error['file_2'] = "Bạn chưa upload hình ảnh";
         }
@@ -97,7 +97,7 @@ if (isset($_POST['btn_add'])) {
         $target_file = $target_dir . basename($_FILES['file_3']['name']);
         // Kiểm tra kiểu file hợp lệ
         $type_file = pathinfo($_FILES['file_3']['name'], PATHINFO_EXTENSION);
-        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif');
+        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif', 'webp');
         if (!in_array(strtolower($type_file), $type_fileAllow)) {
             $error['file_3'] = "Bạn chưa upload hình ảnh";
         }
@@ -111,7 +111,7 @@ if (isset($_POST['btn_add'])) {
         $target_file = $target_dir . basename($_FILES['file_4']['name']);
         // Kiểm tra kiểu file hợp lệ
         $type_file = pathinfo($_FILES['file_4']['name'], PATHINFO_EXTENSION);
-        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif');
+        $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif', 'webp');
         if (!in_array(strtolower($type_file), $type_fileAllow)) {
             $error['file_4'] = "Bạn chưa upload hình ảnh";
         }
@@ -155,11 +155,11 @@ if (isset($_POST['btn_add'])) {
         $selling_products = $_POST['selling_products'];
     }
 
-// Bước 3: Kết luận
+    // Bước 3: Kết luận
     if (empty($error)) {
         if (!check_product_exists($product_name)) {
             $sql = "INSERT INTO `product` (`product_name`,`price_new`,`price_old`,`product_desc`,`product_content`,`product_thumb`,`list_thumb_1`,`list_thumb_2`,`list_thumb_3`,`list_thumb_4`,`list_thumb_5`,`list_thumb_6`,`cat_id`,`selling_products`)"
-                    . "VALUES('{$product_name}', '{$price_new}', '{$price_old}', '{$product_desc}','{$product_content}','{$product_thumb}','{$list_thumb_1}','{$list_thumb_2}','{$list_thumb_3}','{$list_thumb_4}','{$list_thumb_5}','{$list_thumb_6}','{$cat_id}','{$selling_products}')";
+                . "VALUES('{$product_name}', '{$price_new}', '{$price_old}', '{$product_desc}','{$product_content}','{$product_thumb}','{$list_thumb_1}','{$list_thumb_2}','{$list_thumb_3}','{$list_thumb_4}','{$list_thumb_5}','{$list_thumb_6}','{$cat_id}','{$selling_products}')";
             if (mysqli_query($conn, $sql)) {
                 $_SESSION['success'] = "Thêm mới thành công";
                 redirect_to("?mod=product&act=main");
@@ -186,16 +186,16 @@ if (isset($_POST['btn_add'])) {
             </div>
             <div class="clearfix"></div>
             <?php if (isset($_SESSION['error'])) : ?>
-                <div class="alert alert-danger">
-                    <?php
+            <div class="alert alert-danger">
+                <?php
                     echo $_SESSION['error'];
                     unset($_SESSION['error'])
                     ?>
-                </div>
+            </div>
             <?php endif; ?>
             <div class="section" id="detail-page">
                 <div class="section-detail">
-                    <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
+                    <form id="form-upload-single" action="" enctype="multipart/form-data" method="post">
                         <label for="product-name">Tên sản phẩm</label>
                         <input type="text" name="product_name" id="product-name">
                         <?php echo form_error('product_name'); ?>
@@ -216,7 +216,7 @@ if (isset($_POST['btn_add'])) {
                             <label for="detail">Hình ảnh</label>
                             <input type="file" name="file" id="file" data-uri="?mod=product&act=upload_single">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt">
-                            <div id="show_list_file" >
+                            <div id="show_list_file">
                             </div>
                             <?php echo form_error('file'); ?>
                         </div>
@@ -224,7 +224,7 @@ if (isset($_POST['btn_add'])) {
                             <label for="detail">Thumb_1</label>
                             <input type="file" name="file_1" id="file_1" data-uri="?mod=product&act=upload_single_1">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_1">
-                            <div id="show_list_file_1" >
+                            <div id="show_list_file_1">
                             </div>
                             <?php echo form_error('file_1'); ?>
                         </div>
@@ -232,7 +232,7 @@ if (isset($_POST['btn_add'])) {
                             <label for="detail">Thumb_2</label>
                             <input type="file" name="file_2" id="file_2" data-uri="?mod=product&act=upload_single_2">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_2">
-                            <div id="show_list_file_2" >
+                            <div id="show_list_file_2">
                             </div>
                             <?php echo form_error('file_2'); ?>
                         </div>
@@ -240,7 +240,7 @@ if (isset($_POST['btn_add'])) {
                             <label for="detail">Thumb_3</label>
                             <input type="file" name="file_3" id="file_3" data-uri="?mod=product&act=upload_single_3">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_3">
-                            <div id="show_list_file_3" >
+                            <div id="show_list_file_3">
                             </div>
                             <?php echo form_error('file_3'); ?>
                         </div>
@@ -248,7 +248,7 @@ if (isset($_POST['btn_add'])) {
                             <label for="detail">Thumb_4</label>
                             <input type="file" name="file_4" id="file_4" data-uri="?mod=product&act=upload_single_4">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_4">
-                            <div id="show_list_file_4" >
+                            <div id="show_list_file_4">
                             </div>
                             <?php echo form_error('file_4'); ?>
                         </div>
@@ -256,7 +256,7 @@ if (isset($_POST['btn_add'])) {
                             <label for="detail">Thumb_5</label>
                             <input type="file" name="file_5" id="file_5" data-uri="?mod=product&act=upload_single_5">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_5">
-                            <div id="show_list_file_5" >
+                            <div id="show_list_file_5">
                             </div>
                             <?php echo form_error('file_5'); ?>
                         </div>
@@ -264,22 +264,19 @@ if (isset($_POST['btn_add'])) {
                             <label for="detail">Thumb_6</label>
                             <input type="file" name="file_6" id="file_6" data-uri="?mod=product&act=upload_single_6">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_6">
-                            <div id="show_list_file_6" >
+                            <div id="show_list_file_6">
                             </div>
                             <?php echo form_error('file_6'); ?>
-
                         </div>
 
                         <label>Danh mục sản phẩm</label>
                         <select name="cat_id">
                             <option value="">-- Chọn danh mục --</option>
-                            <option value="1">DELL</option>
-                            <option value="2">ASUS</option>
-                            <option value="3">HP</option>
-                            <option value="4">MACBOOK</option>
-                            <option value="5">LENOVO</option>
-                            <option value="6">MSI</option>
-                            <option value="7">ACER</option>
+                            <option value="1">Điện Thoại</option>
+                            <option value="2">Lap Top</option>
+                            <option value="3">TabLet</option>
+                            <option value="4">Phụ Kiện</option>
+                            <option value="5">SmartWatch </option>
                         </select>
                         <?php echo form_error('cat_id'); ?>
 
@@ -290,7 +287,6 @@ if (isset($_POST['btn_add'])) {
                             <option value="Bình thường">Bình thường</option>
                         </select>
                         <?php echo form_error('selling_products'); ?>
-                        
                         <button type="submit" name="btn_add" id="btn_add">Thêm mới</button>
                     </form>
                 </div>
@@ -299,5 +295,5 @@ if (isset($_POST['btn_add'])) {
     </div>
 </div>
 <?php
-get_footer();
+get_footer();   
 ?>
