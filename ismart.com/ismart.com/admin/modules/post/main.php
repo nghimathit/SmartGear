@@ -96,8 +96,7 @@ unset($post);
                                             <td><span class="tbody-text"><?php echo $temp; ?></h3></span>
                                             <td>
                                                 <div class="tbody-thumb">
-<!--                                                    <img src="uploads/<?php echo $post['images']; ?>" alt="">-->
-                                                    <img src="uploads/post/<?php  echo $post['images'] ?>" width="80px" height="80px" alt="">
+                                                    <img src="uploads/<?php  echo $post['images'] ?>" width="80px" height="80px" alt="">
 			                	<img src="uploads/<?php  echo $post['images'] ?>" width="80px" height="80px" alt=""> 
                                                 </div>
 
