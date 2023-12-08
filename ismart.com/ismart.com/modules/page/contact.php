@@ -35,10 +35,10 @@ get_header()
                 <div class="section-detail">
                     <span class="create-date">2019-06-09 11:33:00</span>
                     <div class="detail">
-                        <p>Website thương mại điện tử Ismart</p>
-                        <p>Địa chỉ: Tổ 2, khu phố 10, ấp đồng tâm, xã thành tâm, huyện chơn thành, tỉnh Bình Phước</p>
-                        <p>Số điện thoại: 0972545449</p>
-                        <p>Email: thanhchonthanh@gmail.com</p>
+                        <p>Website thương mại điện tử Smart Gear</p>
+                        <p>Địa chỉ: 391 Nam Kỳ Khởi Nghĩa Q.3 TP.HCM</p>
+                        <p>Số điện thoại: 0362061339</p>
+                        <p>Email: Team4FPTAptechHcm.com</p>
                     </div>
                 </div>
             </div>
