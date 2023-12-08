@@ -148,10 +148,10 @@ if (isset($_POST['btn_update'])) {
                         <label>Danh mục bài viết</label>
                         <select name="cat_id">
                             <option value="0">-- Chọn danh mục --</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">1</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">2</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">3</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">4</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">Đánh Giá </option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">Cẩm Nang</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">Tin Tức</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">So Sánh</option>
                         </select>
                         <?php
                         if (!empty($error['cat_id'])) {
