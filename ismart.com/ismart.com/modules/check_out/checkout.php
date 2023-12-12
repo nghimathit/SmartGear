@@ -17,97 +17,9 @@ $list_users = get_list_users_cat($_SESSION['user_login']);
 
 
 <?php
-function execPostRequest($url, $data)
-{
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt(
-        $ch,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($data)
-        )
-    );
-    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-    //execute post
-    $result = curl_exec($ch);
-    //close connection
-    curl_close($ch);
-    return $result;
-}
+         
 
-$total = 0;
-if(isset($_POST['total'])){
-    $total = $_POST['total'];
-}
-$user_id = "";
-$fullname = "";
-$email = "";
-$address = "";
-$phone = "";
-$note = "";
-$endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
-$payUrl = "";
-$partnerCode = 'MOMOBKUN20180529';
-$accessKey = 'klm05TvNBzhg7h7j';
-$secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-$orderInfo = "Thanh toán qua MoMo";
-$amount = $total;
-$orderId = time() . "";
-$extraData = "";
-
-$requestId = time() . "";
-$requestType = "payWithATM";
-if(isset($_POST['payUrl'])){
-    // Thực hiện các thao tác liên quan đến 'payUrl' ở đây
-    $user_id = $_POST['user_id'];
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
-    $phone = $_POST['phone'];
-    $note = $_POST['note'];
-    $redirectUrl = "http://localhost/SmartGear/ismart.com/ismart.com/?mod=check_out&act=care_customer" . "&user_id=" . $user_id . "&fullname=" . $fullname. "&email=" . $email. "&address=" . $address . "&phone=" . $phone. "&note=" . $note;
-    $ipnUrl = "http://localhost/SmartGear/ismart.com/ismart.com/?mod=check_out&act=care_customer" . "&user_id=" . $user_id . "&fullname=" . $fullname. "&email=" . $email. "&address=" . $address . "&phone=" . $phone. "&note=" . $note;
-
-    $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl="  . $redirectUrl  . "&requestId=" . $requestId . "&requestType=" . $requestType;
-    $signature = hash_hmac("sha256", $rawHash, $secretKey);
-    $data = array(
-        'partnerCode' => $partnerCode,
-        'partnerName' => "Test",
-        "storeId" => "MomoTestStore",
-        'requestId' => $requestId,
-        'amount' => $amount,
-        'orderId' => $orderId,
-        'orderInfo' => $orderInfo,
-        'redirectUrl' => $redirectUrl,
-        'ipnUrl' => $ipnUrl,
-        'lang' => 'vi',
-        'extraData' => $extraData,
-        'requestType' => $requestType,
-        'signature' => $signature,
-        'user_id' => $user_id,
-        'fullname' => $fullname,
-        'email' => $email,
-        'address' => $address,
-        'phone' => $phone,
-        'note' => $note,
-    );
-    $result = execPostRequest($endpoint, json_encode($data));
-    $jsonResult = json_decode($result, true); // decode json
-    echo 'API Response: ' . $result;
-
-    header('Location: ' . $jsonResult['payUrl']);
-} else {
-  
-
-                    
-}                
-
-                    
+                
                 
 
 function displayResultsAsTable($resultsArray) {
@@ -135,7 +47,9 @@ function displayResultsAsTable($resultsArray) {
     }
 }
 ?>
+<?php
 
+?>
 <?php
 function execPostRequest($url, $data)
 {
@@ -143,13 +57,9 @@ function execPostRequest($url, $data)
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt(
-        $ch,
-        CURLOPT_HTTPHEADER,
-        array(
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
-            'Content-Length: ' . strlen($data)
-        )
+            'Content-Length: ' . strlen($data))
     );
     curl_setopt($ch, CURLOPT_TIMEOUT, 5);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
@@ -159,7 +69,6 @@ function execPostRequest($url, $data)
     curl_close($ch);
     return $result;
 }
-
 $total = 0;
 if(isset($_POST['total'])){
     $total = $_POST['total'];
