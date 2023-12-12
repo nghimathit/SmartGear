@@ -1,5 +1,6 @@
 <?php
 get_header();
+
 ?>
 <?php
 $list_buy = get_list_by_cart();
@@ -39,99 +40,150 @@ function displayResultsAsTable($resultsArray) {
     }
 }
 ?>
+
 <?php
-if (isset($_SESSION["cart"]["buy"])) {
-    if (isset($_POST['btn_order_now'])) {
-        $error = array();
-        // Kiểm tra user_id
-        if (empty($_POST['user_id'])) {
-            $error['user_id'] = "Không được để trống Mã khách hàng";
-        } else {
-            $user_id = $_POST['user_id'];
-        }
+function execPostRequest($url, $data)
+{
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt(
+        $ch,
+        CURLOPT_HTTPHEADER,
+        array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($data)
+        )
+    );
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+    //execute post
+    $result = curl_exec($ch);
+    //close connection
+    curl_close($ch);
+    return $result;
+}
 
-        // Kiểm tra fullname
-        if (empty($_POST['fullname'])) {
-            $error['fullname'] = "Không được để trống Họ tên";
-        } else {
-            $fullname = $_POST['fullname'];
-        }
+$total = 0;
+if(isset($_POST['total'])){
+    $total = $_POST['total'];
+}
+$user_id = "";
+$fullname = "";
+$email = "";
+$address = "";
+$phone = "";
+$note = "";
+$endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+$payUrl = "";
+$partnerCode = 'MOMOBKUN20180529';
+$accessKey = 'klm05TvNBzhg7h7j';
+$secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+$orderInfo = "Thanh toán qua MoMo";
+$amount = $total;
+$orderId = time() . "";
+$extraData = "";
 
-        // Kiểm tra email
-        if (empty($_POST['email'])) {
-            $error['email'] = "Không được để trống Email";
-        } else {
-            if (!is_email($_POST['email'])) {
-                $error['email'] = "Email không đúng định dạng";
-            } else { // khớp định dạng
-                $email = $_POST['email'];
-            }
-        }
+$requestId = time() . "";
+$requestType = "payWithATM";
+if(isset($_POST['payUrl'])){
+    // Thực hiện các thao tác liên quan đến 'payUrl' ở đây
+    $user_id = $_POST['user_id'];
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $note = $_POST['note'];
+    $redirectUrl = "http://localhost/SmartGear/ismart.com/ismart.com/?mod=check_out&act=care_customer" . "&user_id=" . $user_id . "&fullname=" . $fullname. "&email=" . $email. "&address=" . $address . "&phone=" . $phone. "&note=" . $note;
+    $ipnUrl = "http://localhost/SmartGear/ismart.com/ismart.com/?mod=check_out&act=care_customer" . "&user_id=" . $user_id . "&fullname=" . $fullname. "&email=" . $email. "&address=" . $address . "&phone=" . $phone. "&note=" . $note;
 
-        // Kiểm tra address
-        if (empty($_POST['address'])) {
-            $error['address'] = "Không được để trống Địa chỉ";
-        } else {
-            $address = $_POST['address'];
-        }
+    $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl="  . $redirectUrl  . "&requestId=" . $requestId . "&requestType=" . $requestType;
+    $signature = hash_hmac("sha256", $rawHash, $secretKey);
+    $data = array(
+        'partnerCode' => $partnerCode,
+        'partnerName' => "Test",
+        "storeId" => "MomoTestStore",
+        'requestId' => $requestId,
+        'amount' => $amount,
+        'orderId' => $orderId,
+        'orderInfo' => $orderInfo,
+        'redirectUrl' => $redirectUrl,
+        'ipnUrl' => $ipnUrl,
+        'lang' => 'vi',
+        'extraData' => $extraData,
+        'requestType' => $requestType,
+        'signature' => $signature,
+        'user_id' => $user_id,
+        'fullname' => $fullname,
+        'email' => $email,
+        'address' => $address,
+        'phone' => $phone,
+        'note' => $note,
+    );
+    $result = execPostRequest($endpoint, json_encode($data));
+    $jsonResult = json_decode($result, true); // decode json
+    echo 'API Response: ' . $result;
 
-        // Kiểm tra phone
-        if (empty($_POST['phone'])) {
-            $error['phone'] = "Không được để trống Số điện thoại";
-        } else {
-            if (!is_phone_number($_POST['phone'])) {
-                $error['phone'] = "Số điện thoại không đúng định dạng mời quý khách kiểm tra lại";
-            } else {
-                $phone = $_POST['phone'];
-            }
-        }
+    header('Location: ' . $jsonResult['payUrl']);
+} elseif(isset($_POST['btn_order_now'])){
+    $user_id = $_POST['user_id'];
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $note = $_POST['note'];
+    // show_array($list_buy);
+    // Bước 3: Kết luận
+    $sql = "INSERT INTO `bill` (`user_id`,`fullname`,`email`,`phone`,`address`, `note`)"
+        . "VALUES('{$user_id}','{$fullname}', '{$email}','{$phone}','{$address}', '{$note}')";
 
-        //Kiểm tra ghi chú
-        if (!empty($_POST['note'])) {
-            $note = $_POST['note'];
-        }
-        // Bước 3: Kết luận
-        if (empty($error)) {
-            $sql = "INSERT INTO `bill` (`user_id`,`fullname`,`email`,`phone`,`address`, `note`)"
-                    . "VALUES('{$user_id}','{$fullname}', '{$email}','{$phone}','{$address}', '{$note}')";
-            if ($conn->query($sql)) {
-                $bill_id = $conn->insert_id;
-                //Lưu chi tiết hóa đơn
-                $list_buy = get_list_by_cart();
-//                show_array($list_buy);
-                foreach ($list_buy as $cart) {
-                    $product_id = $cart['id'];
-                    $product_name = $cart['product_name'];
-                    $product_thumb = $cart['product_thumb'];
-                    $qty = $cart['qty'];
-                    $price_new = $cart['price_new'];
-                    $sub_total = $cart['sub_total'];
-                    $sql = "INSERT INTO `bill_detail` (`bill_id`,`product_id`,`product_name`,`product_thumb`,`qty`,`price_new`,`sub_total`)"
-                            . "VALUES('{$bill_id}','{$product_id}', '{$product_name}', '{$product_thumb}','{$qty}','{$price_new}','{$sub_total}')";
-                    $conn->query($sql);
-                }
-                unset($_SESSION["cart"]);
-                ?>
-                <p>Chúc mừng bạn đã thanh toán thành công.</p>
-                <p>Mã hóa đơn #<?= $bill_id ?></p>
-                <?php
-                $content = '
-                <h1 style="color:red;">Thông báo đơn hàng hoàn tất</h1>
-                <p>Chào <b>' . $fullname . '</b></p>'
-                        . '<p>Đơn hàng <b> #APTECH100' . $bill_id . '</b> của bạn đã hoàn tất.</p>'
-                        . 'Cảm ơn bạn đã mua hàng tại Smart Grea.<br> Thông tin đơn hàng của bạn: <b> ' . displayResultsAsTable($list_buy) . '</b>
-                <p>Rất mong được phục vụ bạn trong những lần mua tiếp theo.</p>
-                ';
-                echo send_mail("$email", "$fullname", 'Thông báo đơn hàng', "$content");
-                redirect_to("?mod=check_out&act=care_customer");
-            }
-        } else {
-            ?> 
-            <?php
+    if ($conn->query($sql)) {
+        $bill_id = $conn->insert_id;
+        //Lưu chi tiết hóa đơn
+        $list_buy = get_list_by_cart();
+        if (is_array($list_buy)) {
+        foreach ($list_buy as $cart) {
+            $product_id = $cart['id'];
+            $product_name = $cart['product_name'];
+            $product_thumb = $cart['product_thumb'];
+            $qty = $cart['qty'];
+            $price_new = $cart['price_new'];
+            $sub_total = $cart['sub_total'];
+            $sql = "INSERT INTO `bill_detail` (`bill_id`,`product_id`,`product_name`,`product_thumb`,`qty`,`price_new`,`sub_total`)"
+                . "VALUES('{$bill_id}','{$product_id}', '{$product_name}', '{$product_thumb}','{$qty}','{$price_new}','{$sub_total}')";
+            $conn->query($sql);
         }
     }
-}
-//show_array($list_buy);
+        unset($_SESSION["cart"]);
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+
+    }
+    ?>
+
+
+
+    <p>Chúc mừng bạn đã thanh toán thành công.</p>
+    <p>Mã hóa đơn #
+        <?= $bill_id ?>
+    </p>
+    <?php
+    $content = '
+                        <h1 style="color:red;">Thông báo đơn hàng hoàn tất</h1>
+                        <p>Chào <b>' . $fullname . '</b></p>'
+        . '<p>Đơn hàng <b> #APTECH100' . $bill_id . '</b> của bạn đã hoàn tất.</p>'
+        . 'Cảm ơn bạn đã mua hàng tại Smart Grea.<br> Thông tin đơn hàng của bạn: <b> ' . displayResultsAsTable($list_buy) . '</b>
+                        <p>Rất mong được phục vụ bạn trong những lần mua tiếp theo.</p>
+                        ';
+    echo send_mail("$email", "$fullname", 'Thông báo đơn hàng', "$content");
+    redirect_to("?mod=check_out&act=care_customer");
+
+                    
+}                
+
+                    
+                
 ?>
 <div id="main-content-wp" class="checkout-page">
     <div class="section" id="breadcrumb-wp">
@@ -148,7 +200,7 @@ if (isset($_SESSION["cart"]["buy"])) {
             </div>
         </div>
     </div>
-    <form method="POST" action="" name="form-checkout">
+    <form method="POST" >
         <div id="wrapper" class="wp-inner clearfix">
             <?php
             if (!empty($list_buy)) {
@@ -266,6 +318,7 @@ if (isset($_SESSION["cart"]["buy"])) {
                                 <tr class="order-total">
                                     <td>Tổng đơn hàng:</td>
                                     <td><strong class="total-price"><?php echo currency_format(get_total_cart()); ?></strong></td>
+                                    <input type="hidden" name="total" value="<?php echo get_total_cart() ?>">
                                 </tr>
                             </tfoot>
                         </table>
@@ -283,9 +336,11 @@ if (isset($_SESSION["cart"]["buy"])) {
                                                 </div>-->
                         <div class="place-order-wp clearfix">
                             <input type="submit" id="btn_order_now" name="btn_order_now" value="Đặt hàng">
+                            <input type="submit" name="payUrl" value="Momo" >
                         </div>
                     </div>
                 </div>
+                
                 <?php
             }
             ?>

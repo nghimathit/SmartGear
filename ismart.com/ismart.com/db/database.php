@@ -8,9 +8,9 @@ function db_connect() {
     if (!$conn) {
         die("Kết nối không thành công ".mysqli_connect_error());
     }
-//    else{
-//        echo "Connect thành công";
-//    }
+   else{
+       echo "Connect thành công";
+   }
 }
 
 //Thực thi chuổi truy vấn
