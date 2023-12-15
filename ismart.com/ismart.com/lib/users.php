@@ -1,5 +1,4 @@
 <?php
-
 function check_login($username, $password) {
 //chỉnh sửa biến toàn cục bên trong 1 hàm thì sử dụng GLOBAL 
 //    global $list_users;
@@ -36,18 +35,35 @@ function user_login() {
     }
     return FALSE;
 }
-function get_bill_user($start, $num_per_page ) {
-    $result = db_fetch_array("SELECT bill.fullname,bill.note,bill.created_at,bill.email,bill.address ,bill.phone,bill_detail.bill_id,bill_detail.status,bill_detail.product_id FROM bill_detail,bill, product WHERE bill.bill_id = bill_detail.bill_id AND product.id = bill_detail.product_id and bill_detail.status != 2 GROUP by bill.bill_id LIMIT {$start}, {$num_per_page}");
-    return $result;
+function id_user() {
+    $list_users = db_fetch_array("SELECT * FROM `users` where status = 1");
+    foreach ($list_users as $user) {
+    if(($_SESSION['user_login']) == $user['username']){
+        return $user["user_id"];
+    }
 }
+
+}
+function get_bill_user($start, $num_per_page) {
+    $user_id = id_user();
+    $result = db_fetch_array("SELECT bill.fullname,bill.note,bill.created_at,bill.email,bill.address ,bill.phone,bill_detail.bill_id,bill_detail.status,bill_detail.product_id
+     FROM bill_detail,bill, product 
+     WHERE
+     bill.user_id = '{$user_id}' 
+     AND bill.bill_id = bill_detail.bill_id 
+     AND product.id = bill_detail.product_id 
+     and bill_detail.status != 2 
+     GROUP by bill.bill_id
+      LIMIT {$start}, {$num_per_page}");
+    return $result;   
+}
+
 function info_user($field = 'id') { //$field:trường
     $list_users = db_fetch_array("SELECT * FROM `users` where status = 1");
-    if (isset($_SESSION['is_login'])) { // Nếu tồn tại is_login
+    if (isset($_SESSION['is_login'])) {
         foreach ($list_users as $user) {
             if ($_SESSION['user_login'] == $user['username']) {
                 if (array_key_exists($field, $user)) {
-//Nếu tồn tại id trong mảng $user =>
-// array_key_exists: ktra 1 key có tồn tại trong mảng hay k
                     return $user[$field];
                 }
             }
@@ -55,7 +71,10 @@ function info_user($field = 'id') { //$field:trường
     }
     return FALSE;
 }
-
+function get_bill_detail_id($id){
+    $result = db_fetch_array("SELECT * FROM `bill_detail` where bill_id = $id");
+    return $result;
+}
 function show_gender($gender) {
     $list_gender = array(
         'male' => 'Nam',

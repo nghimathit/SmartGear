@@ -33,6 +33,9 @@ $list_users = get_list_users_cat($_SESSION['user_login']);
                 <li>
                     <a href="?mod=users&act=logout" onclick="return confirmAction_users()" title="">Sign out</a>
                 </li>
+                <li>
+                    <a href="?mod=users&act=view" title="">Purchase order</a>
+                </li>
             </ul>
         </div>
         <div id="content" class="fl-right">

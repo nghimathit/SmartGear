@@ -1,4 +1,4 @@
 <?php
 
-$config['base_url'] = "http://localhost/Project/ismart.com/ismart.com/";
+$config['base_url'] = "http://localhost/SmartGear/ismart.com/ismart.com/";
 

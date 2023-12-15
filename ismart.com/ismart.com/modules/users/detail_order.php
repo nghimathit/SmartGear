@@ -2,9 +2,10 @@
 get_header();
 ?>
 <?php
+require_once __DIR__ . '/../../lib/users.php';
 if ($_GET['id']) {
     $id = (int) $_GET['id'];
-    $list_detail_bill = get_list_bill_detail_id($id);
+    $list_detail_bill = get_bill_detail_id($id);
 }
 //show_array($list_detail_bill);
 ?>
@@ -19,36 +20,86 @@ if ($_GET['id']) {
     }
 }
 ?>
+<style>
+    /* Style for the section title */
+.section-title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
 
+/* Style for the list items */
+.list-item {
+    list-style: none;
+    padding: 0;
+}
 
+/* Style for each list item */
+.list-item li {
+    float: left;
+    margin-right: 20px;
+}
 
+/* Style for the total-fee and total spans */
+.total-fee,
+.total {
+    display: block;
+    font-size: 18px;
+    color: #555;
+}
 
-<div id="main-content-wp" class="list-product-page">
-    <div class="wrap clearfix">
-        <?php
-        get_sidebar();
-        ?>
-        <div id="content" class="detail-exhibition fl-right">
-            <div class="section" id="info">
-                <div class="section-head">
-                    <h3 class="section-title">Order information</h3>
+/* Style for the total amount and total order values */
+.total-fee {
+    color: #e44d26; /* Adjust color based on your design */
+}
+
+.total {
+    color: #337ab7; /* Adjust color based on your design */
+}
+
+/* Clear the float after each list item */
+.list-item:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.list-item clearfix{
+    padding: 20px;
+}
+</style>
+    <div id="main-content-wp" class="cart-page">
+        <div class="section" id="breadcrumb-wp">
+            <div class="wp-inner">
+                <div class="section-detail">
+                    <ul class="list-item clearfix">
+                        <li>
+                            <a href="?page=home" title="">Home</a>
+                        </li>
+                        <li>
+                            <a href="" title="">Order information</a>
+                        </li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+        <div id="wrapper" class="wp-inner clearfix">
+        <div class="section" id="info">
                 <ul class="list-item">
                     <li>
-                        <h3 class="title">Order code</h3>
-                        <span class="detail"><?php echo $row['bill_id']; ?></span>
+                        <h1 class="title">Order code: <span class="detail"><?php echo $row['bill_id']; ?></span></h1>
                     </li>
                     <li>
-                        <h3 class="title">Customer name</h3>
-                        <span class="detail"><?php echo $row['fullname']; ?></span>
+                        <h3 class="title">Customer name:  <span class="detail"><?php echo $row['fullname']; ?></span></h3>
+                       
                     </li>
                     <li>
-                        <h3 class="title">Delivery address</h3>
-                        <span class="detail"><?php echo $row['address']; ?> </span>
+                        <h3 class="title">Delivery address:  <span class="detail"><?php echo $row['address']; ?> </span></h3>
+                       
                     </li>
                     <li>
-                        <h3 class="title">Phone number</h3>
-                        <span class="detail"><?php echo $row['phone']; ?></span>
+                        <h3 class="title">Phone number:   <span class="detail"><?php echo $row['phone']; ?></span></h3>
+                      
                     </li>
                 </ul>
             </div>
@@ -60,17 +111,16 @@ if ($_GET['id']) {
                 if (!empty($list_detail_bill)) {
                     ?>
                     <div class="table-responsive">
-                        <table class="table info-exhibition">
-                            <thehead>
-                                <tr>
-                                    <td class="thead-text">STT</td>
-                                    <td class="thead-text">Product photo</td>
-                                    <td class="thead-text">Product name</td>
-                                    <td class="thead-text">Unit price</td>
-                                    <td class="thead-text">Quantity</td>
-                                    <td class="thead-text">Amount of money</td>
-                                </tr>
-                            </thead>
+                    <table class="table">
+                                    <thead>
+                                        <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Product photo</span></td>
+                                        <td><span class="thead-text">Product name</span></td>
+                                        <td><span class="thead-text">Unit price</span></td>
+                                        <td><span class="thead-text">Quantity</span></td>
+                                        <td><span class="thead-text">Amount of money</span></td>                              
+                             
+                                    </thead>
                             <tbody>
                                 <?php
                                 $temp = 0;
@@ -81,7 +131,7 @@ if ($_GET['id']) {
                                         <td class="thead-text"><?php echo $temp; ?></td>
                                         <td class="thead-text">
                                             <div class="thumb">
-                                                <img src="uploads/<?php echo $item['product_thumb']; ?>" alt="">
+                                                <img src="admin/uploads/ <?php echo $item['product_thumb']; ?>" alt="">
                                             </div>
                                         </td>
                                         <td class="thead-text"><?php echo $item['product_name']; ?></td>
@@ -137,11 +187,9 @@ if ($_GET['id']) {
                 </div>
             </div>
             <div>
-                <a href="?mod=bill&act=list_order"><i class="fa fa-backward" aria-hidden="true"></i>Return</a>
-            </div>
         </div>
     </div>
-</div>
-<?php
+
+    <?php
 get_footer();
 ?>

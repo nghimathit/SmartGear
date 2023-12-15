@@ -427,7 +427,7 @@ $list_post = get_post();
                     ?>
                 </div>
             </div>
-            <div class="section" id="list-product-wp">
+            <!-- <div class="section" id="list-product-wp">
                 <div class="section-head">
                     <a href="?mod=product&act=category_product&id=5" class="section-title"><?php echo $info_cat_lenovo['cat_name']; ?></a>
                 </div>
@@ -603,7 +603,7 @@ $list_post = get_post();
                     }
                     ?>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
