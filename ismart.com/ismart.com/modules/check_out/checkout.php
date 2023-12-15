@@ -26,13 +26,14 @@ function displayResultsAsTable($resultsArray) {
 // argument must be an array
     $val = '<table width="100%" border="1" cellspacing="0" cellpadding="3" bordercolor="#ffcccc" style="text-align:center;">
   <tr>
-    <th>Id</th> 
-    <th>Tên sản phẩm</th>
-    <th>Đơn giá</th>
-    <th>Hình ảnh</th>
-    <th>Số lượng</th> 
-    <th>Số lượng tồn</th> 
-    <th>Thành tiền</th> 
+  <th>Id</th>
+  <th>Product Name</th>
+  <th>Unit Price</th>
+  <th>Image</th>
+  <th>Quantity</th>
+  <th>Available Quantity</th>
+  <th>Total Amount</th>
+   
   </tr>';
     if (is_array($resultsArray)) {
         foreach ($resultsArray as $key => $value) {
@@ -168,19 +169,19 @@ if(isset($_POST['payUrl'])){
 
 
 
-    <p>Chúc mừng bạn đã thanh toán thành công.</p>
-    <p>Mã hóa đơn #
+<p>Congratulations on your successful payment.</p>
+    <p>Invoice code#
         <?= $bill_id ?>
     </p>
     <?php
     $content = '
-                        <h1 style="color:red;">Thông báo đơn hàng hoàn tất</h1>
-                        <p>Chào <b>' . $fullname . '</b></p>'
-        . '<p>Đơn hàng <b> #APTECH100' . $bill_id . '</b> của bạn đã hoàn tất.</p>'
-        . 'Cảm ơn bạn đã mua hàng tại Smart Grea.<br> Thông tin đơn hàng của bạn: <b> ' . displayResultsAsTable($list_buy) . '</b>
-                        <p>Rất mong được phục vụ bạn trong những lần mua tiếp theo.</p>
-                        ';
-    echo send_mail("$email", "$fullname", 'Thông báo đơn hàng', "$content");
+    <h1 style="color:red;">Notification of order completion</h1>
+    <p> Hello <b>' . $fullname . '</b></p>'
+. '<p>Order <b> #APTECH100' . $bill_id . '</b> yours is complete.</p>'
+. 'Thank you for purchasing at Smart Grea.<br> Your order information: <b> ' . displayResultsAsTable($list_buy) . '</b>
+    <p>We look forward to serving you in your next purchases.</p>
+    ';
+echo send_mail("$email", "$fullname", 'Order notification', "$content");
     redirect_to("?mod=check_out&act=care_customer");
 
                     
@@ -195,10 +196,10 @@ if(isset($_POST['payUrl'])){
             <div class="section-detail">
                 <ul class="list-item clearfix">
                     <li>
-                        <a href="?page=home" title="">Trang chủ</a>
+                        <a href="?page=home" title="">Home</a>
                     </li>
                     <li>
-                        <a href="" title="">Thanh toán</a>
+                        <a href="" title="">Check out</a>
                     </li>
                 </ul>
             </div>
@@ -212,12 +213,12 @@ if(isset($_POST['payUrl'])){
                 ?>
                 <div class="section" id="customer-info-wp">
                     <div class="section-head">
-                        <h1 class="section-title">Thông tin khách hàng</h1>
+                        <h1 class="section-title">Customer information</h1>
                     </div>
                     <div class="section-detail">
                         <div class="form-row clearfix">
                             <div class="form-col fl-left">
-                                <label for="user_id">Mã khách hàng</label>
+                                <label for="user_id">Customer's code</label>
                                 <input type="text" value="<?php echo $list_users['user_id']; ?>" name="user_id" id="username" readonly="true">
                                 <?php
                                 if (!empty($error['user_id'])) {
@@ -228,7 +229,7 @@ if(isset($_POST['payUrl'])){
                                 ?>
                             </div>
                             <div class="form-col fl-right">
-                                <label for="fullname">Họ tên</label>
+                                <label for="fullname">Full name</label>
                                 <input type="text" value="<?php echo $list_users['fullname']; ?>" name="fullname" id="fullname">
                                 <?php
                                 if (!empty($error['fullname'])) {
@@ -254,7 +255,7 @@ if(isset($_POST['payUrl'])){
                             </div>
                             
                             <div class="form-col fl-right">
-                                <label for="phone">Số điện thoại</label>
+                                <label for="phone">Phone number</label>
                                 <input type="tel" value="<?php echo $list_users['phone']; ?>" name="phone" id="phone">
                                 <?php
                                 if (!empty($error['phone'])) {
@@ -267,7 +268,7 @@ if(isset($_POST['payUrl'])){
                         </div>
                         <div class="form-row clearfix">
                             <div class="form-col fl-left">
-                                <label for="address">Địa chỉ</label>
+                                <label for="address">Address</label>
                                 <input type="text" value="<?php echo $list_users['address']; ?>" name="address" id="address">
                                 <?php
                                 if (!empty($error['address'])) {
@@ -287,7 +288,7 @@ if(isset($_POST['payUrl'])){
                         </div>
                         <div class="form-row">
                             <div class="form-col">
-                                <label for="notes">Ghi chú</label>
+                                <label for="notes">Note</label>
                                 <textarea name="note" style="height: 150px;width: 555px;"></textarea>
                             </div>
                         </div>
@@ -295,15 +296,15 @@ if(isset($_POST['payUrl'])){
                 </div>
                 <div class="section" id="order-review-wp">
                     <div class="section-head">
-                        <h1 class="section-title">Thông tin đơn hàng</h1>
+                        <h1 class="section-title">Information line</h1>
                     </div>
                     <div class="section-detail">
                         <table class="shop-table">
                             <thead>
                                 <tr>
 
-                                    <td>Sản phẩm</td>
-                                    <td>Tổng</td>
+                                <td>Product</td>
+                                    <td>Total</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -321,7 +322,7 @@ if(isset($_POST['payUrl'])){
                             </tbody>
                             <tfoot>
                                 <tr class="order-total">
-                                    <td>Tổng đơn hàng:</td>
+                                <td>Total orders:</td>
                                     <td><strong class="total-price"><?php echo currency_format(get_total_cart()); ?></strong></td>
                                     <input type="hidden" name="total" value="<?php echo get_total_cart() ?>">
                                     <input type="hidden" name="total" value="<?php echo get_total_cart() ?>">
@@ -341,9 +342,9 @@ if(isset($_POST['payUrl'])){
                                                     </ul>
                                                 </div>-->
                         <div class="place-order-wp clearfix">
-                            <input type="submit" id="btn_order_now" name="btn_order_now" value="Đặt hàng">
+                            <input type="submit" id="btn_order_now" name="btn_order_now" value="Cash on delivery">
                             <input type="submit" name="payUrl" value="Momo" >
-                            <input type="submit" name="payUrl" value="Momo" >
+            
                         </div>
                     </div>
                 </div>

@@ -7,20 +7,20 @@ if (isset($_POST['btn_reg'])) {
     $error = array();
     // Kiểm tra fullname
     if (empty($_POST['fullname'])) {
-        $error['fullname'] = "Không được để trống Họ và tên";
+        $error['fullname'] = "Full name cannot be left blank";
     } else {
         $fullname = $_POST['fullname'];
     }
 
     // Kiểm tra username
     if (empty($_POST['username'])) { // nếu bằng rỗng =>
-        $error['username'] = "Không được để trống Tên đăng nhập";
+        $error['username'] = "Username cannot be left blank";
     } else { // Ngược lại đã nhập dữ liệu rồi
         if (!(strlen($_POST['username']) >= 4 && strlen($_POST['username']) <= 20)) {
-            $error['username'] = "Tên đăng nhập yêu cầu từ 4 đến 20 ký tự";
+            $error['username'] = "Login name requires 4 to 20 characters";
         } else {
             if (!is_username($_POST['username'])) { // ktra username với $partten có khớp với nhau k
-                $error['username'] = "Tên đăng nhập không đúng định dạng";
+                $error['username'] = "Username is not in the correct format";
             } else { // khớp định dạng
                 $username = $_POST['username']; // xuất ra username
             }
@@ -29,10 +29,10 @@ if (isset($_POST['btn_reg'])) {
 
     // Kiểm tra password
     if (empty($_POST['password'])) {
-        $error['password'] = "Không được để trống Mật khẩu";
+        $error['password'] ="Password cannot be blank";
     } else {
         if (!is_password($_POST['password'])) {
-            $error['password'] = "Mật khẩu không đúng định dạng";
+            $error['password'] ="Password is not in the correct format";
         } else { // khớp định dạng
             $password = md5($_POST['password']); // xuất ra password
         }
@@ -40,10 +40,10 @@ if (isset($_POST['btn_reg'])) {
 
     // Kiểm tra email
     if (empty($_POST['email'])) {
-        $error['email'] = "Không được để trống Email";
+        $error['email'] ="Email cannot be left blank";
     } else {
         if (!is_email($_POST['email'])) {
-            $error['email'] = "Email không đúng định dạng";
+            $error['email'] = "Email invalidate";
         } else { // khớp định dạng
             $email = $_POST['email'];
         }
@@ -51,10 +51,10 @@ if (isset($_POST['btn_reg'])) {
 
     // Kiểm tra phone
     if (empty($_POST['phone'])) {
-        $error['phone'] = "Không được để trống Số điện thoại";
+        $error['phone'] = "Phone number cannot be left blank";
     } else {
         if (!is_phone_number($_POST['phone'])) {
-            $error['phone'] = "Số điện thoại k đúng định dạng";
+            $error['phone'] = "Phone number is not in correct format";
         } else {
             $phone = $_POST['phone'];
         }
@@ -62,14 +62,14 @@ if (isset($_POST['btn_reg'])) {
 
     // Kiểm tra address
     if (empty($_POST['address'])) {
-        $error['address'] = "Không được để trống Địa chỉ";
+        $error['address'] = "Address cannot be left blank";
     } else {
         $address = $_POST['address'];
     }
 
-    // Kiểm tra giới tính
+    // Check gender
     if (empty($_POST['gender'])) {
-        $error['gender'] = "Bạn chưa chọn Giới tính";
+        $error['gender'] = "You have not selected your Gender";
     } else {
         $gender = $_POST['gender'];
     }
@@ -100,17 +100,17 @@ if (isset($_POST['btn_reg'])) {
 <div id="main-content-reg" class="reg-page">
     <div class="wp-inner clearfix">
         <div class="info fl-left">
-            <h3 class="title">Tài khoản hệ thống</h3>
-            <p class="desc">Công nghệ là xu thế và luôn mạnh mẽ<br> Tham gia ngay hệ thống - Học ngay lập tức!</p>
+           <h3 class="title">System accounts</h3>
+            <p class="desc">Technology is the trend and always strong<br> Join the system now - Learn immediately!</p>
             <div class="thumb">
                 <img src="public/images/reg4.png">
             </div>
         </div>
         <div class="form-reg-wp fl-right">
             <div class="register">
-                <h3 class="title">Đăng ký thành viên</h3>
+                <h3 class="title">Member registration</h3>
                 <form action="" method="POST" id="form-register">
-                    <input type="text" value="<?php echo set_value('fullname');?>" name="fullname" placeholder="Họ và tên">
+                    <input type="text" value="<?php echo set_value('fullname');?>" name="fullname" placeholder="Full name">
                     <?php
                     if (!empty($error['fullname'])) {
                         ?>
@@ -118,7 +118,7 @@ if (isset($_POST['btn_reg'])) {
                         <?php
                     }
                     ?>
-                        <input type="text" value="<?php echo set_value('username');?>" name="username" placeholder="Tên đăng nhập" >
+                        <input type="text" value="<?php echo set_value('username');?>" name="username" placeholder= "Login name" >
                     <?php
                     if (!empty($error['username'])) {
                         ?>
@@ -126,7 +126,7 @@ if (isset($_POST['btn_reg'])) {
                         <?php
                     }
                     ?>
-                    <input type="password" name="password" placeholder="Mật khẩu" >
+                    <input type="password" name="password" placeholder="Password" >
                     <?php
                     if (!empty($error['password'])) {
                         ?>
@@ -142,7 +142,7 @@ if (isset($_POST['btn_reg'])) {
                         <?php
                     }
                     ?>
-                    <input type="text" value="<?php echo set_value('phone');?>" name="phone" placeholder="Số điện thoại" >
+                    <input type="text" value="<?php echo set_value('phone');?>" name="phone" placeholder="Phone number" >
                     <?php
                     if (!empty($error['phone'])) {
                         ?>
@@ -150,7 +150,7 @@ if (isset($_POST['btn_reg'])) {
                         <?php
                     }
                     ?>
-                    <input type="text" value="<?php echo set_value('address');?>" name="address" placeholder="Địa chỉ" >
+                    <input type="text" value="<?php echo set_value('address');?>" name="address" placeholder="Address" >
                     <?php
                     if (!empty($error['address'])) {
                         ?>
@@ -158,10 +158,10 @@ if (isset($_POST['btn_reg'])) {
                         <?php
                     }
                     ?>
-                    <select name="gender" id="gender">
-                        <option value="">-- Chọn giới tính --</option>
-                        <option value="male">Nam</option>
-                        <option value="female">Nữ</option>
+                   <select name="gender" id="gender">
+                        <option value="">-- Select gender --</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
                     </select>
                     <?php
                     if (!empty($error['gender'])) {
@@ -174,8 +174,8 @@ if (isset($_POST['btn_reg'])) {
                     <?php echo form_error('account'); ?>
                 </form>
                 <div id="have-account">
-                    <span>Đã có tài khoản?</span>
-                    <a href="?mod=users&act=login" id="lost-pass" title="Đăng Nhập">Đăng Nhập</a>
+                <span>Already have an account?</span>
+                    <a href="?mod=users&act=login" id="lost-pass" title="Login">Login</a>
                 </div>
             </div> 
         </div>

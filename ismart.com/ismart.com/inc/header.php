@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Smart Grea</title>
+        <title>Smart Gear</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="public/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
@@ -22,19 +22,19 @@
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3"></script>
         <SCRIPT LANGUAGE="JavaScript">
             function confirmAction_delete_cart() {
-                return confirm("Bạn muốn loại bỏ sản phẩm này khỏi giỏ hàng?")
+                return confirm("Do you want to remove this product from your cart?")
             }
             function confirmAction_delete_all_cart() {
-                return confirm("Bạn muốn loại bỏ tất cả sản phẩm khỏi giỏ hàng?")
+                return confirm("Do you want to remove all products from the cart?")
             }
             function confirmAction_users() {
-                return confirm("Bạn muốn đăng xuất?")
+                return confirm("Do you want to log out?")
             }
             function confirmAction_detail() {
-                return confirm("Sản phẩm này đã hết hàng, bạn vui lòng chọn sản phẩm khác? ")
+                return confirm("This product is out of stock, please choose another product?")
             }
             function confirmAction_email() {
-                return confirm("Bạn vui lòng vào email để xác nhận? ")
+                return confirm("Please check your email to confirm?")
             }
         </SCRIPT>
         <script>
@@ -54,11 +54,14 @@
                         <div class="wp-inner">
                             <div id="main-menu-wp" class="fl-left">
                                 <ul id="main-menu" class="clearfix">
-                                    <li class="active">
-                                        <a href="?page=home" title="">Trang chủ</a>
+                                <li class="active">
+                                        <a href="?page=home" title="">Home</a>
                                     </li>
                                     <li>
                                         <a href="?mod=post&act=blog" title="">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="?mod=order_view&act=view" title="">Purchase order</a>
                                     </li>
                                     <?php
                                     require 'db/connect.php';
@@ -82,7 +85,7 @@
                                     }
                                     ?>
                                     <li>
-                                        <a href="?mod=page&act=contact" title="">Liên hệ</a>
+                                        <a href="?mod=page&act=contact" title="">Contact</a>
                                     </li>
                                 </ul>
                             </div>
@@ -95,19 +98,19 @@
                                         <h3 id="account" class="fl-right">Hello <strong><?php if (is_login()) echo info_user('fullname'); ?></strong></h3>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="?mod=users&act=info_account" title="Thông tin cá nhân">Thông tin cá nhân</a></li>
-                                        <!--                                        <li><a href="?mod=users&act=change_password" title="Đổi mật khẩu">Đổi mật khẩu</a></li>-->
-                                        <li><a class="logout" onclick="return confirmAction_users()" href="?mod=users&act=logout">Đăng xuất</a></li>
+                                    <li><a href="?mod=users&act=info_account" title="Personal information">Personal information</a></li>
+                                        <!-- <li><a href="?mod=users&act=change_password" title="Change password">Change password</a></li>-->
+                                        <li><a class="logout" onclick="return confirmAction_users()" href="?mod=users&act=logout">Log out</a></li>
                                     </ul>
                                 </div>
                                 <?php
                             }else {
                                 ?>
                                 <div id="action-user" class="fl-right">
-                                    <div id="not-signed">
-                                        <a href="?mod=users&act=login" title="" id="login">Đăng nhập</a>
+                                <div id="not-signed">
+                                        <a href="?mod=users&act=login" title="" id="login">Login</a>
                                         <span id="icon">/</span>
-                                        <a href="?mod=users&act=register" title="" id="reg">Đăng ký</a>
+                                        <a href="?mod=users&act=register" title="" id="reg">Register</a>
                                     </div>
                                 </div>
                                 <?php
@@ -119,14 +122,14 @@
                         <div class="wp-inner">
                             <a href="?page=home" title="" id="logo" class="fl-left"><img src="public/images/logo22.png"/></a>
                             <div id="search-wp" class="fl-left">
-                                <form method="POST" action="?mod=search&act=search_product">
-                                    <input type="text" name="keyword" id="search" placeholder="Nhập từ khóa tìm kiếm tại đây!">
-                                    <button type="submit" name="btn_search" id="btn_search">Tìm kiếm</button>
+                            <form method="POST" action="?mod=search&act=search_product">
+                                    <input type="text" name="keyword" id="search" placeholder="Enter search keyword here!">
+                                    <button type="submit" name="btn_search" id="btn_search">Search</button>
                                 </form>
                             </div>
                             <div id="action-wp" class="fl-right">
-                                <div id="advisory-wp" class="fl-left">
-                                    <span class="title">Tư vấn</span>
+                            <div id="advisory-wp" class="fl-left">
+                                    <span class="title">Consulting</span>
                                     <span class="phone">0362061339</span>
                                 </div>
                                 <div id="btn-respon" class="fl-right"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -156,7 +159,7 @@
                                         <span id="num"><?php echo $num_order; ?></span>
                                     </div>
                                     <div id="dropdown">
-                                        <p class="desc">Có <span><?php echo $num_order ?> sản phẩm</span> trong giỏ hàng</p>
+                                    <p class="desc">There are <span><?php echo $num_order ?> products</span> in the cart</p>
                                         <?php
                                         if (isset($_SESSION['cart']['buy'])) {
                                             $list_buy = get_list_by_cart();
@@ -172,7 +175,7 @@
                                                         <div class="info fl-right">
                                                             <a href="" title="" class="product-name"><?php echo $buy['product_name'] ?></a>
                                                             <p class="price"><?php echo currency_format($buy['price_new']) ?></p>
-                                                            <p class="qty">Số lượng: <span><?php echo $buy['qty'] ?></span></p>
+                                                            <p class="qty">Quantity: <span><?php echo $buy['qty'] ?></span></p>
                                                         </div>
                                                     </li>
                                                     <?php
@@ -190,20 +193,20 @@
                                                 $total = 0;
                                             }
                                             ?>
-                                            <p class="title fl-left">Tổng:</p>
+                                           <p class="title fl-left">Total:</p>
                                             <p class="price fl-right"><?php echo currency_format($total); ?></p>
 
-                                        </div>
+                                            </div>
                                         <dic class="action-cart clearfix">
-                                            <a href="?mod=cart&act=show" title="Giỏ hàng" class="view-cart fl-left">Giỏ hàng</a>
+                                            <a href="?mod=cart&act=show" title="Cart" class="view-cart fl-left">Cart</a>
                                             <?php
                                             if (isset($_SESSION['is_login'])) {
                                                 ?>
-                                                <a href="?mod=check_out&act=checkout" title="Thanh toán" class="checkout fl-right">Thanh toán</a>
+                                                <a href="?mod=check_out&act=checkout" title="Checkout" class="checkout fl-right">Checkout</a>
                                                 <?php
                                             } else {
                                                 ?>
-                                                <a href="?mod=users&act=login" title="Đăng nhập" class="checkout fl-right">Thanh toán</a>
+                                                <a href="?mod=users&act=login" title="Login" class="checkout fl-right">Checkout</a>
                                                 <?php
                                             }
                                             ?>

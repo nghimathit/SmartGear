@@ -9,10 +9,10 @@ if (!empty($reset_token)) {
             $error = array();
             // ktra password
             if (empty($_POST['password'])) {
-                $error['password'] = "Không được để trống mật khẩu";
+                $error['password'] = "Password cannot be left blank";
             } else {
                 if (!is_password($_POST['password'])) {
-                    $error['password'] = "Mật khẩu chưa đúng định dạng";
+                    $error['password'] = "Password is not in the correct format";
                 } else {
                     $password = md5($_POST['password']);
                 }
@@ -26,7 +26,7 @@ if (!empty($reset_token)) {
             }
         }
     } else {
-        echo "Yêu cầu lấy lai mật khẩu k hợp lệ";
+        echo "Request to retrieve invalid password";
     }
 }
 ?>
@@ -40,7 +40,7 @@ if (!empty($reset_token)) {
         </div>
         <div class="form-reg-wp fl-right">
             <div class="login">
-                <h1 class="post_title">Mật khẩu mới</h1>
+                <h1 class="post_title">New password</h1>
                 <form id="form-login" action="" method="post">
                     <input type="password" name="password" class="email_forgot_pass" id="password" autocomplete="false" placeholder="Password">
                     <?php echo form_error('password'); ?>
@@ -48,8 +48,8 @@ if (!empty($reset_token)) {
                     <?php echo form_error('account'); ?>
                 </form>
                 <div id="have-account">
-                    <a href="<?php echo base_url("?mod=users&act=login"); ?>" id="lost-pass">Đăng nhập</a>
-                    <a href="<?php echo base_url("?mod=users&act=register"); ?>" id="lost-pass">Đăng ký</a>
+                    <a href="<?php echo base_url("?mod=users&act=login"); ?>" id="lost-pass">Sign in</a>
+                    <a href="<?php echo base_url("?mod=users&act=register"); ?>" id="lost-pass">Sign up</a>
                 </div>
             </div>
         </div>

@@ -56,7 +56,7 @@ $default_sorting = get_default_sorting($id);
                         foreach ($list_cat as $cat) {
                             ?>
                             <li>
-                                <a href="?" title="">Trang chủ</a>
+                                <a href="?" title="">Home</a>
                             </li>
                             <li>
                                 <a href="" title=""><?php echo $cat['cat_name']; ?></a>
@@ -82,7 +82,7 @@ $default_sorting = get_default_sorting($id);
                     }
                     ?>
                     <div class="filter-wp fl-right">
-                        <p class="desc">Hiển thị <?php echo count($list_product); ?> sản phẩm (<?php echo $number_rows; ?> sản phẩm)</p>
+                        <p class="desc">Display<?php echo count($list_product); ?> product(<?php echo $number_rows; ?> product)</p>
                         <div class="form-filter">
                             <form method="POST" action="">
                                 <select name="sorting" id="select" class="selection-2 city">
@@ -110,7 +110,7 @@ $default_sorting = get_default_sorting($id);
                                             });
                                         });
                                     </script>  
-                                    <option>Sắp xếp</option>
+                                    <option>Arrange</option>
                                     <?php
                                     foreach ($default_sorting as $list) {
                                         ?>
@@ -157,13 +157,13 @@ $default_sorting = get_default_sorting($id);
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }
@@ -176,7 +176,7 @@ $default_sorting = get_default_sorting($id);
                         <?php
                     } else {
                         ?>
-                        <p>Không có sản phẩm</p>
+                        <p>No products</p>
                         <?php
                     }
                     ?>

@@ -47,7 +47,7 @@ $item = mysqli_fetch_array($result);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Cập nhật danh mục bài viết</h3>
+                    <h3 id="index" class="fl-left">Update Category Post</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -64,7 +64,7 @@ $item = mysqli_fetch_array($result);
                     <form method="POST">
 
 
-                        <label for="post_name">Tên bài viết</label>
+                        <label for="post_name">Name Category post</label>
                         <input type="text" name="post_name" id="post_name" value="<?php if (!empty($item['post_name'])) echo $item['post_name']; ?>">
                         <?php
                         if (!empty($error['post_name'])) {
@@ -73,7 +73,7 @@ $item = mysqli_fetch_array($result);
                             <?php
                         }
                         ?>
-                        <button type="submit" name="btn_update" id="btn_update">Cập nhật</button>
+                        <button type="submit" name="btn_update" id="btn_update">Update</button>
                     </form>
                 </div>
             </div>

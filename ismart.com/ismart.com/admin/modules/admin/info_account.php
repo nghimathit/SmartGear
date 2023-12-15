@@ -26,15 +26,15 @@ unset($admin);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách admin</h3>
+                    <h3 id="index" class="fl-left">Admin list</h3>
                     <?php
                     if ($_SESSION['role'] == 1) {
                         ?>
-                        <a href="?mod=admin&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                        <a href="?mod=admin&act=add" title="" id="add-new" class="fl-left">Add new</a>
                         <?php
                     } else if ($_SESSION['role'] == 2) {
                         ?>
-                        <a href="" title="" onclick="return confirmAction_role()" id="add-new" class="fl-left">Thêm mới</a>
+                        <a href="" title="" onclick="return confirmAction_role()" id="add-new" class="fl-left">Add new</a>
                         <?php
                     }
                     ?>
@@ -68,17 +68,17 @@ unset($admin);
                             <table class="table list-table-wp">
                                 <thead>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tên hiển thị</span></td>
-                                        <td><span class="thead-text">Hình ảnh</span></td>
-                                        <td><span class="thead-text">Tên đăng nhập</span></td>
-                                        <td><span class="thead-text">Đổi mật khẩu</span></td>
+                                       <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Display name</span></td>
+                                        <td><span class="thead-text">Image</span></td>
+                                        <td><span class="thead-text">Username</span></td>
+                                        <td><span class="thead-text">Change password</span></td>
                                         <td><span class="thead-text">Email</span></td>
-                                        <td><span class="thead-text">Địa chỉ</span></td>
-                                        <td><span class="thead-text">Số điện thoại</span></td>
-                                        <td><span class="thead-text">Giới tính</span></td>
-    <!--                                        <td><span class="thead-text">Trạng thái</span></td>-->
-                                        <td><span class="thead-text">Quyền</span></td>
+                                        <td><span class="thead-text">Address</span></td>
+                                        <td><span class="thead-text">Phone number</span></td>
+                                        <td><span class="thead-text">Gender</span></td>
+    <!-- <td><span class="thead-text">Status</span></td>-->
+                                        <td><span class="thead-text">Permissions</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -121,11 +121,11 @@ unset($admin);
                                                 <?php
                                                 if ($_SESSION['user_login_admin'] == $admin['username']) {
                                                     ?>
-                                                    <a href="<?php echo $admin['url']; ?>" title="" class="tbody-text">Đổi mật khẩu</a>
+                                                    <a href="<?php echo $admin['url']; ?>" title="" class="tbody-text">Change password</a>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <a href="" title="" onclick="return confirmAction_change_password()" class="tbody-text">Đổi mật khẩu</a>
+                                                    <a href="" title="" onclick="return confirmAction_change_password()" class="tbody-text">Change password</a>
                                                     <?php
                                                 }
                                                 ?>
@@ -150,16 +150,16 @@ unset($admin);
                                 <tfoot>
                                     <tr>
                                         <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tên hiển thị</span></td>
-                                        <td><span class="thead-text">Hình ảnh</span></td>
-                                        <td><span class="thead-text">Tên đăng nhập</span></td>
-                                        <td><span class="thead-text">Đổi mật khẩu</span></td>
+                                        <td><span class="thead-text">Display name</span></td>
+                                        <td><span class="thead-text">Image</span></td>
+                                        <td><span class="thead-text">Username</span></td>
+                                        <td><span class="thead-text">Change password</span></td>
                                         <td><span class="thead-text">Email</span></td>
-                                        <td><span class="thead-text">Địa chỉ</span></td>
-                                        <td><span class="thead-text">Số điện thoại</span></td>
-                                        <td><span class="thead-text">Giới tính</span></td>
-    <!--                                        <td><span class="thead-text">Trạng thái</span></td>-->
-                                        <td><span class="thead-text">Quyền</span></td>
+                                        <td><span class="thead-text">Address</span></td>
+                                        <td><span class="thead-text">Phone number</span></td>
+                                        <td><span class="thead-text">Gender</span></td>
+    <!-- <td><span class="thead-text">Status</span></td>-->
+                                        <td><span class="thead-text">Permissions</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -169,7 +169,7 @@ unset($admin);
                     ?>
 
                 </div>
-                <p class="num_rows">Có <?php echo $num_rows; ?> người quản trị trong hệ thống</p>
+                <p class="num_rows">There are <?php echo $num_rows; ?> administrators in the system</p>
             </div>
             <div class="section" id="paging-wp">
                 <div class="section-detail clearfix">

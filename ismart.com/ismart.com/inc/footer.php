@@ -2,8 +2,8 @@
     <div id="foot-body">
         <div class="wp-inner clearfix">
             <div class="block" id="info-company">
-                <h3 class="title">Smart Gear</h3>
-                <p class="desc">Smart Gear luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ ràng, chính sách ưu đãi cực lớn cho khách hàng có thẻ thành viên.</p>
+            <h3 class="title">Smart Gear</h3>
+                <p class="desc">Smart Gear always provides genuine products with clear information and great preferential policies for customers with membership cards.</p>
                 <div id="payment">
                     <div class="thumb">
                         <img src="public/images/img-foot.png" alt="">
@@ -11,10 +11,10 @@
                 </div>
             </div>
             <div class="block menu-ft" id="info-shop">
-                <h3 class="title">Thông tin cửa hàng</h3>
+            <h3 class="title">Store information</h3>
                 <ul class="list-item">
                     <li>
-                        <p>391 Nam Kỳ Khởi Nghĩa - Q3 - HCM</p>
+                        <p>391 Nam Ky Khoi Nghia - District 3 - HCM</p>
                     </li>
                     <li>
                         <p>0362061339</p>
@@ -25,25 +25,25 @@
                 </ul>
             </div>
             <div class="block menu-ft policy" id="info-shop">
-                <h3 class="title">Chính sách mua hàng</h3>
+                <h3 class="title">Purchase policy</h3>
                 <ul class="list-item">
                     <li>
-                        <a href="" title="">Quy định - chính sách</a>
+                        <a href="" title="">Regulations - policies</a>
                     </li>
                     <li>
-                        <a href="" title="">Chính sách bảo hành - đổi trả</a>
+                        <a href="" title="">Warranty - return policy</a>
                     </li>
                     <li>
-                        <a href="" title="">Chính sách hội viện</a>
+                        <a href="" title="">Assembly policies</a>
                     </li>
                     <li>
-                        <a href="" title="">Giao hàng - lắp đặt</a>
+                        <a href="" title="">Delivery - installation</a>
                     </li>
                 </ul>
             </div>
             <div class="block" id="newfeed">
-                <h3 class="title">Bảng tin</h3>
-                <p class="desc">Đăng ký với chung tôi để nhận được thông tin ưu đãi sớm nhất</p>
+                <h3 class="title">Bulletin board</h3>
+                <p class="desc">Register with us to receive the earliest promotional information</p>
                 <div id="form-reg">
                 </div>
             </div>
@@ -62,7 +62,7 @@
         <div id="main-menu-wp">
             <ul class="" id="main-menu-respon">
                 <li>
-                    <a href="?" title="">Trang chủ</a>
+                <a href="?" title="">Home</a>
                 </li>
                 <li>
                     <a href="#" title="">Laptop</a>
@@ -93,25 +93,25 @@
                 <li>
                     <a href="?mod=post&act=blog" title="">Blog</a>
                     <ul class="sub-menu">
-                        <li>
-                            <a href="?mod=post&act=main&id=1" title="">Đánh giá</a>
+                    <li>
+                            <a href="?mod=post&act=main&id=1" title="">Review</a>
                         </li>
                         <li>
-                            <a href="?mod=post&act=main&id=2" title="">Cẩm nang</a>
+                            <a href="?mod=post&act=main&id=2" title="">Handbook</a>
                         </li>
                         <li>
-                            <a href="?mod=post&act=main&id=3" title="">Tin tức</a>
+                            <a href="?mod=post&act=main&id=3" title="">News</a>
                         </li>
                         <li>
-                            <a href="?mod=post&act=main&id=4" title="">So sánh</a>
+                            <a href="?mod=post&act=main&id=4" title="">Compare</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="?mod=page&act=main" title="">Giới thiệu</a>
+                    <a href="?mod=page&act=main" title="">Introduction</a>
                 </li>
                 <li>
-                    <a href="?mod=page&act=contact" title="">Liên hệ</a>
+                    <a href="?mod=page&act=contact" title="">Contact</a>
                 </li>
             </ul>
         </div>

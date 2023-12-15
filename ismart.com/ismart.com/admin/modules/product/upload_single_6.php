@@ -8,16 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $type_file = pathinfo($_FILES['file_6']['name'], PATHINFO_EXTENSION);
     $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif');
     if (!in_array(strtolower($type_file), $type_fileAllow)) {
-        $error['file_6'] = "File bạn vừa chọn hệ thống không hỗ trợ, bạn vui lòng chọn hình ảnh";
+        $error['file_6'] = "The file you just selected is not supported by the system, please select an image";
     }
-    //Kiểm tra kích thước file
+    //Check file size
     $size_file = $_FILES['file_6']['size'];
     if ($size_file > 5242880) {
-        $error['file_6'] = "File bạn chọn không được quá 5MB";
+        $error['file_6'] = "The file you selected cannot exceed 5MB";
     }
-// Kiểm tra file đã tồn tại trê hệ thống
+// Check if the file exists on the system
     if (file_exists($target_file)) {
-        $error['file_6'] = "File bạn chọn đã tồn tại trên hệ thống";
+        $error['file_6'] = "The file you selected already exists on the system";
     }
 //
     if (empty($error)) {

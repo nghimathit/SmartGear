@@ -10,10 +10,10 @@ if ($num_rows > 0) {
     $list_users[] = $row;
 }
 if ($list_users > 0) {
-    $_SESSION['success'] = "Xóa thành công";
+    $_SESSION['success'] = "Delete successfully";
     redirect_to("?mod=users&act=main");
 } else {
-    $_SESSION['error'] = "Xóa thất bại";
+    $_SESSION['error'] = "Delete failed";
     redirect_to("?mod=users&act=main");
 }
 

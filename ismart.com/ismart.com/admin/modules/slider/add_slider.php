@@ -3,12 +3,12 @@
 if (isset($_POST['btn_add'])) {
     $error = array();
     if (empty($_POST['slider_name'])) {
-        $error['slider_name'] = "Bạn chưa nhập Tên slider";
+        $error['slider_name'] = "You have not entered a slider name";
     } else {
         $slider_name = $_POST['slider_name'];
     }
     if (empty($_POST['creator'])) {
-        $error['creator'] = "Bạn chưa nhập Người tạo";
+        $error['creator'] = "You have not entered a Creator";
     } else {
         $creator = $_POST['creator'];
     }
@@ -32,13 +32,13 @@ if (isset($_POST['btn_add'])) {
             $sql = "INSERT INTO `slider` (`slider_name`,`images`,`creator`)"
                     . "VALUES('{$slider_name}','{$images}', '{$creator}')";
             if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Thêm mới thành công";
+                $_SESSION['success'] = "New addition successful";
                 redirect_to("?mod=slider&act=list_slider");
             } else {
-                $_SESSION['error'] = "Thêm mới thất bại";
+                $_SESSION['error'] = "New addition failed";
             }
         } else {
-            $_SESSION['error'] = "Tên slider đã tồn tại";
+            $_SESSION['error'] = "Slider name already exists";
         }
     }
 }
@@ -51,7 +51,7 @@ if (isset($_POST['btn_add'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Thêm Slider</h3>
+                <h3 id="index" class="fl-left">Add Slider</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -66,21 +66,21 @@ if (isset($_POST['btn_add'])) {
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
-                        <label for="slider_name">Tên slider</label>
+                        <label for="slider_name">Tslider</label>
                         <input type="text" name="slider_name" id="slider_name">
                         <?php echo form_error('slider_name') ?>
                         <div class="form_group clearfix" id="">
-                            <label for="detail">Hình ảnh</label>
+                            <label for="detail">Image</label>
                             <input type="file" name="file" id="file" data-uri="?mod=slider&act=upload_single">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt">
                             <div id="show_list_file" >
                             </div>
                             <?php echo form_error('file') ?>
                         </div>
-                        <label for="creator">Người tạo</label>
+                        <label for="creator">Creator</label>
                         <input type="text" name="creator" id="creator">
                         <?php echo form_error('creator') ?>
-                        <button type="submit" name="btn_add" id="btn_add">Thêm mới</button>
+                        <button type="submit" name="btn_add" id="btn_add">Add new</button>
                     </form>
                 </div>
             </div>

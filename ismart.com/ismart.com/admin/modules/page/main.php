@@ -28,8 +28,8 @@ unset($page);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách trang</h3>
-                    <a href="?mod=page&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                    <h3 id="index" class="fl-left">List page</h3>
+                    <a href="?mod=page&act=add" title="" id="add-new" class="fl-left">Add new</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -54,7 +54,7 @@ unset($page);
                 <div class="section-detail">
                     <form method="POST" class="form-s fl-right" action="?mod=search&act=search_page">
                         <input type="text" name="keyword" id="s">
-                        <input type="submit" name="btn_search" value="Tìm kiếm">
+                        <input type="submit" name="btn_search" value="Search">
                     </form>
                     <?php
                     if (!empty($list_page)) {
@@ -64,10 +64,10 @@ unset($page);
                                 <thead>
                                     <tr>
                                         <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tiêu đề</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cập nhật</span></td>   
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                        <td><span class="thead-text">title</span></td>
+                                        <td><span class="thead-text">create day</span></td>
+                                        <td><span class="thead-text">update day</span></td>   
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,11 +95,11 @@ unset($page);
                                                     <?php
                                                     if ($page['status'] == 1) {
                                                         ?>
-                                                        <a href="?mod=page&act=error_action&id=<?php echo $page['id'] ?>" class="btn btn-xs btn-info">Hiển thị</a>
+                                                        <a href="?mod=page&act=error_action&id=<?php echo $page['id'] ?>" class="btn btn-xs btn-info">display</a>
                                                         <?php
                                                     } else if ($page['status'] == 0) {
                                                         ?>
-                                                        <a href="?mod=page&act=error_action&id=<?php echo $page['id'] ?>" class="btn btn-xs btn-default">Không</a>
+                                                        <a href="?mod=page&act=error_action&id=<?php echo $page['id'] ?>" class="btn btn-xs btn-default">No</a>
                                                         <?php
                                                     }
                                                     ?>
@@ -113,12 +113,12 @@ unset($page);
                                 </tbody>
 
                                 <tfoot>
-                                    <tr>
+                                <tr>
                                         <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tiêu đề</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cập nhật</span></td>   
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                        <td><span class="thead-text">title</span></td>
+                                        <td><span class="thead-text">create day</span></td>
+                                        <td><span class="thead-text">update day</span></td>   
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </tfoot>
                             </table>

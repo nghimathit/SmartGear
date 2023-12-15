@@ -27,7 +27,7 @@ $list_post = get_page($start, $num_per_page);
             <div class="secion-detail">
                 <ul class="list-item clearfix">
                     <li>
-                        <a href="" title="">Trang chủ</a>
+                        <a href="" title="">Home</a>
                     </li>
                     <li>
                         <a href="" title="">Blog</a>
@@ -67,7 +67,7 @@ $list_post = get_page($start, $num_per_page);
                         <?php
                     }else{
                     ?>
-                    <p>Không có bài viết</p>
+                  <p>No page data</p>
                     <?php
                     }
                     ?>

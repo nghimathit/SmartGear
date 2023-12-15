@@ -38,8 +38,8 @@ unset($post);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách bài viết</h3>
-                    <a href="?mod=post&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                    <h3 id="index" class="fl-left">List Post</h3>
+                    <a href="?mod=post&act=add" title="" id="add-new" class="fl-left">Add new</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -74,17 +74,18 @@ unset($post);
                         <div class="table-responsive">
                             <table class="table list-table-wp">
                                 <thead>
-                                    <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Hình ảnh</span></td>
-                                        <td><span class="thead-text">Tiêu đề</span></td>
-                                        <td><span class="thead-text">Danh mục</span></td>
-                                        <td><span class="thead-text">Mô tả</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cật nhật</span></td>
-                                        <td><span class="thead-text">Bài viết nổi bật</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
-                                    </tr>
+                                <tr>
+    <td><span class="thead-text">No.</span></td>
+    <td><span class="thead-text">Image</span></td>
+    <td><span class="thead-text">Title</span></td>
+    <td><span class="thead-text">Category</span></td>
+    <td><span class="thead-text">Description</span></td>
+    <td><span class="thead-text">Created Date</span></td>
+    <td><span class="thead-text">Updated Date</span></td>
+    <td><span class="thead-text">Featured Post</span></td>
+    <td><span class="thead-text">Status</span></td>
+</tr>
+
                                 </thead>
                                 <tbody>
                                     <?php
@@ -121,11 +122,11 @@ unset($post);
                                                     <?php
                                                     if ($post['status'] == 1) {
                                                         ?>
-                                                        <a class="btn btn-xs btn-info">Hiển thị</a>
+                                                        <a class="btn btn-xs btn-info">Display</a>
                                                         <?php
                                                     } else if ($post['status'] == 0) {
                                                         ?>
-                                                        <a class="btn btn-xs btn-default">Không</a>
+                                                        <a class="btn btn-xs btn-default">No</a>
                                                         <?php
                                                     }
                                                     ?>
@@ -139,17 +140,18 @@ unset($post);
                                 </tbody>
 
                                 <tfoot>
-                                    <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Hình ảnh</span></td>
-                                        <td><span class="thead-text">Tiêu đề</span></td>
-                                        <td><span class="thead-text">Danh mục</span></td>
-                                        <td><span class="thead-text">Mô tả</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cật nhật</span></td>
-                                        <td><span class="thead-text">Bài viết nổi bật</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
-                                    </tr>
+                                <tr>
+    <td><span class="thead-text">No.</span></td>
+    <td><span class="thead-text">Image</span></td>
+    <td><span class="thead-text">Title</span></td>
+    <td><span class="thead-text">Category</span></td>
+    <td><span class="thead-text">Description</span></td>
+    <td><span class="thead-text">Created Date</span></td>
+    <td><span class="thead-text">Updated Date</span></td>
+    <td><span class="thead-text">Featured Post</span></td>
+    <td><span class="thead-text">Status</span></td>
+</tr>
+
                                 </tfoot>
                             </table>
                         </div>

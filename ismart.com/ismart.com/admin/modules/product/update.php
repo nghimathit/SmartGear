@@ -17,32 +17,32 @@ if (isset($_POST['btn_update'])) {
     $error = array();
 
     if (empty($_POST['product_name'])) {
-        $error['product_name'] = "Bạn chưa nhập Tên sản phẩm";
+        $error['product_name'] = "You have not entered a Product Name";
     } else {
         $product_name = $_POST['product_name'];
     }
     if (empty($_POST['price_new'])) {
-        $error['price_new'] = "Bạn chưa nhập Giá sản phẩm";
+        $error['price_new'] = "You have not entered a Product Price";
     } else {
         $price_new = $_POST['price_new'];
     }
     if (empty($_POST['price_old'])) {
-        $error['price_old'] = "Bạn chưa nhập Giá sản phẩm";
+        $error['price_old'] = "You have not entered a Product Price";
     } else {
         $price_old = $_POST['price_old'];
     }
     if (empty($_POST['product_desc'])) {
-        $error['product_desc'] = "Bạn chưa nhập Mô tả sản phẩm";
+        $error['product_desc'] = "You have not entered a Product Description";
     } else {
         $product_desc = $_POST['product_desc'];
     }
     if (empty($_POST['product_content'])) {
-        $error['product_content'] = "Bạn chưa nhập Chi tiết sản phẩm";
+        $error['product_content'] = "You have not entered Product Details";
     } else {
         $product_content = $_POST['product_content'];
     }
     if (empty($_POST['cat_id'])) {
-        $error['cat_id'] = "Bạn chưa nhập Danh mục sản phẩm";
+        $error['cat_id'] = "You have not entered a Product Category";
     } else {
         $cat_id = $_POST['cat_id'];
     }
@@ -78,17 +78,17 @@ if (isset($_POST['btn_update'])) {
     }
     //Ktra sp bán chạy
     if (empty($_POST['selling_products'])) {
-        $error['selling_products'] = "Bạn chưa chọn Sản phẩm bán chạy";
+        $error['selling_products'] = "You have not selected a Best Selling Product";
     } else {
         $selling_products = $_POST['selling_products'];
     }
     if (empty($_POST['qty_product'])) {
-        $error['qty_product'] = "Bạn chưa chọn Số lượng tồn kho";
+        $error['qty_product'] = "You have not selected Inventory Quantity";
     } else {
         $qty_product = $_POST['qty_product'];
     }
     if (empty($_POST['featured_products'])) {
-        $error['featured_products'] = "Bạn chưa chọn Sản phẩm nổi bật";
+        $error['featured_products'] = "You have not selected Featured Products";
     } else {
         $featured_products = $_POST['featured_products'];
     }
@@ -96,23 +96,22 @@ if (isset($_POST['btn_update'])) {
         $status = $_POST['status'];
     }
 
-
     if (empty($error)) {
-        if (!empty($_FILES['file']['name']) && !empty($_FILES['file1']['name']) && !empty($_FILES['file2']['name']) && !empty($_FILES['file3']['name']) && !empty($_FILES['file4']['name']) && !empty($_FILES['file5']['name']) && !empty($_FILES['file6']['name'])) {
-            $sql = "update `product` set `product_name`='{$product_name}',`price_new`='{$price_new}',`price_old`='{$price_old}',`product_desc`='{$product_desc}',`product_thumb`='{$product_thumb}',`list_thumb_1`='{$list_thumb_1}',`list_thumb_2`='{$list_thumb_2}',`list_thumb_3`='{$list_thumb_3}',`list_thumb_4`='{$list_thumb_4}',`list_thumb_5`='{$list_thumb_5}',`list_thumb_6`='{$list_thumb_6}',`product_content`='{$product_content}',`cat_id`='{$cat_id}',`selling_products`='{$selling_products}',`qty_product`='{$qty_product}',`featured_products`='{$featured_products}',`status`='{$status}' where `id`='{$id}'";
+        if (!empty($_FILES['file']['name']) && !empty($_FILES['file1']['name']) && !empty($_FILES['file2']['name' ]) && !empty($_FILES['file3']['name']) && !empty($_FILES['file4']['name']) && !empty($_FILES['file5']['name ']) && !empty($_FILES['file6']['name'])) {
+            $sql = "update `product` set `product_name`='{$product_name}',`price_new`='{$price_new}',`price_old`='{$price_old}',`product_desc`='{$product_desc }',`product_thumb`='{$product_thumb}',`list_thumb_1`='{$list_thumb_1}',`list_thumb_2`='{$list_thumb_2}',`list_thumb_3`='{$list_thumb_3}',`list_thumb_4` ='{$list_thumb_4}',`list_thumb_5`='{$list_thumb_5}',`list_thumb_6`='{$list_thumb_6}',`product_content`='{$product_content}',`cat_id`='{$cat_id} ',`selling_products`='{$selling_products}',`qty_product`='{$qty_product}',`featured_products`='{$featured_products}',`status`='{$status}' where `id`= '{$id}'";
             if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Cập nhật thành công";
+                $_SESSION['success'] = "Update successful";
                 redirect_to("?mod=product&act=main");
             } else {
-                $_SESSION['error'] = "Cập nhật thất bại";
+                $_SESSION['error'] = "Update failed";
             }
         } else {
-            $sql = "update `product` set `product_name`='{$product_name}',`price_new`='{$price_new}',`price_old`='{$price_old}',`product_desc`='{$product_desc}',`product_content`='{$product_content}',`cat_id`='{$cat_id}',`selling_products`='{$selling_products}',`qty_product`='{$qty_product}',`featured_products`='{$featured_products}',`status`='{$status}' where `id`='{$id}'";
+            $sql = "update `product` set `product_name`='{$product_name}',`price_new`='{$price_new}',`price_old`='{$price_old}',`product_desc`='{$product_desc }',`product_content`='{$product_content}',`cat_id`='{$cat_id}',`selling_products`='{$selling_products}',`qty_product`='{$qty_product}',`featured_products` ='{$featured_products}',`status`='{$status}' where `id`='{$id}'";
             if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Cập nhật thành công";
+                $_SESSION['success'] = "Update successful";
                 redirect_to("?mod=product&act=main");
             } else {
-                $_SESSION['error'] = "Cập nhật thất bại";
+                $_SESSION['error'] = "Update failed";
             }
         }
     }
@@ -128,7 +127,7 @@ if (isset($_POST['btn_update'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Cập nhật sản phẩm</h3>
+                    <h3 id="index" class="fl-left">Product Update</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -144,7 +143,7 @@ if (isset($_POST['btn_update'])) {
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
-                        <label for="product_name">Tên sản phẩm</label>
+                        <label for="product_name">Product name</label>
                         <input type="text" name="product_name" id="product_name" value="<?php if (!empty($item['product_name'])) echo $item['product_name']; ?>">
                         <?php
                         if (!empty($error['product_name'])) {
@@ -154,7 +153,7 @@ if (isset($_POST['btn_update'])) {
                         }
                         ?>
 
-                        <label for="price_new">Giá mới</label>
+                        <label for="price_new">New price</label>
                         <input type="text" name="price_new" id="price_new" value="<?php if (!empty($item['price_new'])) echo $item['price_new']; ?>">
                         <?php
                         if (!empty($error['price_new'])) {
@@ -164,7 +163,7 @@ if (isset($_POST['btn_update'])) {
                         }
                         ?>
 
-                        <label for="price_old">Giá cũ</label>
+                        <label for="price_old">Old price</label>
                         <input type="text" name="price_old" id="price_new" value="<?php if (!empty($item['price_old'])) echo $item['price_old']; ?>">
                         <?php
                         if (!empty($error['price_old'])) {
@@ -174,7 +173,7 @@ if (isset($_POST['btn_update'])) {
                         }
                         ?>
 
-                        <label for="product_desc">Mô tả sản phẩm</label>
+                        <label for="product_desc">Product description</label>
                         <textarea id="post_desc" name="product_desc" ><?php if (!empty($item['product_desc'])) echo $item['product_desc']; ?>
                         </textarea>
 
@@ -186,7 +185,7 @@ if (isset($_POST['btn_update'])) {
                         }
                         ?>
 
-                        <label for="product_content">Chi tiết sản phẩm</label>
+                        <label for="product_content">Product details</label>
                         <textarea id="product_content" class="ckeditor" name="product_content"><?php if (!empty($item['product_content'])) echo $item['product_content']; ?></textarea>
                         <?php
                         if (!empty($error['product_content'])) {
@@ -302,15 +301,14 @@ if (isset($_POST['btn_update'])) {
                             ?>
                         </div>
 
-                        <label>Danh mục bài viết</label>
+                        <label>Article category</label>
                         <select name="cat_id">
-                            <option value="0">-- Chọn danh mục --</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">Điện thoại</option>?>
+                            <option value="0">-- Select category --</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">Phone</option>?>
                             <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">Laptop</option>
                             <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">Tablet</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">Phụ kiện</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">Accessories</option>
                             <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '5') echo "selected='selected'"; ?> value="5">Smartwatch</option>
-                            
                         </select>
                         <?php
                         if (!empty($error['cat_id'])) {
@@ -319,28 +317,28 @@ if (isset($_POST['btn_update'])) {
                             <?php
                         }
                         ?>
-                        <label>Sản phẩm bán chạy</label>
+                      <label>Best-selling products</label>
                         <select name="selling_products" id="selling_products">
-                            <option value="">-- Chọn sản phẩm bán chạy --</option>
-                            <option <?php if (isset($item['selling_products']) && $item['selling_products'] == 'Bán chạy') echo "selected='selected'"; ?> value="Bán chạy">Bán chạy</option>
-                            <option <?php if (isset($item['selling_products']) && $item['selling_products'] == 'Bình thường') echo "selected='selected'"; ?> value="Bình thường">Bình thường</option>
+                            <option value="">-- Choose best selling products --</option>
+                            <option <?php if (isset($item['selling_products']) && $item['selling_products'] == 'Bán chạy') echo "selected='selected'"; ?> value="Bán chạy">Best seller</option>
+                            <option <?php if (isset($item['selling_products']) && $item['selling_products'] == 'Bình thường') echo "selected='selected'"; ?> value="Bình thường">Normal</option>
                         </select>
                         <?php echo form_error('featured_products'); ?>
-                        <label>Sản phẩm nổi bật</label>
+                        <label>Featured products</label>
                         <select name="featured_products" id="featured_products">
-                            <option value="">-- Chọn sản phẩm nổi bật --</option>
-                            <option <?php if (isset($item['featured_products']) && $item['featured_products'] == 'Nổi bật') echo "selected='selected'"; ?> value="Nổi bật">Nổi bật</option>
-                            <option <?php if (isset($item['featured_products']) && $item['featured_products'] == 'Bình thường') echo "selected='selected'"; ?> value="Bình thường">Bình thường</option>
+                            <option value="">-- Select featured product --</option>
+                            <option <?php if (isset($item['featured_products']) && $item['featured_products'] == 'Nổi bật') echo "selected='selected'"; ?> value="Nổi bật">Featured</option>
+                            <option <?php if (isset($item['featured_products']) && $item['featured_products'] == 'Bình thường') echo "selected='selected'"; ?> value="Bình thường">Normal</option>
                         </select>
                         <?php echo form_error('featured_products'); ?>
-                        <label>Trạng thái</label>
+                        <label>Status</label>
                         <select name="status" id="status">
-                            <option value="">-- Chọn trạng thái --</option>
-                            <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="0">Ngừng bán</option>
-                            <option <?php if (isset($item['status']) && $item['status'] == '1') echo "selected='selected'"; ?> value="1">Đang bán</option>
+                            <option value="">-- Select status --</option>
+                            <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="0">Stop selling</option>
+                            <option <?php if (isset($item['status']) && $item['status'] == '1') echo "selected='selected'"; ?> value="1">For sale</option>
                         </select>
 
-                        <label for="qty_product">Số lượng tồn</label>
+                        <label for="qty_product">Quantity in stock</label>
                         <input type="text" name="qty_product" id="qty_product" value="<?php if (!empty($item['qty_product'])) echo $item['qty_product']; ?>">
                         <?php
                         if (!empty($error['qty_product'])) {
@@ -350,7 +348,7 @@ if (isset($_POST['btn_update'])) {
                         }
                         ?>
 
-                        <button type="submit" name="btn_update" id="btn_update">Cập nhật</button>
+                        <button type="submit" name="btn_update" id="btn_update">Update</button>
                     </form>
                 </div>
             </div>

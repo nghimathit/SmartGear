@@ -40,9 +40,9 @@ $list_search = get_search_product($start, $num_per_page, $keyword);
         <div class="main-content fl-right">
             <div class="section" id="list-product-wp">
                 <div class="section-head clearfix">
-                    <h3 class="section-title fl-left">Sản phẩm tìm được</h3>
+                    <h3 class="section-title fl-left">Products found</h3>
                     <div class="filter-wp fl-right">
-                        <p class="desc">Hiển thị <?php echo count($list_search); ?> sản phẩm (<?php echo $number_rows; ?> sản phẩm)</p>
+                        <p class="desc">Display <?php echo count($list_search); ?> products (<?php echo $number_rows; ?> products)</p>
                         <div class="form-filter">
                         </div>
                     </div>
@@ -81,13 +81,13 @@ $list_search = get_search_product($start, $num_per_page, $keyword);
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add cart</a>
                                         </div>
                                         <?php
                                     }
@@ -100,7 +100,7 @@ $list_search = get_search_product($start, $num_per_page, $keyword);
                         <?php
                     } else {
                         ?>
-                        <p>Không có sản phẩm nào được tìm thấy</p>
+                       <p>No products found</p>
                         <?php
                     }
                     ?>

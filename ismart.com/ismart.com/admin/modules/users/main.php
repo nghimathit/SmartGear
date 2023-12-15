@@ -38,7 +38,7 @@ unset($user);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách khách hàng</h3>
+                    <h3 id="index" class="fl-left">Customer list</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -72,13 +72,13 @@ unset($user);
                             <table class="table list-table-wp">
                                 <thead>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Họ và tên</span></td>
-                                        <td><span class="thead-text">Số điện thoại</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Full name</span></td>
+                                        <td><span class="thead-text">Phone number</span></td>
                                         <td><span class="thead-text">Email</span></td>
-                                        <td><span class="thead-text">Địa chỉ</span></td>
-                                        <td><span class="thead-text">Giới tính</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                        <td><span class="thead-text">Address</span></td>
+                                        <td><span class="thead-text">Gender</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,11 +118,11 @@ unset($user);
                                                     <?php
                                                     if ($user['status'] == 1) {
                                                         ?>
-                                                        <a class="btn btn-xs btn-info">Hiển thị</a>
+                                                        <a class="btn btn-xs btn-info">Display</a>
                                                         <?php
                                                     } else if ($user['status'] == 0) {
                                                         ?>
-                                                        <a class="btn btn-xs btn-default">Không</a>
+                                                        <a class="btn btn-xs btn-default">No</a>
                                                         <?php
                                                     }
                                                     ?>
@@ -135,13 +135,13 @@ unset($user);
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Họ và tên</span></td>
-                                        <td><span class="thead-text">Số điện thoại</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Full name</span></td>
+                                        <td><span class="thead-text">Phone number</span></td>
                                         <td><span class="thead-text">Email</span></td>
-                                        <td><span class="thead-text">Địa chỉ</span></td>
-                                        <td><span class="thead-text">Giới tính</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                        <td><span class="thead-text">Address</span></td>
+                                        <td><span class="thead-text">Gender</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -150,7 +150,7 @@ unset($user);
                     }
                     ?>
                 </div>
-                <p class="num_rows">Có <?php echo $num_rows; ?> thành viên trong hệ thống</p>
+                <p class="num_rows">There are <?php echo $num_rows; ?> members in the system</p>
             </div>
             <div class="section" id="paging-wp">
                 <div class="section-detail clearfix">

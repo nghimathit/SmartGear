@@ -50,7 +50,7 @@ if ($num_rows > 0) {
                         foreach ($list_cat as $cat) {
                             ?>
                             <li>
-                                <a href="?" title="">Trang chủ</a>
+                                <a href="?" title="">Home</a>
                             </li>
                             <li>
                                 <a href="?mod=product&act=category_product&id=<?php echo $cat['cat_id']; ?>" title=""><?php echo $cat['cat_name']; ?></a>
@@ -109,15 +109,15 @@ if ($num_rows > 0) {
                         if ($item['qty_product'] > 0) {
                             ?>
                             <div class="num-product">
-                                <span class="title">Còn hàng: </span>
-                                <span class="status"><?php echo $item['qty_product']; ?> sản phẩm</span>
+                                <span class="title">Stocking: </span>
+                                <span class="status"><?php echo $item['qty_product']; ?>product</span>
                             </div>
                             <?php
                         } else {
                             ?>
                             <div class="num-product">
-                                <span class="title">Hết hàng </span>
-                                <span class="status"><?php echo $item['qty_product']; ?> sản phẩm</span>
+                                <span class="title">Out of stock </span>
+                                <span class="status"><?php echo $item['qty_product']; ?> product</span>
                             </div>
                             <?php
                         }
@@ -151,11 +151,11 @@ if ($num_rows > 0) {
                         <?php
                         if ($item['qty_product'] > 0) {
                             ?>
-                            <a href="?mod=cart&act=show" onclick="updateItem2(<?php echo $item['id'] ?>)"  title="Thêm giỏ hàng" class="add-cart">Thêm giỏ hàng</a>
+                            <a href="?mod=cart&act=show" onclick="updateItem2(<?php echo $item['id'] ?>)"  title="Thêm giỏ hàng" class="add-cart">Add to cart</a>
                             <?php
                         } else {
                             ?>
-                            <a href="" onclick="return confirmAction_detail()" title="Thêm giỏ hàng" class="add-cart">Thêm giỏ hàng</a>
+                            <a href="" onclick="return confirmAction_detail()" title="Thêm giỏ hàng" class="add-cart">Add to cart</a>
                             <?php
                         }
                         ?>
@@ -164,7 +164,7 @@ if ($num_rows > 0) {
             </div>
             <div class="section" id="post-product-wp">
                 <div class="section-head">
-                    <h3 class="section-title">Mô tả sản phẩm</h3>
+                    <h3 class="section-title">Product Description</h3>
                 </div>
                 <div class="section-detail">
                     <p class="product_content"><?php echo $item['product_content']; ?></p>
@@ -176,7 +176,7 @@ if ($num_rows > 0) {
             <div class="fb-comments" data-href="http://localhost:9000/ismart.com/ismart.com/?page=home" data-width="100%" data-numposts="5"></div>
             <div class="section" id="same-category-wp">
                 <div class="section-head">
-                    <h3 class="section-title">Sản phẩm cùng loại</h3>
+                    <h3 class="section-title">Products of the same type</h3>
                 </div>
 
                 <div class="section-detail">
@@ -213,13 +213,13 @@ if ($num_rows > 0) {
                                     if ($same['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $same['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $same['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }

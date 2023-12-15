@@ -1,22 +1,27 @@
-/* body{
+body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: red !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 }
-.box{
+.box {
     width: 350px;
     padding: 40px;
+    border-radius: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    background: white;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    opacity: 0.8;
     text-align: center;
 }
+
 .box h2 {
     font-size: 15px;
-    color: red;
+    color: rgb(57, 23, 23);
     text-transform: uppercase;
     font-weight: 500;
 }
@@ -32,17 +37,17 @@
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #3498db;
+    border: 2px solid #4b545b;
     padding: 14px 10px;
     width: 200px;
     outline: none;
-    color: black;
+    color: rgb(255, 255, 255);
     border-radius: 24px;
     transition: 0.25s;
 }
 .box input[type="text"]:focus,.box input[type="password"]:focus{
     width: 280px;
-    border-color: #2ecc71;
+    border-color: #289e59;
 }
 .box #btn_login{
     border: 0;
@@ -50,20 +55,38 @@
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #2ecc71;
+    border: 2px  #289e59;
     padding: 14px 40px;
     outline: none;
-    color: black;
+    color: fff;
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer;
 }
 .box #btn_login:hover{
-    background: #2ecc71;
+    background: #289e59;
 }
 .error{
-    color: red;
+    color: rgb(179, 10, 10);
 }
 #lost-pass{
     color: black;
-} */
+}
+.icon{
+    background-color: rgb(255, 255, 255);
+    border-radius: 90%;
+    /* padding: 0px; */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 98px;
+    position: absolute;
+    top: -40px;
+}
+.icon i{
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+}

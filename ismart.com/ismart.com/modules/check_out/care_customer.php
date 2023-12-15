@@ -12,13 +12,14 @@ function displayResultsAsTable($resultsArray) {
 // argument must be an array
     $val = '<table width="100%" border="1" cellspacing="0" cellpadding="3" bordercolor="#ffcccc" style="text-align:center;">
   <tr>
-    <th>Id</th> 
-    <th>Tên sản phẩm</th>
-    <th>Đơn giá</th>
-    <th>Hình ảnh</th>
-    <th>Số lượng</th> 
-    <th>Số lượng tồn</th> 
-    <th>Thành tiền</th> 
+  <th>Id</th>
+  <th>Product Name</th>
+  <th>Unit Price</th>
+  <th>Image</th>
+  <th>Quantity</th>
+  <th>Available Quantity</th>
+  <th>Total Amount</th>
+  
   </tr>';
     if (is_array($resultsArray)) {
         foreach ($resultsArray as $key => $value) {
@@ -80,8 +81,8 @@ if (isset($_GET['partnerCode'])) {
 
 
 
-    <p>Chúc mừng bạn đã thanh toán thành công.</p>
-    <p>Mã hóa đơn #
+<p>Congratulations on your successful payment.</p>
+    <p>Invoice code #
         <?= $bill_id ?>
     </p>
     <?php
@@ -106,20 +107,20 @@ if (isset($_GET['partnerCode'])) {
             <div class="section-detail">
                 <ul class="list-item clearfix">
                     <li>
-                        <a href="?" title="">Trang chủ</a>
+                        <a href="?" title="">Home</a>
                     </li>
                     <li>
-                        <a href="" title="">Chăm sóc khách hàng</a>
+                        <a href="" title="">Customer care</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
     <div id="wrapper" class="wp-inner clearfix">
-        <p class="cart">Quý khách đã đặt hàng thành công</p>
-        <p class="cart">Chúng tôi sẽ liên lạc lại với quý khách trong 24h để kiểm tra đơn hàng</p>
-        <p class="cart">Cảm ơn quý khách</p>
-        <p class="cart">Chúc quý khách một ngày vui vẻ</p>
+    <p class="cart">Your order has been successfully placed</p>
+        <p class="cart">We will contact you within 24 hours to check your order</p>
+        <p class="cart">Thank you</p>
+        <p class="cart">Wish you a nice day</p>
     </div>
 </div>
 

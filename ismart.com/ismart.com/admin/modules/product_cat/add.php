@@ -13,7 +13,7 @@ if (isset($_POST['btn_add'])) {
 //    }
 //Ktra danh muc sp
     if (empty($_POST['cat_name'])) {
-        $error['cat_name'] = "Bạn chưa nhập Tên danh mục";
+        $error['cat_name'] = "You have not entered a Category Name";
     } else {
         $cat_name = $_POST['cat_name'];
     }
@@ -22,15 +22,15 @@ if (isset($_POST['btn_add'])) {
     if (empty($error)) {
         if (!check_product_cat_exists($cat_name)) {
             $sql = "INSERT INTO `category` (`cat_name`)"
-                    . "VALUES('{$cat_name}')";
-            if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Thêm mới thành công";
-                redirect_to("?mod=product_cat&act=main");
-            } else {
-                $_SESSION['error'] = "Thêm mới thất bại";
-            }
-        } else {
-            $_SESSION['error'] = "Tên danh mục sản phẩm đã tồn tại";
+            . "VALUES('{$cat_name}')";
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['success'] = "New addition successful";
+        redirect_to("?mod=product_cat&act=main");
+    } else {
+        $_SESSION['error'] = "New addition failed";
+    }
+} else {
+    $_SESSION['error'] = "Product category name already exists";
         }
     }
 }
@@ -43,7 +43,7 @@ if (isset($_POST['btn_add'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Thêm mới danh mục sản phẩm</h3>
+                    <h3 id="index" class="fl-left">Add new product category</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -59,7 +59,7 @@ if (isset($_POST['btn_add'])) {
                         <!--                        <label for="cat_id">Mã danh mục</label>
                                                 <input type="text" name="cat_id" id="cat_id" >-->
 
-                        <label for="cat_name">Tên danh mục</label>
+                        <label for="cat_name">Name list</label>
                         <input type="text" name="cat_name" id="cat_name" >
                         <?php
                         if (!empty($error['cat_name'])) {
@@ -68,7 +68,7 @@ if (isset($_POST['btn_add'])) {
                             <?php
                         }
                         ?>
-                        <button type="submit" name="btn_add" id="btn_add">Thêm mới</button>
+                        <button type="submit" name="btn_add" id="btn_add">Add new</button>
                         <?php echo form_error('account'); ?>
                     </form>
                 </div>
