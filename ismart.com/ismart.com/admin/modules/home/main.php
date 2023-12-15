@@ -10,7 +10,7 @@ get_header();
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Hello Admin</h3>
+                    <h3 id="index" class="fl-left">Hello <?php echo info_user('fullname') ?></h3>
                 </div>
             </div>
             <div class="container-fluid">
@@ -146,11 +146,14 @@ get_header();
 
                 <!-- DataTables Example -->
                 <div class="card mb-3">
-                    <div class="card-header">
+                    <div class="card-header text-center" >
                         Total Price 
                     </div>
                         <div class="card-body">
-                        <canvas id="totalchart" ></canvas>
+                            <div style="width:100% ; height: 600px">
+                            <canvas id="totalchart" ></canvas>
+                            </div>
+                       
                         </div>
                 </div>            
             </div>
@@ -411,9 +414,10 @@ get_header();
             datasets: [{
                 data: <?php echo json_encode($totalCount); ?>,
                 borderWidth: 1,
-                borderColor: "bule",
-                backgroundColor: 'bule',
-                pointRadius: 1,
+                borderColor: "black",
+                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                pointRadius: 0,
+                fill: true,
                 borderWidth: 1,
                 
             }]

@@ -60,9 +60,9 @@
                                     <li>
                                         <a href="?mod=post&act=blog" title="">Blog</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="?mod=order_view&act=view" title="">Purchase order</a>
-                                    </li>
+                                    </li> -->
                                     <?php
                                     require 'db/connect.php';
                                     $sql = "select * from page where status = 1";

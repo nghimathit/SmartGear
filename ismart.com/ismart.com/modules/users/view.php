@@ -7,10 +7,9 @@ require_once __DIR__ . '/../../lib/users.php';
 
 // Define $start and $num_per_page
 $start = isset($_GET['start']) ? (int) $_GET['start'] : 0;
-$num_per_page = 10; // You need to set an appropriate value for your application
-$user_login = "";
+$num_per_page = 10; 
 if (isset($start, $num_per_page)) {
-    // Get bills for the logged-in user
+   
     $list_bill = get_bill_user($start, $num_per_page);
     ?>
 
@@ -50,10 +49,9 @@ if (isset($start, $num_per_page)) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        // show bill $_SESSION['user_login']
                                         $temp = $start;
                                         foreach ($list_bill  as $bill) { 
-                                            $bill['url'] = "?mod=bill&act=detail_order&id={$bill['bill_id']}";
+                                            $bill['url'] = "?mod=users&act=detail_order&id={$bill['bill_id']}";
                                             $temp++;
                                             ?>
                                             <tr>
@@ -114,19 +112,15 @@ if (isset($start, $num_per_page)) {
                                 </table>
                             </form>
                         </div>
-                        
-                    </div>
-      
-
-
-                    
+                       
+                    </div>          
                 <?php
                 } else {
                     ?>
                     <div class="section" id="cart_empty">
                         <p>You don't have bill yet in shop, click <a href="?">here</a> to return to the homepage!</p>
                     </div>
-                   
+        
                 <?php }
             } else { ?>
                 <h3 style="color:red; text-align:center;">You are not logged in. Please <a href="?mod=users&act=login">log in</a>
