@@ -26,8 +26,8 @@ unset($item);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách slider</h3>
-                    <a href="?mod=slider&act=add_slider" title="" id="add-new" class="fl-left">Thêm mới</a>
+                    <h3 id="index" class="fl-left">Dbook slider</h3>
+                    <a href="?mod=slider&act=add_slider" title="" id="add-new" class="fl-left">Add new</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -69,13 +69,13 @@ unset($item);
                             <table class="table list-table-wp">
                                 <thead>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tên slider</span></td>
-                                        <td><span class="thead-text">Hình ảnh</span></td>
-                                        <td><span class="thead-text">Người tạo</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cập nhật</span></td>   
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Slider name</span></td>
+                                        <td><span class="thead-text">Image</span></td>
+                                        <td><span class="thead-text">Creator</span></td>
+                                        <td><span class="thead-text">Date created</span></td>
+                                        <td><span class="thead-text">Updated date</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,11 +109,11 @@ unset($item);
                                                     <?php
                                                     if ($item['status'] == 1) {
                                                         ?>
-                                                        <a href="?mod=slider&act=error_action&id=<?php echo $item['id'] ?>" class="btn btn-xs btn-info">Hiển thị</a>
+                                                        <a href="?mod=slider&act=error_action&id=<?php echo $item['id'] ?>" class="btn btn-xs btn-info">Show</a>
                                                         <?php
                                                     } else if ($item['status'] == 0) {
                                                         ?>
-                                                        <a href="?mod=slider&act=error_action&id=<?php echo $item['id'] ?>" class="btn btn-xs btn-default">Không</a>
+                                                        <a href="?mod=slider&act=error_action&id=<?php echo $item['id'] ?>" class="btn btn-xs btn-default">No</a>
                                                         <?php
                                                     }
                                                     ?>
@@ -127,13 +127,13 @@ unset($item);
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tên slider</span></td>
-                                        <td><span class="thead-text">Hình ảnh</span></td>
-                                        <td><span class="thead-text">Người tạo</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cập nhật</span></td>   
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Slider name</span></td>
+                                        <td><span class="thead-text">Image</span></td>
+                                        <td><span class="thead-text">Creator</span></td>
+                                        <td><span class="thead-text">Date created</span></td>
+                                        <td><span class="thead-text">Updated date</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -142,7 +142,7 @@ unset($item);
                     }
                     ?>
                 </div>
-                <p class="num_rows">Có <?php echo $number_rows; ?> slider trong hệ thống</p>
+                <p class="num_rows">Yes <?php echo $number_rows; ?> slider in system</p>
             </div>
             <div class="section" id="paging-wp">
                 <div class="section-detail clearfix">

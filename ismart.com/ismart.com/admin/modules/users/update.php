@@ -10,23 +10,23 @@ if (isset($_POST['btn_update'])) {
     $alert = array(); // mảng dùng để thông báo
     // Kiểm tra fullname
     if (empty($_POST['fullname'])) {
-        $error['fullname'] = "Không được để trống fullname";
+        $error['fullname']= "Fullname cannot be left blank";
     } else {
         $fullname = $_POST['fullname'];
     }
 
     // Kiểm tra giới tính
     if (empty($_POST['gender'])) {
-        $error['gender'] = "Bạn cần chọn giới tính";
+        $error['gender'] = "You need to choose gender";
     } else {
         $gender = $_POST['gender'];
     }
     // Kiểm tra email
     if (empty($_POST['email'])) {
-        $error['email'] = "Không được để trống Email";
+        $error['email'] = "Email cannot be left blank";
     } else {
         if (!is_email($_POST['email'])) {
-            $error['email'] = "Email không đúng định dạng";
+            $error['email'] = "Email invalidate";
         } else { // khớp định dạng
             $email = $_POST['email'];
         }
@@ -34,10 +34,10 @@ if (isset($_POST['btn_update'])) {
 
     // Kiểm tra phone
     if (empty($_POST['phone'])) {
-        $error['phone'] = "Không được để trống Số điện thoại";
+        $error['phone'] = "Phone number cannot be left blank";
     } else {
         if (!is_phone_number($_POST['phone'])) {
-            $error['phone'] = "Số điện thoại k đúng định dạng";
+            $error['phone'] = "Phone number is not in the correct format";
         } else {
             $phone = $_POST['phone'];
         }
@@ -45,7 +45,7 @@ if (isset($_POST['btn_update'])) {
 
     // Kiểm tra address
     if (empty($_POST['address'])) {
-        $error['address'] = "Không được để trống Địa chỉ";
+        $error['address'] ="Address cannot be left blank";
     } else {
         $address = $_POST['address'];
     }
@@ -57,10 +57,10 @@ if (isset($_POST['btn_update'])) {
     if (empty($error)) {
         $sql = "update `users` set `fullname`='{$fullname}',`gender`='{$gender}',`email`='{$email}',`phone`='{$phone}',`address`='{$address}',`status`='{$status}' where `user_id`='{$id}'";
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['success'] = "Cập nhật thành công";
+            $_SESSION['success'] = "Update successful";
             redirect_to("?mod=users&act=main");
         } else {
-            $_SESSION['error'] = "Cập nhật thất bại";
+            $_SESSION['error'] = "Update failed";
         }
     }
 }
@@ -88,7 +88,7 @@ if (!empty($alert['success'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Cập nhật sản phẩm</h3>
+                    <h3 id="index" class="fl-left">Product updates</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -103,7 +103,7 @@ if (!empty($alert['success'])) {
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
-                        <label for="fullname">Họ và tên</label>
+                        <label for="fullname">Full name</label>
                         <input type="text" name="fullname" value="<?php if (!empty($item['fullname'])) echo $item['fullname']; ?>" id="username" >
                         <?php
                         if (!empty($error['fullname'])) {
@@ -121,7 +121,7 @@ if (!empty($alert['success'])) {
                             <?php
                         }
                         ?>
-                        <label for="phone">Số điện thoại</label>
+                        <label for="phone">Phone number</label>
                         <input type="text" name="phone" value="<?php if (!empty($item['phone'])) echo $item['phone']; ?>" id="phone" >
                         <?php
                         if (!empty($error['phone'])) {
@@ -132,7 +132,7 @@ if (!empty($alert['success'])) {
                         ?>
 
 
-                        <label for="address">Địa chỉ</label>
+                        <label for="address">Address</label>
                         <input type="text" name="address" value="<?php if (!empty($item['address'])) echo $item['address']; ?>" id="address" >
                         <?php
                         if (!empty($error['address'])) {
@@ -141,11 +141,11 @@ if (!empty($alert['success'])) {
                             <?php
                         }
                         ?>
-                        <label for="gender">Giới tính</label>
+                        <label for="gender">Gender</label>
                         <select name="gender">
-                            <option value="">--Chọn giới tính--</option>
-                            <option <?php if (isset($item['gender']) && $item['gender'] == 'male') echo "selected='selected'"; ?> value="male">Nam</option>
-                            <option <?php if (isset($item['gender']) && $item['gender'] == 'female') echo "selected='selected'"; ?> value="female">Nữ</option>
+                            <option value="">--Select gender--</option>
+                            <option <?php if (isset($item['gender']) && $item['gender'] == 'male') echo "selected='selected'"; ?> value="male">male</option>
+                            <option <?php if (isset($item['gender']) && $item['gender'] == 'female') echo "selected='selected'"; ?> value="female">female</option>
                         </select>
                         <?php
                         if (!empty($error['gender'])) {
@@ -154,13 +154,13 @@ if (!empty($alert['success'])) {
                             <?php
                         }
                         ?>
-                        <label>Trạng thái</label>
+                        <label>Status</label>
                         <select name="status" id="status">
-                            <option value="">-- Chọn trạng thái --</option>
-                            <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="0">Không</option>
-                            <option <?php if (isset($item['status']) && $item['status'] == '1') echo "selected='selected'"; ?> value="1">Hiển thị</option>
+                            <option value="">-- Select status --</option>
+                            <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="0">No</option>
+                            <option <?php if (isset($item['status']) && $item['status'] == '1') echo "selected='selected'"; ?> value="1">Display</option>
                         </select>
-                        <button type="submit" name="btn_update" id="btn_update">Cập nhật</button>
+                        <button type="submit" name="btn_update" id="btn_update">Update</button>
                     </form>
                 </div>
             </div>

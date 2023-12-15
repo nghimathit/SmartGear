@@ -36,7 +36,10 @@ function user_login() {
     }
     return FALSE;
 }
-
+function get_bill_user($start, $num_per_page ) {
+    $result = db_fetch_array("SELECT bill.fullname,bill.note,bill.created_at,bill.email,bill.address ,bill.phone,bill_detail.bill_id,bill_detail.status,bill_detail.product_id FROM bill_detail,bill, product WHERE bill.bill_id = bill_detail.bill_id AND product.id = bill_detail.product_id and bill_detail.status != 2 GROUP by bill.bill_id LIMIT {$start}, {$num_per_page}");
+    return $result;
+}
 function info_user($field = 'id') { //$field:trường
     $list_users = db_fetch_array("SELECT * FROM `users` where status = 1");
     if (isset($_SESSION['is_login'])) { // Nếu tồn tại is_login

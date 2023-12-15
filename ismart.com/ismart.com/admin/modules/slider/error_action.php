@@ -2,7 +2,7 @@
 $id = (int) $_GET['id'];
 $list_slider = get_slider_id($id);
 if (empty($list_slider)) {
-    $_SESSION['error'] = "Dữ liệu không tồn tại";
+    $_SESSION['error'] = "Data does not exist";
     redirect_to("?mod=slider&act=list_slider");
 }
 
@@ -10,10 +10,10 @@ $status = $list_slider['status'] == 0 ? 1 : 0;
 $update = get_slider_id($id);
 $update = update("slider", array("status" => $status), array("id" => $id));
 if ($update > 0) {
-    $_SESSION['success'] = "Cập nhật thành công";
+    $_SESSION['success'] = "Update successful";
     redirect_to("?mod=slider&act=list_slider");
 } else {
-    $_SESSION['error'] = "Dữ liệu không thay đổi";
+    $_SESSION['error'] = "Data does not change";
     redirect_to("?mod=slider&act=list_slider");
 }
 ?>

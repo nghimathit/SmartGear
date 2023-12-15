@@ -12,15 +12,15 @@ $id = (int) $_GET['id'];
 if (isset($_POST['btn_update'])) {
     $error = array(); // Bước 1: Phất cờ
     if (empty($_POST['address'])) {
-        $error['address'] = "Không được để trống Địa chỉ";
+        $error['address'] = "Address cannot be left blank";
     } else {
         $address = $_POST['address'];
     }
     if (empty($_POST['phone'])) {
-        $error['phone'] = "Không được để trống Số điện thoại";
+        $error['phone'] = "Phone number cannot be left blank";
     } else {
         if (!is_phone_number($_POST['phone'])) {
-            $error['phone'] = "Số điện thoại không đúng định dạng";
+            $error['phone'] = "Phone number is not in the correct format";
         } else {
             $phone = $_POST['phone'];
         }
@@ -37,10 +37,10 @@ if (isset($_POST['btn_update'])) {
     if (empty($error)) {
         $sql = "update `bill` set `address`='{$address}',`phone`='{$phone}',`note`='{$note}' where `bill_id`='{$id}'";
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['success'] = "Cập nhật thành công";
+            $_SESSION['success'] = "Update successful";
             redirect_to("?mod=bill&act=list_order");
         } else {
-            $_SESSION['error'] = "Cập nhật thất bại";
+            $_SESSION['error'] = "Update failed";
         }
     }
 }
@@ -60,7 +60,7 @@ $item = mysqli_fetch_array($result);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Cập nhật đơn hàng</h3>
+                    <h3 id="index" class="fl-left">Update orders</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -75,8 +75,8 @@ $item = mysqli_fetch_array($result);
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
-                        <label for="fullname">Họ và tên</label>
-                        <input type="text" name="fullname" readonly="readonly" value="<?php if (!empty($item['fullname'])) echo $item['fullname']; ?>" id="username" >
+                        <label for="fullname">Full name</label>
+                        <input type="text" name="fullname" readonly="readonly" value="<?php if (!empty($item['fullname'])) echo $item['fullname']; ?>" id ="username" >
 
                         <label for="email">Email</label>
                         <input type="text" name="email" readonly="readonly" value="<?php if (!empty($item['email'])) echo $item['email']; ?>" id="username" >
@@ -88,7 +88,7 @@ $item = mysqli_fetch_array($result);
                         }
                         ?>
 
-                        <label for="address">Địa chỉ</label>
+                        <label for="address">Address</label>
                         <input type="text" name="address" value="<?php if (!empty($item['address'])) echo $item['address']; ?>" id="address" >
                         <?php
                         if (!empty($error['address'])) {
@@ -97,7 +97,7 @@ $item = mysqli_fetch_array($result);
                             <?php
                         }
                         ?>
-                        <label for="phone">Số điện thoại</label>
+                        <label for="phone">Phone number</label>
                         <input type="text" name="phone" value="<?php if (!empty($item['phone'])) echo $item['phone']; ?>" id="phone" >
                         <?php
                         if (!empty($error['phone'])) {
@@ -106,7 +106,7 @@ $item = mysqli_fetch_array($result);
                             <?php
                         }
                         ?>
-                        <label for="note">Ghi chú</label>
+                        <label for="note">Notes</label>
                         <input type="text" name="note" value="<?php if (!empty($item['note'])) echo $item['note']; ?>" id="note" >
 
 <!--                        <label for="status">Trạng thái</label>
@@ -115,7 +115,7 @@ $item = mysqli_fetch_array($result);
                             <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="Chưa xử lý">Chưa xử lý</option>
                         </select>-->
 
-                        <button type="submit" name="btn_update" id="btn_update">Cập nhật</button>
+                        <button type="submit" name="btn_update" id="btn_update">Update</button>
                     </form>
                 </div>
             </div>

@@ -1,8 +1,8 @@
-body{
+/* body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: #4fa327;
+    background: red !important;
 }
 .box{
     width: 350px;
@@ -66,4 +66,4 @@ body{
 }
 #lost-pass{
     color: black;
-}
+} */

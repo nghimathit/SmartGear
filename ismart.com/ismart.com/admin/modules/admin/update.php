@@ -19,28 +19,28 @@ if (isset($_POST['btn_update'])) {
 
     // Kiểm tra fullname
     if (empty($_POST['fullname'])) {
-        $error['fullname'] = "Không được để trống Tên hiển thị";
+        $error['fullname'] = "Display Name cannot be blank";
     } else {
         $fullname = $_POST['fullname'];
     }
 
-    // Kiểm tra email
+    // Check email
     if (empty($_POST['email'])) {
-        $error['email'] = "Không được để trống Email";
+        $error['email'] = "Email cannot be left blank";
     } else {
         if (!is_email($_POST['email'])) {
-            $error['email'] = "Email không đúng định dạng";
-        } else { // khớp định dạng
+            $error['email'] = "Email is not in the correct format";
+        } else { // match format
             $email = $_POST['email'];
         }
     }
 
     // Kiểm tra phone
     if (empty($_POST['phone'])) {
-        $error['phone'] = "Không được để trống Số điện thoại";
+        $error['phone'] = "Phone number cannot be left blank";
     } else {
         if (!is_phone_number($_POST['phone'])) {
-            $error['phone'] = "Số điện thoại k đúng định dạng";
+            $error['phone'] = "Phone number is not in the correct format";
         } else {
             $phone = $_POST['phone'];
         }
@@ -48,14 +48,14 @@ if (isset($_POST['btn_update'])) {
 
     // Kiểm tra address
     if (empty($_POST['address'])) {
-        $error['address'] = "Không được để trống Địa chỉ";
+        $error['address'] = "Address cannot be left blank";
     } else {
         $address = $_POST['address'];
     }
 
-    // Kiểm tra giới tính
+    // Check gender
     if (empty($_POST['gender'])) {
-        $error['gender'] = "Bạn chưa chọn Giới tính";
+        $error['gender'] = "You have not selected your Gender";
     } else {
         $gender = $_POST['gender'];
     }
@@ -69,18 +69,18 @@ if (isset($_POST['btn_update'])) {
         if (!empty($_FILES['file']['name'])) {
             $sql = "update `admin` set `fullname`='{$fullname}',`avatar`='{$avatar}',`gender`='{$gender}',`email`='{$email}',`phone`='{$phone}',`address`='{$address}' where `id`='{$id}'";
             if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Cập nhật thành công";
+                $_SESSION['success'] = "Update successful";
                 redirect_to("?mod=admin&act=info_account");
             } else {
-                $_SESSION['error'] = "Cập nhật thất bại";
+                $_SESSION['error'] = "Update failed";
             }
         } else {
-            $sql = "update `admin` set `fullname`='{$fullname}',`gender`='{$gender}',`email`='{$email}',`phone`='{$phone}',`address`='{$address}' where `id`='{$id}'";
+            $sql = "update `admin` set `fullname`='{$fullname}',`gender`='{$gender}',`email`='{$email}',`phone`='{$phone }',`address`='{$address}' where `id`='{$id}'";
             if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Cập nhật thành công";
+                $_SESSION['success'] = "Update successful";
                 redirect_to("?mod=admin&act=info_account");
             } else {
-                $_SESSION['error'] = "Cập nhật thất bại";
+                $_SESSION['error'] = "Update failed";
             }
         }
     }
@@ -95,8 +95,8 @@ if (isset($_POST['btn_update'])) {
         ?>
         <div id="content" class="fl-right">     
             <div class="clearfix">
-                <h3 id="index" class="fl-left">Cập nhật tài khoản</h3>
-                <a href="?mod=admin&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                <h3 id="index" class="fl-left">Update account</h3>
+                <a href="?mod=admin&act=add" title="" id="add-new" class="fl-left">Add new</a>
 
             </div>
             <?php if (isset($_SESSION['error'])) : ?>
@@ -110,12 +110,12 @@ if (isset($_POST['btn_update'])) {
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
-                        <label for="fullname">Tên hiển thị</label>
+                        <label for="fullname">Display name</label>
                         <input type="text" name="fullname" id="fullname" value="<?php echo $item['fullname']; ?>">
                         <?php echo form_error('fullname') ?>
 
                         <div class="form_group clearfix">
-                            <label for="detail">Hình ảnh</label>
+                            <label for="detail">Image</label>
                             <input type="file" name="file" id="file" data-uri="?mod=post&act=upload_single">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt">
                             <div id="show_list_file" >
@@ -128,20 +128,20 @@ if (isset($_POST['btn_update'])) {
                         <label for="email">Email</label>
                         <input type="text" name="email" id="email" value="<?php echo $item['email']; ?>">
                         <?php echo form_error('email') ?>
-                        <label for="address">Địa chỉ</label>
+                        <label for="address">Address</label>
                         <input type="text" name="address" id="address" value="<?php echo $item['address']; ?>">
                         <?php echo form_error('address') ?>
-                        <label for="phone">Số điện thoại</label>
+                        <label for="phone">Phone number</label>
                         <input type="text" name="phone" id="phone" value="<?php echo $item['phone']; ?>">
                         <?php echo form_error('phone') ?>
-                        <label>Giới tính</label>
+                        <label>Gender</label>
                         <select name="gender" id="gender_admin">
-                            <option value="">--Chọn giới tính--</option>
-                            <option <?php if (isset($item['gender']) && $item['gender'] == 'male') echo "selected='selected'"; ?> value="male">Nam</option>
-                            <option <?php if (isset($item['gender']) && $item['gender'] == 'female') echo "selected='selected'"; ?> value="female">Nữ</option>
+                            <option value="">--Select gender--</option>
+                            <option <?php if (isset($item['gender']) && $item['gender'] == 'male') echo "selected='selected'"; ?> value="male">Male</option>
+                            <option <?php if (isset($item['gender']) && $item['gender'] == 'female') echo "selected='selected'"; ?> value="female">Female</option>
                         </select>
                         <?php echo form_error('gender') ?>
-                        <button type="submit" name="btn_update" id="btn_update">Cập nhật</button>
+                        <button type="submit" name="btn_update" id="btn_update">Update</button>
                     </form>
                 </div>
             </div>

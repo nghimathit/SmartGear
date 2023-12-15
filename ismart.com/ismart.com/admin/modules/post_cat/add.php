@@ -48,7 +48,7 @@ if (isset($_POST['btn_add'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Thêm mới danh mục bài viết</h3>
+                    <h3 id="index" class="fl-left">Add new post</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -63,7 +63,7 @@ if (isset($_POST['btn_add'])) {
                     <form method="POST">
                         <!--                        <label for="cat_id">Danh mục bài viết</label>
                                                 <input type="text" name="cat_id" id="cat_id" >-->
-                        <label for="post_name">Tên danh mục</label>
+                        <label for="post_name">Name category</label>
                         <input type="text" name="post_name" id="cat_name" >
                         <?php
                         if (!empty($error['post_name'])) {
@@ -73,7 +73,7 @@ if (isset($_POST['btn_add'])) {
                         }
                         ?>
 
-                        <button type="submit" name="btn_add" id="btn_add">Thêm mới</button>
+                        <button type="submit" name="btn_add" id="btn_add">Add new</button>
                     </form>
                 </div>
             </div>

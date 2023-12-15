@@ -9,10 +9,10 @@ $list_admin = array();
         $list_admin[] = $row;
     }
     if ($list_admin > 0) {
-        $_SESSION['success'] = "Xóa thành công";
+        $_SESSION['success'] = "Delete successfully";
         redirect_to("?mod=admin&act=info_account");
     } else {
-        $_SESSION['error'] = "Xóa thất bại";
+        $_SESSION['error'] = "Delete failed";
         redirect_to("?mod=admin&act=info_account");
     }
 ?>

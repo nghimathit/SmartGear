@@ -12,17 +12,17 @@ if (isset($_POST['btn_add'])) {
 
     // Kiểm tra fullname
     if (empty($_POST['fullname'])) {
-        $error['fullname'] = "Không được để trống Tên hiển thị";
+        $error['fullname'] ="Display Name cannot be blank";
     } else {
         $fullname = $_POST['fullname'];
     }
 
     // Kiểm tra username
     if (empty($_POST['username'])) { // nếu bằng rỗng =>
-        $error['username'] = "Không được để trống Tên đăng nhập";
-    } else { // Ngược lại đã nhập dữ liệu rồi
-        if (!is_username($_POST['username'])) { // ktra username với $partten có khớp với nhau k
-            $error['username'] = "Tên đăng nhập không đúng định dạng";
+        $error['username'] = "Username cannot be left blank";
+    } else { // Otherwise, the data has already been entered
+        if (!is_username($_POST['username'])) { // check if username and $partten match
+            $error['username'] = "Username is not in the correct format";
         } else { // khớp định dạng
             $username = $_POST['username']; // xuất ra username
         }
@@ -30,10 +30,10 @@ if (isset($_POST['btn_add'])) {
 
     // Kiểm tra password
     if (empty($_POST['password'])) {
-        $error['password'] = "Không được để trống Mật khẩu";
+        $error['password'] = "Password cannot be left blank";
     } else {
         if (!is_password($_POST['password'])) {
-            $error['password'] = "Mật khẩu không đúng định dạng";
+            $error['password'] = "Password is not in the correct format";
         } else { // khớp định dạng
             $password = md5($_POST['password']); // xuất ra password
         }
@@ -41,21 +41,21 @@ if (isset($_POST['btn_add'])) {
 
     // Kiểm tra email
     if (empty($_POST['email'])) {
-        $error['email'] = "Không được để trống Email";
+        $error['email'] = "Email cannot be left blank";
     } else {
         if (!is_email($_POST['email'])) {
-            $error['email'] = "Email không đúng định dạng";
-        } else { // khớp định dạng
+            $error['email'] = "Email is not in the correct format";
+        } else { // match format
             $email = $_POST['email'];
         }
     }
 
     // Kiểm tra phone
     if (empty($_POST['phone'])) {
-        $error['phone'] = "Không được để trống Số điện thoại";
+        $error['phone'] = "Phone number cannot be left blank";
     } else {
         if (!is_phone_number($_POST['phone'])) {
-            $error['phone'] = "Số điện thoại k đúng định dạng";
+            $error['phone'] = "Phone number is not in the correct format";
         } else {
             $phone = $_POST['phone'];
         }
@@ -63,19 +63,19 @@ if (isset($_POST['btn_add'])) {
 
     // Kiểm tra address
     if (empty($_POST['address'])) {
-        $error['address'] = "Không được để trống Địa chỉ";
+        $error['address'] ="Address cannot be left blank";
     } else {
         $address = $_POST['address'];
     }
 
-    // Kiểm tra giới tính
+    // Check gender
     if (empty($_POST['gender'])) {
-        $error['gender'] = "Bạn chưa chọn Giới tính";
+        $error['gender'] = "You have not selected your Gender";
     } else {
         $gender = $_POST['gender'];
     }
     if (empty($_POST['role'])) {
-        $error['role'] = "Bạn chưa chọn Quyền";
+        $error['role'] = "You have not selected Permissions";
     } else {
         $role = $_POST['role'];
     }
@@ -88,11 +88,11 @@ if (isset($_POST['btn_add'])) {
         $type_file = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
         $type_fileAllow = array('png', 'jpg', 'jpeg', 'gif');
         if (!in_array(strtolower($type_file), $type_fileAllow)) {
-            $error['file'] = "Bạn chưa upload hình ảnh";
+            $error['file'] ="You have not uploaded an image";
         }
         $avatar = $_FILES['file']['name'];
     } else {
-        $error['file'] = "Bạn chưa upload hình ảnh";
+        $error['file'] = "You have not uploaded an image";
     }
 
 // Bước 3: Kết luận 
@@ -102,13 +102,13 @@ if (isset($_POST['btn_add'])) {
             $sql = "INSERT INTO `admin` (`fullname`,`avatar`,`username`,`password`,`email`,`phone`,`address`,`gender`,`role`)"
                     . "VALUES('{$fullname}','{$avatar}', '{$username}', '{$password}', '{$email}','{$phone}','{$address}', '{$gender}', '{$role}')";
             if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Thêm mới thành công";
+                $_SESSION['success'] = "Added successfully";
                 redirect_to("?mod=admin&act=info_account");
             } else {
-                $_SESSION['error'] = "Thêm mới thất bại";
+                $_SESSION['error'] = "New addition failed";
             }
         } else {
-            $_SESSION['error'] = "Username hoặc email đã tồn tại";
+            $_SESSION['error'] = "Username or email already exists";
         }
     }
 }
@@ -121,7 +121,7 @@ if (isset($_POST['btn_add'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Thêm mới tài khoản</h3>
+                    <h3 id="index" class="fl-left">Add new account</h3>
                 </div>
             </div>
             <?php if (isset($_SESSION['error'])) : ?>
@@ -136,12 +136,12 @@ if (isset($_POST['btn_add'])) {
                 <div class="section-detail">
                     <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
 
-                        <label for="fullname">Tên hiển thị</label>
+                        <label for="fullname">Display name</label>
                         <input type="text" name="fullname" id="fullname" >
                         <?php echo form_error('fullname') ?>
 
                         <div class="form_group clearfix" id="">
-                            <label for="detail">Hình ảnh</label>
+                            <label for="detail">Image</label>
                             <input type="file" name="file" id="file" data-uri="?mod=admin&act=upload_single">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt">
                             <div id="show_list_file" >
@@ -149,11 +149,11 @@ if (isset($_POST['btn_add'])) {
                             <?php echo form_error('file') ?>
                         </div>
 
-                        <label for="username">Tên đăng nhập</label>
+                        <label for="username">Username</label>
                         <input type="text" name="username" id="usernam" >
                         <?php echo form_error('username') ?>
 
-                        <label for="password">Mật khẩu</label>
+                        <label for="password">Password</label>
                         <input type="password" name="password" id="password" >
                         <?php echo form_error('password') ?>
 
@@ -161,29 +161,28 @@ if (isset($_POST['btn_add'])) {
                         <input type="text" name="email" id="email" >
                         <?php echo form_error('email') ?>
 
-                        <label for="address">Địa chỉ</label>
+                        <label for="address">Address</label>
                         <input type="text" name="address" id="address" >
                         <?php echo form_error('address') ?>
 
-                        <label for="phone">Số điện thoại</label>
+                        <label for="phone">Phone number</label>
                         <input type="text" name="phone" id="phone" >
                         <?php echo form_error('phone') ?>
-
-                        <label>Giới tính</label>
+                        <label>Gender</label>
                         <select name="gender" id="gender_admin">
-                            <option value="">-- Chọn giới tính --</option>
-                            <option value="male">Nam</option>
-                            <option value="female">Nữ</option>
+                            <option value="">-- Select gender --</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
                         </select>
                         <?php echo form_error('gender') ?>
-                        <label>Quyền</label>
+                        <label>Permissions</label>
                         <select name="role" id="role">
-                            <option value="">-- Chọn quyền --</option>
+                            <option value="">-- Select permission --</option>
                             <option value="1">Admin</option>
-                            <option value="2">Quản trị viên</option>
+                            <option value="2">Administrator</option>
                         </select>
                         <?php echo form_error('role') ?>
-                        <button type="submit" name="btn_add" id="btn_add">Thêm mới</button>
+                        <button type="submit" name="btn_add" id="btn_add">Add new</button>
                     </form>
                 </div>
             </div>

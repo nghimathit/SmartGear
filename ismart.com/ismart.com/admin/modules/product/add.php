@@ -181,7 +181,7 @@ if (isset($_POST['btn_add'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Thêm sản phẩm</h3>
+                    <h3 id="index" class="fl-left">Add new</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -196,24 +196,24 @@ if (isset($_POST['btn_add'])) {
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <form id="form-upload-single" action="" enctype="multipart/form-data" method="post">
-                        <label for="product-name">Tên sản phẩm</label>
+                        <label for="product-name">Name product</label>
                         <input type="text" name="product_name" id="product-name">
                         <?php echo form_error('product_name'); ?>
-                        <label for="price_new">Giá mới</label>
+                        <label for="price_new">New price</label>
                         <input type="text" name="price_new" id="price_new">
                         <?php echo form_error('price_new'); ?>
-                        <label for="price_old">Giá cũ</label>
+                        <label for="price_old">Old price</label>
                         <input type="text" name="price_old" id="price_new">
                         <?php echo form_error('price_old'); ?>
-                        <label for="product_desc">Mô tả ngắn</label>
+                        <label for="product_desc">short description</label>
                         <textarea name="product_desc" id="product_desc"></textarea>
                         <?php echo form_error('product_desc'); ?>
-                        <label for="product_content">Chi tiết</label>
+                        <label for="product_content">Detail</label>
                         <textarea name="product_content" id="product_content" class="ckeditor"></textarea>
                         <?php echo form_error('product_content'); ?>
 
                         <div class="form_group clearfix" id="">
-                            <label for="detail">Hình ảnh</label>
+                            <label for="detail">Image</label>
                             <input type="file" name="file" id="file" data-uri="?mod=product&act=upload_single">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt">
                             <div id="show_list_file">
@@ -269,25 +269,27 @@ if (isset($_POST['btn_add'])) {
                             <?php echo form_error('file_6'); ?>
                         </div>
 
-                        <label>Danh mục sản phẩm</label>
-                        <select name="cat_id">
-                            <option value="">-- Chọn danh mục --</option>
-                            <option value="1">Điện Thoại</option>
-                            <option value="2">Lap Top</option>
-                            <option value="3">TabLet</option>
-                            <option value="4">Phụ Kiện</option>
-                            <option value="5">SmartWatch </option>
-                        </select>
+                        <label>Product category</label>
+<select name="cat_id">
+    <option value="">-- Choose category --</option>
+    <option value="1">Mobile Phones</option>
+    <option value="2">Laptops</option>
+    <option value="3">Tablets</option>
+    <option value="4">Accessories</option>
+    <option value="5">Smartwatches</option>
+</select>
+
                         <?php echo form_error('cat_id'); ?>
 
-                        <label>Sản phẩm bán chạy</label>
-                        <select name="selling_products" id="selling_products">
-                            <option value="">-- Chọn sản phẩm bán chạy --</option>
-                            <option value="Bán chạy">Bán chạy</option>
-                            <option value="Bình thường">Bình thường</option>
-                        </select>
-                        <?php echo form_error('selling_products'); ?>
-                        <button type="submit" name="btn_add" id="btn_add">Thêm mới</button>
+                        <label>Best-selling product</label>
+<select name="selling_products" id="selling_products">
+    <option value="">-- Choose best-selling product --</option>
+    <option value="Best-selling">Best-selling</option>
+    <option value="Normal">Normal</option>
+</select>
+<?php echo form_error('selling_products'); ?>
+<button type="submit" name="btn_add" id="btn_add">Add new</button>
+
                     </form>
                 </div>
             </div>

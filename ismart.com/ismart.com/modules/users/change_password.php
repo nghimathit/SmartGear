@@ -14,20 +14,20 @@ if (isset($_POST['btn_change_pass'])) {
 
     // ktra password cũ
     if (empty($_POST['pass_old'])) {
-        $error['pass_old'] = "Không được để trống Mật khẩu cũ";
+        $error['pass_old'] = "Old password cannot be left blank";
     } else {
         if (!is_password($_POST['pass_old'])) {
-            $error['pass_old'] = "Mật khẩu cũ chưa đúng định dạng";
+            $error['pass_old'] = "The old password is not in the correct format";
         } else {
             $pass_old = md5($_POST['pass_old']);
         }
     }
     // ktra password mới
     if (empty($_POST['pass_new'])) {
-        $error['pass_new'] = "Không được để trống Mật khẩu mới";
+        $error['pass_new'] = "New password cannot be left blank";
     } else {
         if (!is_password($_POST['pass_new'])) {
-            $error['pass_new'] = "Mật khẩu mới chưa đúng định dạng";
+            $error['pass_new'] = "New password is not in the correct format";
         } else {
             $pass_new = md5($_POST['pass_new']);
         }
@@ -51,7 +51,7 @@ if (isset($_POST['btn_change_pass'])) {
             $sql = mysqli_query($conn, "update `users` set `password`='{$pass_new}' where `id`='{$id}'");
             echo "Thay đổi mật khẩu thành công";
         } else {
-            $error['acount'] = "Thay đổi mật khẩu không thành công";
+            $error['acount'] = "Change password failed";
         }
     }
 }
@@ -62,10 +62,10 @@ if (isset($_POST['btn_change_pass'])) {
             <div class="secion-detail">
                 <ul class="list-item clearfix">
                     <li>
-                        <a href="?" title="">Trang chủ</a>
+                        <a href="?" title="">Home</a>
                     </li>
                     <li>
-                        <a href="?" title="">Đổi mật khẩu</a>
+                        <a href="?" title="">Change password</a>
                     </li>
                 </ul>
             </div>
@@ -73,16 +73,16 @@ if (isset($_POST['btn_change_pass'])) {
         <div id="sidebar" class="fl-left">
             <ul id="list-cat">
                 <li>
-                    <a href="?mod=users&act=info_account" title="">Thông tin cá nhân</a>
+                    <a href="?mod=users&act=info_account" title="">Personal information</a>
                 </li>
 <!--                <li>
                     <a href="?mod=users&act=update_users" title="">Cập nhật thông tin</a>
                 </li>-->
                 <li>
-                    <a href="?mod=users&act=change_password" title="">Đổi mật khẩu</a>
+                    <a href="?mod=users&act=change_password" title="">Change password</a>
                 </li>
                 <li>
-                    <a href="?mod=users&act=logout" onclick="return confirmAction_users()" title="">Thoát</a>
+                    <a href="?mod=users&act=logout" onclick="return confirmAction_users()" title="">Exit</a>
                 </li>
             </ul>
         </div>
@@ -90,20 +90,20 @@ if (isset($_POST['btn_change_pass'])) {
             <div class="main-content fl-right">
                 <div class="section" id="detail-blog-wp">
                     <div class="section-head clearfix">
-                        <h3 class="section-title">Đổi mật khẩu</h3>
+                        <h3 class="section-title">Change password</h3>
                     </div>
                     <div class="section-detail">
                         <form method="POST" id="formChangePass">
-                            <label for="pass_old">Mật khẩu cũ</label>
+                            <label for="pass_old">Old password</label>
                             <input type="password" name="pass_old" id="pass_old">
                             <?php echo form_error('pass_old'); ?>
-                            <label for="new-pass">Mật khẩu mới</label>
+                            <label for="new-pass">New password</label>
                             <input type="password" name="pass_new" id="pass_new">
                             <?php echo form_error('pass_new'); ?>
                             <!--                        <label for="confirm_pass">Xác nhận mật khẩu</label>
                                                     <input type="password" name="confirm_pass" id="confirm_pass">-->
                             <?php echo form_error('confirm_pass'); ?>
-                            <button type="submit" name="btn_change_pass" id="btn_change_pass">Cập nhật</button>
+                            <button type="submit" name="btn_change_pass" id="btn_change_pass">Update</button>
                         </form>
                     </div>
                 </div>

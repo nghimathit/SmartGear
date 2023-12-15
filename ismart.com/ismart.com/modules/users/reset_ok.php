@@ -5,9 +5,9 @@ get_header();
     <div class="wp-inner clearfix">
         <div class="form-reg-wp fl-right">
             <div class="login">
-                <h1 class="post_title">Khôi phục mật khẩu</h1>
-                <p>Bạn đã thay đổi mật khẩu thành công, vui lòng click vào link sau để đăng nhập:
-                    <a href="<?php echo base_url("?mod=users&act=login"); ?>" id="">Đăng nhập</a>
+            <h1 class="post_title">Password recovery</h1>
+                <p>You have successfully changed your password, please click on the following link to log in:
+                    <a href="<?php echo base_url("?mod=users&act=login"); ?>" id="">Login</a>
                 </p>
             </div>
         </div>

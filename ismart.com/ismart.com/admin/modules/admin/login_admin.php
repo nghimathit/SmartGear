@@ -5,10 +5,10 @@ if (isset($_POST['btn_login'])) {
     $error = array();
     //ktra username
     if (empty($_POST['username'])) {
-        $error['username'] = "Không được để trống tên đăng nhập";
+        $error['username'] ="Do not leave your username blank";
     } else {
         if (!is_username($_POST['username'])) {
-            $error['username'] = "Tên đăng nhập không đúng định dạng";
+            $error['username'] = "Username is not in the correct format";
         } else {
             $username = $_POST['username'];
         }
@@ -16,10 +16,10 @@ if (isset($_POST['btn_login'])) {
 
 // ktra password
     if (empty($_POST['password'])) {
-        $error['password'] = "Không được để trống mật khẩu";
+        $error['password'] ="Password cannot be left blank";
     } else {
         if (!is_password($_POST['password'])) {
-            $error['password'] = "Mật khẩu chưa đúng định dạng";
+            $error['password'] = "Password is not in the correct format";
         } else {
             $password = md5($_POST['password']);
         }
@@ -38,25 +38,31 @@ if (isset($_POST['btn_login'])) {
             //Chuyển hướng vào trong hệ thống
             redirect_to("?mod=home&act=main");
         } else {
-            $error['account'] = "Tên đăng nhập hoặc mật khẩu không tồn tại";
+            $error['account'] ="Username or password does not exist";
         }
     }
 }
 ?>
 <html>
     <head>
-        <title>Trang đăng nhập</title>
+        <title>Login Pages</title>
         <link href="public/reset.css" rel="stylesheet" type="text/css"/>
-        <link href="public/css/import/login.css" rel="stylesheet" type="text/css"/>
+        <link href="public/css/import/dangnhap.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- <link href="public/css/import/login.css" rel="stylesheet" type="text/css"/> -->
     </head>
     <body>
         <form class="box" method="post">
-            <h1>Login</h1>
+        <div class="icon">
+            <div>
+            <i class="fa-solid fa-address-card"></i>
+            </div>
+           
+        </div>
             <input type="text" name="username" value="" id="username" placeholder="Username">
             <?php echo form_error('username') ?>
             <input type="password" name="password" id="password" placeholder="Password">
             <?php echo form_error('password') ?>
-<!--            <input type="checkbox" name="remember_me">Ghi nhớ đăng nhập-->
             <input type="submit" name="btn_login" id="btn_login" value="Login">
             <?php echo form_error('account') ?>
         </form>

@@ -46,8 +46,8 @@ unset($page);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách trang</h3>
-                    <a href="?mod=page&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                    <h3 id="index" class="fl-left">Page list</h3>
+                    <a href="?mod=page&act=add" title="" id="add-new" class="fl-left">Add new</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -81,10 +81,10 @@ unset($page);
                             <table class="table list-table-wp">
                                 <thead>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tiêu đề</span></td>
-                                        <td><span class="thead-text">Thời gian</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Title</span></td>
+                                        <td><span class="thead-text">Time</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -122,10 +122,10 @@ unset($page);
 
                                 <tfoot>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tiêu đề</span></td>
-                                        <td><span class="thead-text">Thời gian</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Title</span></td>
+                                        <td><span class="thead-text">Time</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -142,11 +142,11 @@ unset($page);
                 if (empty($list_page)){
                 
                 ?>
-                <p>Không tìm thấy dữ liệu</p>
+                <p>No data found</p>
                 <?php
                 }else {
                     ?>
-                    <p class="num_rows">Có <?php echo $num_rows; ?> trang trong hệ thống</p>
+                    <p class="num_rows">Yes <?php echo $num_rows; ?> page in system</p>
                     <?php
                 }
                 ?>

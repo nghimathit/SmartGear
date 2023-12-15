@@ -12,10 +12,10 @@ $list_buy = get_list_by_cart();
             <div class="section-detail">
                 <ul class="list-item clearfix">
                     <li>
-                        <a href="?page=home" title="">Trang chủ</a>
+                        <a href="?page=home" title="">Home</a>
                     </li>
                     <li>
-                        <a href="" title="">Giỏ hàng</a>
+                        <a href="" title="">Cart</a>
                     </li>
                 </ul>
             </div>
@@ -30,14 +30,15 @@ $list_buy = get_list_by_cart();
                     <form method="post" action="?mod=cart&act=update">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <td>Mã sản phẩm</td>
-                                    <td>Ảnh sản phẩm</td>
-                                    <td>Tên sản phẩm</td>
-                                    <td>Giá sản phẩm</td>
-                                    <td>Số lượng</td>
-                                    <td colspan="2">Thành tiền</td>
-                                </tr>
+                            <tr>
+    <td>Product Code</td>
+    <td>Product Image</td>
+    <td>Product Name</td>
+    <td>Product Price</td>
+    <td>Quantity</td>
+    <td colspan="2">Total Amount</td>
+</tr>
+
                             </thead>
                             <tbody>
                                 <?php
@@ -70,7 +71,7 @@ $list_buy = get_list_by_cart();
                                 <tr>
                                     <td colspan="7">
                                         <div class="clearfix">
-                                            <p id="total-price" class="fl-right">Tổng giá: <span id="total-price-products"><?php echo currency_format($_SESSION['cart']['info']['total']); ?></span></p>
+                                            <p id="total-price" class="fl-right">Total: <span id="total-price-products"><?php echo currency_format($_SESSION['cart']['info']['total']); ?></span></p>
                                         </div>
                                     </td>
                                 </tr>
@@ -82,11 +83,11 @@ $list_buy = get_list_by_cart();
                                                 <?php
                                                 if (isset($_SESSION['is_login'])) {
                                                     ?>
-                                                    <a href="?mod=check_out&act=checkout" title="" id="checkout-cart">Thanh toán</a>
+                                                    <a href="?mod=check_out&act=checkout" title="" id="checkout-cart">Check out</a>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <a href="?mod=users&act=login" title="" id="checkout-cart">Đăng nhập để thanh toán</a>
+                                                    <a href="?mod=users&act=login" title="" id="checkout-cart">Login to check out</a>
                                                     <?php
                                                 }
                                                 ?>
@@ -102,15 +103,16 @@ $list_buy = get_list_by_cart();
             <div class="section" id="action-cart-wp">
                 <div class="section-detail">
                     <!-- <p class="title">Click vào <span>“Cập nhật giỏ hàng”</span> để cập nhật số lượng.</p> -->
-                    <a href="?" title="" id="buy-more">Mua tiếp</a><br/>
-                    <a href="?mod=cart&act=delete_all" title="" onclick="return confirmAction_delete_all_cart()" id="delete-cart">Xóa giỏ hàng</a>
+                    <a href="?" title="" id="buy-more">Buy more</a><br/>
+                    <a href="?mod=cart&act=delete_all" title="" onclick="return confirmAction_delete_all_cart()" id="delete-cart">Delete cart</a>
                 </div>
             </div>
             <?php
         } else {
             ?>
             <div class="section" id="cart_empty">
-                <p>Không có sản phẩm nào trong giỏ hàng, click <a href="?">vào đây </a>để quay lại trang chủ !</p>
+            <p>There are no products in the shopping cart, click <a href="?">here</a> to return to the homepage!</p>
+
             </div>
             <?php
         }

@@ -32,7 +32,7 @@ if ($num_rows > 0) {
 <div class="sidebar fl-left">
     <div class="section" id="category-product-wp">
         <div class="section-head">
-            <h3 class="section-title">Danh mục sản phẩm</h3>
+            <h3 class="section-title">Product categories</h3>
         </div>
         <div class="secion-detail">
            <?php
@@ -56,7 +56,7 @@ if ($num_rows > 0) {
     </div>
     <div class="section" id="filter-product-wp">
         <div class="section-head">
-            <h3 class="section-title">Bộ lọc</h3>
+            <h3 class="section-title">Filter</h3>
         </div>
         <div class="section-detail">
             <form method="POST" action="">
@@ -66,27 +66,26 @@ if ($num_rows > 0) {
                     <table>
                         <thead>
                             <tr>
-                                <td colspan="2">Giá</td>
+                                <td colspan="2">Price</td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             foreach ($list_cat as $item) {
                                 ?>
-                                <tr>
-                                    <td><a href="?mod=product_price&act=product_price_under_10m&id=<?php echo $item['cat_id'] ?>">Dưới 10.000.000đ</a></td>
+                                <tr><td><a href="?mod=product_price&act=product_price_under_10m&id=<?php echo $item['cat_id'] ?>">Under 10,000,000 VND</a></td>
                                 </tr>
                                 <tr>
-                                    <td><a href="?mod=product_price&act=product_price_10m_to_15m&id=<?php echo $item['cat_id'] ?>">10.000.000đ - 15.000.000đ</a></td>
+                                    <td><a href="?mod=product_price&act=product_price_10m_to_15m&id=<?php echo $item['cat_id'] ?>">10,000,000 VND - 15,000,000 VND</a></td>
                                 </tr>
                                 <tr>
-                                    <td><a href="?mod=product_price&act=product_price_15m_to_20m&id=<?php echo $item['cat_id'] ?>">15.000.000đ - 20.000.000đ</a></td>
+                                    <td><a href="?mod=product_price&act=product_price_15m_to_20m&id=<?php echo $item['cat_id'] ?>">15,000,000 VND - 20,000,000 VND</a></td>
                                 </tr>
                                 <tr>
-                                    <td><a href="?mod=product_price&act=product_price_20m_to_25m&id=<?php echo $item['cat_id'] ?>">20.000.000đ - 25.000.000đ</a></td>
+                                    <td><a href="?mod=product_price&act=product_price_20m_to_25m&id=<?php echo $item['cat_id'] ?>">20,000,000 VND - 25,000,000 VND</a></td>
                                 </tr>
                                 <tr>
-                                    <td><a href="?mod=product_price&act=product_price_on_25m&id=<?php echo $item['cat_id'] ?>">Trên 25.000.000đ</a></td>
+                                    <td><a href="?mod=product_price&act=product_price_on_25m&id=<?php echo $item['cat_id'] ?>">Over 25,000,000 VND</a></td>
                                 </tr>
                                 <?php
                             }

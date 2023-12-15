@@ -44,8 +44,8 @@ unset($post);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách bài viết</h3>
-                    <a href="?mod=post&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                    <h3 id="index" class="fl-left">List of articles</h3>
+                    <a href="?mod=post&act=add" title="" id="add-new" class="fl-left">Add new</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -80,16 +80,15 @@ unset($post);
                         <div class="table-responsive">
                             <table class="table list-table-wp">
                                 <thead>
-                                    <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Hình ảnh</span></td>
-                                        <td><span class="thead-text">Tiêu đề</span></td>
-                                        <td><span class="thead-text">Danh mục</span></td>
-                                        <td><span class="thead-text">Mô tả</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cật nhật</span></td>
-                                        <td><span class="thead-text">Bài viết nổi bật</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <tr><td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Image</span></td>
+                                        <td><span class="thead-text">Title</span></td>
+                                        <td><span class="thead-text">Category</span></td>
+                                        <td><span class="thead-text">Description</span></td>
+                                        <td><span class="thead-text">Date created</span></td>
+                                        <td><span class="thead-text">Update date</span></td>
+                                        <td><span class="thead-text">Featured articles</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,11 +127,11 @@ unset($post);
                                                     <?php
                                                     if ($post['status'] == 1) {
                                                         ?>
-                                                        <a class="btn btn-xs btn-info">Hiển thị</a>
+                                                     <a class="btn btn-xs btn-info">Display</a>
                                                         <?php
                                                     } else if ($post['status'] == 0) {
                                                         ?>
-                                                        <a class="btn btn-xs btn-default">Không</a>
+                                                        <a class="btn btn-xs btn-default">No</a>
                                                         <?php
                                                     }
                                                     ?>
@@ -147,15 +146,15 @@ unset($post);
 
                                 <tfoot>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Hình ảnh</span></td>
-                                        <td><span class="thead-text">Tiêu đề</span></td>
-                                        <td><span class="thead-text">Danh mục</span></td>
-                                        <td><span class="thead-text">Mô tả</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cật nhật</span></td>
-                                        <td><span class="thead-text">Bài viết nổi bật</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Image</span></td>
+                                        <td><span class="thead-text">Title</span></td>
+                                        <td><span class="thead-text">Category</span></td>
+                                        <td><span class="thead-text">Description</span></td>
+                                        <td><span class="thead-text">Date created</span></td>
+                                        <td><span class="thead-text">Update date</span></td>
+                                        <td><span class="thead-text">Featured articles</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -163,12 +162,12 @@ unset($post);
                         <?php
                     } else {
                         ?>
-                        <p>Không tìm thấy dữ liệu</p>
+                      <p>No data found</p>
                         <?php
                     }
                     ?>
                 </div>
-                <p class="num_rows">Có <?php echo $num_rows; ?> sản phẩm trong hệ thống</p>
+                <p class="num_rows">Yes <?php echo $num_rows; ?> products in the system</p>
             </div>
             <div class="section" id="paging-wp">
                 <div class="section-detail clearfix">

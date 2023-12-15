@@ -18,7 +18,7 @@ if ($num_rows > 0) {
             <div class="secion-detail">
                 <ul class="list-item clearfix">
                     <li>
-                        <a href="?" title="">Trang chủ</a>
+                        <a href="?" title="">Home</a>
                     </li>
                     <li>
                         <a href="?" title=""><?php echo $row['page_title']?></a>
@@ -45,7 +45,7 @@ if ($num_rows > 0) {
                 <?php
             } else {
                 ?>
-                <p>Không có dữ liệu trang</p>
+              <p>No page data</p>
                 <?php
             }
             ?>

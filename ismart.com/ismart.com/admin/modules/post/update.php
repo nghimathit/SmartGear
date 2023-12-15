@@ -19,62 +19,73 @@ $item = mysqli_fetch_array($result);
 if (isset($_POST['btn_update'])) {
     $error = array();
 
-    //Ktra tiêu đề
+    // Check title
     if (empty($_POST['post_title'])) {
-        $error['post_title'] = "Bạn chưa nhập Tiêu đề bài viết";
+        $error['post_title'] = "Please enter the post title";
     } else {
         $post_title = $_POST['post_title'];
     }
-    //Ktra danh muc
+
+    // Check category
     if (empty($_POST['cat_id'])) {
-        $error['cat_id'] = "Bạn chưa chon Danh mục";
+        $error['cat_id'] = "Please choose a category";
     } else {
         $cat_id = $_POST['cat_id'];
     }
+
+    // Check description
     if (empty($_POST['post_desc'])) {
-        $error['post_desc'] = "Bạn chưa nhập Mô tả bài viết";
+        $error['post_desc'] = "Please enter the post description";
     } else {
         $post_desc = $_POST['post_desc'];
     }
+
+    // Check content
     if (empty($_POST['post_content'])) {
-        $error['post_content'] = "Bạn chưa nhập Chi tiết bài viết";
+        $error['post_content'] = "Please enter the post content";
     } else {
         $post_content = $_POST['post_content'];
     }
+
+    // Check featured posts
     if (empty($_POST['featured_posts'])) {
-        $error['featured_posts'] = "Bạn chưa chọn Bài viết nổi bật";
+        $error['featured_posts'] = "Please choose the featured status";
     } else {
         $featured_posts = $_POST['featured_posts'];
     }
-    //Ktra hình ảnh
+
+    // Check image
     if (isset($_FILES['file'])) {
         $images = $_FILES['file']['name'];
     }
+
+    // Check status
     if (!empty($_POST['status'])) {
         $status = $_POST['status'];
     }
-// ủa rồi cập nhật ảnh đâu
+
     if (empty($error)) {
         if (!empty($_FILES['file']['name'])) {
-            $sql = "update `post` set `post_title`='{$post_title}',`post_desc`='{$post_desc}',`post_content`='{$post_content}',`featured_posts`='{$featured_posts}',`cat_id`='{$cat_id}',`images`='$images',`status`='$status' where `id`='{$id}'";
+            $sql = "UPDATE `post` SET `post_title`='$post_title',`post_desc`='$post_desc',`post_content`='$post_content',`featured_posts`='$featured_posts',`cat_id`='$cat_id',`images`='$images',`status`='$status' WHERE `id`='$id'";
             if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Cập nhật thành công";
+                $_SESSION['success'] = "Update successful";
                 redirect_to("?mod=post&act=main");
             } else {
-                $_SESSION['error'] = "Cập nhật thất bại";
+                $_SESSION['error'] = "Update failed";
             }
         } else {
-            $sql = "update `post` set `post_title`='{$post_title}',`post_desc`='{$post_desc}',`post_content`='{$post_content}',`featured_posts`='{$featured_posts}',`cat_id`='{$cat_id}',`status`='$status' where `id`='{$id}'";
+            $sql = "UPDATE `post` SET `post_title`='$post_title',`post_desc`='$post_desc',`post_content`='$post_content',`featured_posts`='$featured_posts',`cat_id`='$cat_id',`status`='$status' WHERE `id`='$id'";
             if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Cập nhật thành công";
+                $_SESSION['success'] = "Update successful";
                 redirect_to("?mod=post&act=main");
             } else {
-                $_SESSION['error'] = "Cập nhật thất bại";
+                $_SESSION['error'] = "Update failed";
             }
         }
     }
 }
 ?>
+
 
 
 <div id="main-content-wp" class="add-cat-page">
@@ -85,7 +96,7 @@ if (isset($_POST['btn_update'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Cập nhật bài viết</h3>
+                    <h3 id="index" class="fl-left">Update post</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -100,7 +111,7 @@ if (isset($_POST['btn_update'])) {
             <div class="section" id="detail-page">
                 <div class="section-detail">
                     <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
-                        <label for="post_title">Tiêu đề bài viết</label>
+                        <label for="post_title">Title Post</label>
                         <input type="text" name="post_title" id="post_title" value="<?php if (!empty($item['post_title'])) echo $item['post_title']; ?>">
                         <?php
                         if (!empty($error['post_title'])) {
@@ -110,7 +121,7 @@ if (isset($_POST['btn_update'])) {
                         }
                         ?>
                         <div class="form_group clearfix">
-                            <label for="detail">Hình ảnh</label>
+                            <label for="detail">Image</label>
                             <input type="file" name="file" id="file" data-uri="?mod=post&act=upload_single">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt">
                             <div id="show_list_file" >
@@ -124,7 +135,7 @@ if (isset($_POST['btn_update'])) {
                             }
                             ?> 
                         </div>
-                        <label for="post_desc">Mô tả</label>
+                        <label for="post_desc">Description</label>
                         <textarea id="post_desc" name="post_desc" ><?php if (!empty($item['post_desc'])) echo $item['post_desc']; ?>
                         </textarea>
 
@@ -135,7 +146,7 @@ if (isset($_POST['btn_update'])) {
                             <?php
                         }
                         ?>
-                        <label for="post_content">Chi tiết bài viết</label>
+                        <label for="post_content">detail</label>
                         <textarea id="product_content" class="ckeditor" name="post_content"><?php if (!empty($item['post_content'])) echo $item['post_content']; ?></textarea>
                         <?php
                         if (!empty($error['post_content'])) {
@@ -145,13 +156,13 @@ if (isset($_POST['btn_update'])) {
                         }
                         ?>
 
-                        <label>Danh mục bài viết</label>
+                        <label>Category Post</label>
                         <select name="cat_id">
-                            <option value="0">-- Chọn danh mục --</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">1</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">2</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">3</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">4</option>
+                            <option value="0">-- Select Category --</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">Đánh Giá </option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">Cẩm Nang</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">Tin Tức</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">So Sánh</option>
                         </select>
                         <?php
                         if (!empty($error['cat_id'])) {
@@ -160,11 +171,11 @@ if (isset($_POST['btn_update'])) {
                             <?php
                         }
                         ?>
-                        <label>Bài viết nổi bật</label>
+                        <label>Featured Posts</label>
                         <select name="featured_posts" id="featured_posts">
-                            <option value="">-- Chọn bài viết nổi bật --</option>
-                            <option <?php if (isset($item['featured_posts']) && $item['featured_posts'] == 'Nổi bật') echo "selected='selected'"; ?> value="Nổi bật">Nổi bật</option>
-                            <option <?php if (isset($item['featured_posts']) && $item['featured_posts'] == 'Bình thường') echo "selected='selected'"; ?> value="Bình thường">Bình thường</option>
+                            <option value="">-- Choose featured status --</option>
+                            <option <?php if (isset($item['featured_posts']) && $item['featured_posts'] == 'Nổi bật') echo "selected='selected'"; ?> value="Nổi bật">Featured</option>
+                            <option <?php if (isset($item['featured_posts']) && $item['featured_posts'] == 'Bình thường') echo "selected='selected'"; ?> value="Bình thường">Normal</option>
                         </select>
                         <?php
                         if (!empty($error['featured_posts'])) {
@@ -173,14 +184,14 @@ if (isset($_POST['btn_update'])) {
                             <?php
                         }
                         ?>
-                        <label>Trạng thái</label>
+                        <label>Status</label>
                         <select name="status" id="status">
-                            <option value="">-- Chọn trạng thái --</option>
-                            <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="0">Không</option>
-                            <option <?php if (isset($item['status']) && $item['status'] == '1') echo "selected='selected'"; ?> value="1">Hiển thị</option>
+                            <option value="">-- Select status --</option>
+                            <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="0">No</option>
+                            <option <?php if (isset($item['status']) && $item['status'] == '1') echo "selected='selected'"; ?> value="1">Display</option>
                         </select>
 
-                        <button type="submit" name="btn_update" id="btn_update">Cập nhật</button>
+                        <button type="submit" name="btn_update" id="btn_update">Update</button>
                     </form>
                 </div>
             </div>

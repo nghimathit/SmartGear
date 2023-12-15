@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
                         foreach ($post_cat as $cat) {
                             ?>
                             <li>
-                                <a href="" title="">Trang chủ</a>
+                                <a href="" title="">Home</a>
                             </li>
                             <li>
                                 <a href="?mod=post&act=blog" title="">Blog</a>
@@ -62,7 +62,7 @@ if (isset($_GET['id'])) {
                     <?php
                 } else {
                     ?>
-                    <p>Danh mục không tồn tại</p>
+                   <p>No page data</p>
                     <?php
                 }
                 ?>
@@ -86,7 +86,7 @@ if (isset($_GET['id'])) {
                     <?php
                 } else {
                     ?>
-                    <p>Danh mục không tồn tại</p>
+                  <p>The category does not exist</p>
                     <?php
                 }
                 ?>
@@ -116,7 +116,7 @@ if (isset($_GET['id'])) {
                         <?php
                     } else {
                         ?>
-                        <p>Không có bài viết</p>
+                     <p>There are no posts</p>
                         <?php
                     }
                     ?>

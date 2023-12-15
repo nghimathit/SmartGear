@@ -28,10 +28,10 @@ if (isset($_POST['btn_update'])) {
     if (empty($error)) {
         $sql = "update `category` set `cat_name`='{$cat_name}' where `cat_id`='{$id}'";
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['success'] = "Cập nhật thành công";
+            $_SESSION['success'] = "Update successful";
             redirect_to("?mod=product_cat&act=main");
         } else {
-            $_SESSION['error'] = "Cập nhật thất bại";
+            $_SESSION['error'] = "Update failed";
         }
     }
 }
@@ -49,7 +49,7 @@ $item = mysqli_fetch_array($result);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Cập nhật danh mục sản phẩm</h3>
+                    <h3 id="index" class="fl-left">Update product catalog</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -68,7 +68,7 @@ $item = mysqli_fetch_array($result);
                                                 <input type="text" value="<?php if (!empty($item['cat_id'])) echo $item['cat_id']; ?>" name="cat_id" id="cat_id" >-->
 
 
-                        <label for="cat_name">Tên danh mục</label>
+                        <label for="cat_name">Category name</label>
                         <input type="text" value="<?php if (!empty($item['cat_name'])) echo $item['cat_name']; ?>" name="cat_name" id="cat_name" >
                         <?php
                         if (!empty($error['cat_name'])) {
@@ -77,7 +77,7 @@ $item = mysqli_fetch_array($result);
                             <?php
                         }
                         ?>
-                        <button type="submit" name="btn_update" id="btn_update">Cập nhật</button>
+                        <button type="submit" name="btn_update" id="btn_update">Update</button>
                     </form>
                 </div>
             </div>

@@ -11,18 +11,18 @@ $id = (int) $_GET['id'];
 //}
 $list_bill_detail = fetchID("bill_detail", $id);
 if (empty($list_bill_detail)) {
-    $_SESSION['error'] = "Dữ liệu không tồn tại";
+    $_SESSION['error'] = "Data does not exist";
     redirect_to("?mod=bill&act=list_order");
 }
 if ($list_bill_detail["status"] == 1) {
-    $_SESSION['success'] = "Đơn hàng đã được xử lý";
+    $_SESSION['success'] = "Order has been processed";
     redirect_to("?mod=bill&act=list_order");
 }
 $status = 1;
 $update = update("bill_detail", array("status" => $status), array("bill_id" => $id));
 if ($update > 0) {
-    $_SESSION['success'] = "Cập nhật thành công";
-    $sql = " SELECT * FROM  bill_detail WHERE bill_id = $id";
+    $_SESSION['success'] = "Update successful";
+    $sql = " SELECT * FROM bill_detail WHERE bill_id = $id";
     $order = fetchsql($sql);
     foreach ($order as $item) {
         $product_id = intval($item['product_id']);
@@ -33,7 +33,7 @@ if ($update > 0) {
     }
     redirect_to("?mod=bill&act=list_order");
 } else {
-    $_SESSION['error'] = "Dữ liệu không thay đổi";
+    $_SESSION['error'] = "Data unchanged";
     redirect_to("?mod=bill&act=list_order");
 }
 ?>

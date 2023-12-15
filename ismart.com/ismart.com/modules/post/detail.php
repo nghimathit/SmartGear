@@ -41,7 +41,7 @@ if ($num_rows > 0) {
                         foreach ($list_cat as $cat) {
                             ?>
                             <li>
-                                <a href="" title="">Trang chủ</a>
+                                <a href="" title="">Home</a>
                             </li>
                             <li>
                                 <a href="" title="">Blog</a>

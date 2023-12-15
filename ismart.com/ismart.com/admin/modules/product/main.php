@@ -38,8 +38,8 @@ unset($product);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách sản phẩm</h3>
-                    <a href="?mod=product&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                    <h3 id="index" class="fl-left">Product List</h3>
+                    <a href="?mod=product&act=add" title="" id="add-new" class="fl-left">Add new</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -73,24 +73,25 @@ unset($product);
                     <div class="table-responsive">
                         <table class="table list-table-wp">
                             <thead>
-                                <tr>
-                                    <td><span class="thead-text">STT</span></td>
-                                    <td><span class="thead-text">Mã sản phẩm</span></td>
-                                    <td><span class="thead-text">Hình ảnh</span></td>
-                                    <td><span class="thead-text">Tên sản phẩm</span></td>
-                                    <td><span class="thead-text">Giá mới</span></td>
-                                    <td><span class="thead-text">Thumb_1</span></td>
-                                    <td><span class="thead-text">Thumb_2</span></td>
-                                    <td><span class="thead-text">Thumb_3</span></td>
-                                    <td><span class="thead-text">Thumb_4</span></td>
-                                    <td><span class="thead-text">Thumb_5</span></td>
-                                    <td><span class="thead-text">Thumb_6</span></td>
-                                    <td><span class="thead-text">Danh mục</span></td>
-                                    <td><span class="thead-text">Trạng thái</span></td>
-                                    <td><span class="thead-text">Số lượng tồn</span></td>
-                                    <td><span class="thead-text">Sản phẩm bán chạy</span></td>
-                                    <td><span class="thead-text">Sản phẩm nổi bật</span></td>
-                                </tr>
+                            <tr>
+    <td><span class="thead-text">No.</span></td>
+    <td><span class="thead-text">Product Code</span></td>
+    <td><span class="thead-text">Image</span></td>
+    <td><span class="thead-text">Product Name</span></td>
+    <td><span class="thead-text">New Price</span></td>
+    <td><span class="thead-text">Thumb_1</span></td>
+    <td><span class="thead-text">Thumb_2</span></td>
+    <td><span class="thead-text">Thumb_3</span></td>
+    <td><span class="thead-text">Thumb_4</span></td>
+    <td><span class="thead-text">Thumb_5</span></td>
+    <td><span class="thead-text">Thumb_6</span></td>
+    <td><span class="thead-text">Category</span></td>
+    <td><span class="thead-text">Status</span></td>
+    <td><span class="thead-text">Inventory Quantity</span></td>
+    <td><span class="thead-text">Bestselling Product</span></td>
+    <td><span class="thead-text">Featured Product</span></td>
+</tr>
+
                             </thead>
                             <tbody>
                                 <?php
@@ -164,11 +165,11 @@ unset($product);
                                                 <?php
                                                 if ($product['status'] == 1) {
                                                     ?>
-                                                    <a class="btn btn-xs btn-info">Đang bán</a>
+                                                    <a class="btn btn-xs btn-info">On sale</a>
                                                     <?php
                                                 } else if ($product['status'] == 0) {
                                                     ?>
-                                                    <a class="btn btn-xs btn-default">Ngừng bán</a>
+                                                    <a class="btn btn-xs btn-default">out of stock</a>
                                                     <?php
                                                 }
                                                 ?>
@@ -184,24 +185,25 @@ unset($product);
 
                             </tbody>
                             <tfoot>
-                                <tr>
-                                    <td><span class="thead-text">STT</span></td>
-                                    <td><span class="thead-text">Mã sản phẩm</span></td>
-                                    <td><span class="thead-text">Hình ảnh</span></td>
-                                    <td><span class="thead-text">Tên sản phẩm</span></td>
-                                    <td><span class="thead-text">Giá mới</span></td>
-                                    <td><span class="thead-text">Thumb_1</span></td>
-                                    <td><span class="thead-text">Thumb_2</span></td>
-                                    <td><span class="thead-text">Thumb_3</span></td>
-                                    <td><span class="thead-text">Thumb_4</span></td>
-                                    <td><span class="thead-text">Thumb_5</span></td>
-                                    <td><span class="thead-text">Thumb_6</span></td>
-                                    <td><span class="thead-text">Danh mục</span></td>
-                                    <td><span class="thead-text">Trạng thái</span></td>
-                                    <td><span class="thead-text">Số lượng tồn</span></td>
-                                    <td><span class="thead-text">Sản phẩm bán chạy</span></td>
-                                    <td><span class="thead-text">Sản phẩm nổi bật</span></td>
-                                </tr>
+                            <tr>
+    <td><span class="thead-text">No.</span></td>
+    <td><span class="thead-text">Product Code</span></td>
+    <td><span class="thead-text">Image</span></td>
+    <td><span class="thead-text">Product Name</span></td>
+    <td><span class="thead-text">New Price</span></td>
+    <td><span class="thead-text">Thumb_1</span></td>
+    <td><span class="thead-text">Thumb_2</span></td>
+    <td><span class="thead-text">Thumb_3</span></td>
+    <td><span class="thead-text">Thumb_4</span></td>
+    <td><span class="thead-text">Thumb_5</span></td>
+    <td><span class="thead-text">Thumb_6</span></td>
+    <td><span class="thead-text">Category</span></td>
+    <td><span class="thead-text">Status</span></td>
+    <td><span class="thead-text">Inventory Quantity</span></td>
+    <td><span class="thead-text">Bestselling Product</span></td>
+    <td><span class="thead-text">Featured Product</span></td>
+</tr>
+
                             </tfoot>
                         </table>
                     </div>
@@ -209,7 +211,7 @@ unset($product);
                 }
                 ?>
             </div>
-            <p class="num_rows">Có <?php echo $num_rows; ?> sản phẩm trong hệ thống</p>
+            <p class="num_rows">Yes <?php echo $num_rows; ?> products in the system</p>
         </div>
         <div class="section" id="paging-wp">
             <div class="section-detail clearfix">

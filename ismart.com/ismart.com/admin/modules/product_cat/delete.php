@@ -31,14 +31,14 @@ if ($list_product == NULL) {
         $list_category[] = $row;
     }
     if ($list_category > 0) {
-        $_SESSION['success'] = "Xóa thành công";
+        $_SESSION['success'] = "Delete successfully";
         redirect_to("?mod=product_cat&act=main");
     } else {
-        $_SESSION['error'] = "Xóa thất bại";
+        $_SESSION['error'] = "Delete failed";
         redirect_to("?mod=product_cat&act=main");
     }
 } else {
-    $_SESSION['error'] = "Danh mục có sản phẩm ! Bạn không thể xóa";
+    $_SESSION['error'] = "The category has products! You cannot delete";
     redirect_to("?mod=product_cat&act=main");
 }
 ?>

@@ -29,13 +29,13 @@ $list_product = get_list_price_under_10m($id);
                         foreach ($list_cat as $cat) {
                             ?>
                             <li>
-                                <a href="?" title="">Trang chủ</a>
+                                <a href="?" title="">Home</a>
                             </li>
                             <li>
                                 <a href="" title=""><?php echo $cat['cat_name']; ?></a>
                             </li>
                             <li>
-                                <a href="?" title="">Giá dưới 10.000.000Đ</a>
+                                <a href="?" title="">Price under 10,000,000 VND</a>
                             </li>
                             <?php
                         }
@@ -51,9 +51,9 @@ $list_product = get_list_price_under_10m($id);
             <div class="section" id="list-product-wp">
                 <div class="section-head clearfix">
                     <div class="section-head clearfix">
-                        <h3 class="section-title fl-left">Những sản phẩm giá dưới 10.000.000Đ</h3>
+                        <h3 class="section-title fl-left">Products priced under 10,000,000 VND</h3>
                         <div class="filter-wp fl-right">
-                            <p class="desc">Hiển thị <?php echo count($list_product); ?> sản phẩm</p>
+                            <p class="desc">Show <?php echo count($list_product); ?> product</p>
                         </div>
                     </div>
                     <!--                    <h3 class="section-title fl-left">Laptop</h3>
@@ -107,13 +107,13 @@ $list_product = get_list_price_under_10m($id);
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add cart</a>
                                         </div>
                                         <?php
                                     }
@@ -126,7 +126,7 @@ $list_product = get_list_price_under_10m($id);
                         <?php
                     } else {
                         ?>
-                        <p>Không có dữ liệu</p>
+                        <p>No data</p>
                         <?php
                     }
                     ?>

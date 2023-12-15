@@ -46,47 +46,48 @@ $list_post = get_post();
             <div class="section" id="support-wp">
                 <div class="section-detail">
                     <ul class="list-item clearfix">
-                        <li>
-                            <div class="thumb">
-                                <img src="admin/uploads/icon-1.png">
-                            </div>
-                            <h3 class="title">Miễn phí vận chuyển</h3>
-                            <p class="desc">Tới tận tay khách hàng</p>
-                        </li>
-                        <li>
-                            <div class="thumb">
-                                <img src="admin/uploads/icon-2.png">
-                            </div>
-                            <h3 class="title">Tư vấn 24/7</h3>
-                            <p class="desc">1900.9999</p>
-                        </li>
-                        <li>
-                            <div class="thumb">
-                                <img src="admin/uploads/icon-3.png">
-                            </div>
-                            <h3 class="title">Tiết kiệm hơn</h3>
-                            <p class="desc">Với nhiều ưu đãi cực lớn</p>
-                        </li>
-                        <li>
-                            <div class="thumb">
-                                <img src="admin/uploads/icon-4.png">
-                            </div>
-                            <h3 class="title">Thanh toán nhanh</h3>
-                            <p class="desc">Hỗ trợ nhiều hình thức</p>
-                        </li>
-                        <li>
-                            <div class="thumb">
-                                <img src="admin/uploads/icon-5.png">
-                            </div>
-                            <h3 class="title">Đặt hàng online</h3>
-                            <p class="desc">Thao tác đơn giản</p>
-                        </li>
+                    <li>
+    <div class="thumb">
+        <img src="admin/uploads/icon-1.png">
+    </div>
+    <h3 class="title">Free Shipping</h3>
+    <p class="desc">Delivered directly to the customer's doorstep</p>
+</li>
+<li>
+    <div class="thumb">
+        <img src="admin/uploads/icon-2.png">
+    </div>
+    <h3 class="title">24/7 Consultation</h3>
+    <p class="desc">Call us at 1900.9999</p>
+</li>
+<li>
+    <div class="thumb">
+        <img src="admin/uploads/icon-3.png">
+    </div>
+    <h3 class="title">More Savings</h3>
+    <p class="desc">With many great offers</p>
+</li>
+<li>
+    <div class="thumb">
+        <img src="admin/uploads/icon-4.png">
+    </div>
+    <h3 class="title">Fast Payment</h3>
+    <p class="desc">Supporting various payment methods</p>
+</li>
+<li>
+    <div class="thumb">
+        <img src="admin/uploads/icon-5.png">
+    </div>
+    <h3 class="title">Online Ordering</h3>
+    <p class="desc">Simple and easy process</p>
+</li>
+
                     </ul>
                 </div>
             </div>
             <div class="section" id="feature-product-wp">
                 <div class="section-head">
-                    <h3 class="section-title">Sản phẩm nổi bật</h3>
+                    <h3 class="section-title">Outstanding product</h3>
                 </div>
                 <div class="section-detail">
                     <?php
@@ -129,13 +130,13 @@ $list_post = get_post();
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }
@@ -153,7 +154,7 @@ $list_post = get_post();
             </div>
             <div class="section" id="feature-product-wp">
                 <div class="section-head">
-                    <h3 class="section-title">Bài viết nổi bật</h3>
+                    <h3 class="section-title">Featured article</h3>
                 </div>
                 <div class="section-detail">
                     <?php
@@ -225,13 +226,13 @@ $list_post = get_post();
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }
@@ -286,13 +287,13 @@ $list_post = get_post();
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }
@@ -345,13 +346,13 @@ $list_post = get_post();
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }
@@ -405,13 +406,13 @@ $list_post = get_post();
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }
@@ -464,13 +465,13 @@ $list_post = get_post();
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }
@@ -523,13 +524,13 @@ $list_post = get_post();
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }
@@ -582,13 +583,13 @@ $list_post = get_post();
                                     if ($item['qty_product'] > 0) {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="cart(<?php echo $item['id'] ?>)" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     } else {
                                         ?>
                                         <div class="action clearfix">
-                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                            <a href="" onclick="return confirmAction_detail()" title="" class="add-cart fl-left">Add to cart</a>
                                         </div>
                                         <?php
                                     }

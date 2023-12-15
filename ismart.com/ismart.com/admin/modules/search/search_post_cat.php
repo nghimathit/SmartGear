@@ -41,8 +41,8 @@ unset($cat);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh mục bài viết</h3>
-                    <a href="?mod=post_cat&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                    <h3 id="index" class="fl-left">Article category</h3>
+                    <a href="?mod=post_cat&act=add" title="" id="add-new" class="fl-left">Add new</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -78,10 +78,10 @@ unset($cat);
                             <table class="table list-table-wp">
                                 <thead>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tên bài viết</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Article name</span></td>
+                                        <td><span class="thead-text">Date created</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -111,11 +111,11 @@ unset($cat);
                                                     <?php
                                                     if ($cat['status'] == 1) {
                                                         ?>
-                                                        <a href="?mod=post_cat&act=error_action&cat_id=<?php echo $cat['cat_id'] ?>" class="btn btn-xs btn-info">Hiển thị</a>
+                                                        <a href="?mod=post_cat&act=error_action&cat_id=<?php echo $cat['cat_id'] ?>" class="btn btn-xs btn-info">Display</a>
                                                         <?php
                                                     } else if ($cat['status'] == 0) {
                                                         ?>
-                                                        <a href="?mod=post_cat&act=error_action&cat_id=<?php echo $cat['cat_id'] ?>" class="btn btn-xs btn-default">Không</a>
+                                                        <a href="?mod=post_cat&act=error_action&cat_id=<?php echo $cat['cat_id'] ?>" class="btn btn-xs btn-default">No</a>
                                                         <?php
                                                     }
                                                     ?>
@@ -129,10 +129,10 @@ unset($cat);
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tên bài viết</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Article name</span></td>
+                                        <td><span class="thead-text">Date created</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -141,7 +141,7 @@ unset($cat);
                     }
                     ?>
                 </div>
-                <p class="num_rows">Có <?php echo $num_rows; ?> danh mục bài viết trong hệ thống</p>
+                <p class="num_rows">Yes <?php echo $num_rows; ?> post categories in the system</p>
             </div>
             <div class="section" id="paging-wp">
                 <div class="section-detail clearfix">

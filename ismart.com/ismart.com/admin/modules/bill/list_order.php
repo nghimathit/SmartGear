@@ -26,7 +26,7 @@ unset($bill);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh sách đơn hàng</h3>
+                    <h3 id="index" class="fl-left">Order list</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -52,7 +52,7 @@ unset($bill);
                     <div class="filter-wp clearfix">
                         <form method="post" class="form-s fl-right" action="?mod=search&act=search_bill">
                             <input type="text" name="keyword" id="s">
-                            <input type="submit" name="btn_search" value="Tìm kiếm">
+                            <input type="submit" name="btn_search" value="Search">
                         </form>
                     </div>
                     <?php
@@ -62,16 +62,16 @@ unset($bill);
                             <table class="table list-table-wp">
                                 <thead>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Mã đơn hàng</span></td>
-                                        <td><span class="thead-text">Họ và tên</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Order code</span></td>
+                                        <td><span class="thead-text">Full name</span></td>
                                         <td><span class="thead-text">Email</span></td>
-    <!--                                        <td><span class="thead-text">Địa chỉ</span></td>
-                                        <td><span class="thead-text">Số điện thoại</span></td>-->
-                                        <td><span class="thead-text">Ghi chú</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
-                                        <td><span class="thead-text">Ngày mua</span></td>
-                                        <td><span class="thead-text">Chi tiết</span></td>
+    <!-- <td><span class="thead-text">Address</span></td>
+                                        <td><span class="thead-text">Phone number</span></td>-->
+                                        <td><span class="thead-text">Notes</span></td>
+                                        <td><span class="thead-text">Status</span></td>
+                                        <td><span class="thead-text">Purchase date</span></td>
+                                        <td><span class="thead-text">Details</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -115,18 +115,18 @@ unset($bill);
                                                     <?php
                                                     if ($bill['status'] == 0) {
                                                         ?>
-                                                        <a href="?mod=bill&act=error_action&id=<?php echo $bill['bill_id'] ?>" class="btn btn-xs btn-danger">Chưa xử lý</a>
+                                                        <a href="?mod=bill&act=error_action&id=<?php echo $bill['bill_id'] ?>" class="btn btn-xs btn-danger">Unprocessed</a>
                                                         <?php
                                                     } else if ($bill['status'] == 1) {
                                                         ?>
-                                                        <a href="?mod=bill&act=error_action&id=<?php echo $bill['bill_id'] ?>" class="btn btn-xs btn-info">Đã xử lý</a>
+                                                        <a href="?mod=bill&act=error_action&id=<?php echo $bill['bill_id'] ?>" class="btn btn-xs btn-info">Processed</a>
                                                         <?php
                                                     }
                                                     ?>
                                                 </span>
                                             </td>
                                             <td><span class="tbody-text"><?php echo $bill['created_at']; ?></span></td>
-                                            <td><a href="<?php echo $bill['url']; ?>" title="" class="tbody-text btn btn-xs btn-detail">Chi tiết</a></td>
+                                            <td><a href="<?php echo $bill['url']; ?>" title="" class="tbody-text btn btn-xs btn-detail">Details</a></td>
                                         </tr>
                                         <?php
                                     }
@@ -134,16 +134,15 @@ unset($bill);
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Mã đơn hàng</span></td>
-                                        <td><span class="thead-text">Họ và tên</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Order code</span></td>
+                                        <td><span class="thead-text">Full name</span></td>
                                         <td><span class="thead-text">Email</span></td>
-    <!--                                        <td><span class="thead-text">Địa chỉ</span></td>
-                                        <td><span class="thead-text">Số điện thoại</span></td>-->
-                                        <td><span class="thead-text">Ghi chú</span></td>
-                                        <td><span class="thead-text">Trạng thái</span></td>
-                                        <td><span class="thead-text">Ngày mua</span></td>
-                                        <td><span class="thead-text">Chi tiết</span></td>
+  
+                                        <td><span class="thead-text">Notes</span></td>
+                                        <td><span class="thead-text">Status</span></td>
+                                        <td><span class="thead-text">Purchase date</span></td>
+                                        <td><span class="thead-text">Details</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -152,7 +151,7 @@ unset($bill);
                     }
                     ?>
                 </div>
-                <p class="num_rows">Có <?php echo $number_rows; ?> đơn hàng trong hệ thống</p>
+                <p class="num_rows">There are <?php echo $number_rows; ?> orders in the system</p>
             </div>
             <div class="section" id="paging-wp">
                 <div class="section-detail clearfix">

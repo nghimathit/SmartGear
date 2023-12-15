@@ -31,23 +31,23 @@ if ($_GET['id']) {
         <div id="content" class="detail-exhibition fl-right">
             <div class="section" id="info">
                 <div class="section-head">
-                    <h3 class="section-title">Thông tin đơn hàng</h3>
+                    <h3 class="section-title">Order information</h3>
                 </div>
                 <ul class="list-item">
                     <li>
-                        <h3 class="title">Mã đơn hàng</h3>
+                        <h3 class="title">Order code</h3>
                         <span class="detail"><?php echo $row['bill_id']; ?></span>
                     </li>
                     <li>
-                        <h3 class="title">Tên khách hàng</h3>
+                        <h3 class="title">Customer name</h3>
                         <span class="detail"><?php echo $row['fullname']; ?></span>
                     </li>
                     <li>
-                        <h3 class="title">Địa chỉ nhận hàng</h3>
+                        <h3 class="title">Delivery address</h3>
                         <span class="detail"><?php echo $row['address']; ?> </span>
                     </li>
                     <li>
-                        <h3 class="title">Số điện thoại</h3>
+                        <h3 class="title">Phone number</h3>
                         <span class="detail"><?php echo $row['phone']; ?></span>
                     </li>
 
@@ -67,21 +67,21 @@ if ($_GET['id']) {
             </div>
             <div class="section">
                 <div class="section-head">
-                    <h3 class="section-title">Sản phẩm đơn hàng</h3>
+                <h3 class="section-title">Order products</h3>
                 </div>
                 <?php
                 if (!empty($list_detail_bill)) {
                     ?>
                     <div class="table-responsive">
                         <table class="table info-exhibition">
-                            <thead>
+                            <thehead>
                                 <tr>
                                     <td class="thead-text">STT</td>
-                                    <td class="thead-text">Ảnh sản phẩm</td>
-                                    <td class="thead-text">Tên sản phẩm</td>
-                                    <td class="thead-text">Đơn giá</td>
-                                    <td class="thead-text">Số lượng</td>
-                                    <td class="thead-text">Thành tiền</td>
+                                    <td class="thead-text">Product photo</td>
+                                    <td class="thead-text">Product name</td>
+                                    <td class="thead-text">Unit price</td>
+                                    <td class="thead-text">Quantity</td>
+                                    <td class="thead-text">Amount of money</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -113,12 +113,12 @@ if ($_GET['id']) {
                 ?>
             </div>
             <div class="section">
-                <h3 class="section-title">Giá trị đơn hàng</h3>
+            <h3 class="section-title">Order value</h3>
                 <div class="section-detail">
                     <ul class="list-item clearfix">
                         <li>
-                            <span class="total-fee">Tổng số lượng</span>
-                            <span class="total">Tổng đơn hàng</span>
+                            <span class="total-fee">Total amount</span>
+                            <span class="total">Total order</span>
                         </li>
                         <li>
                             <span class="total-fee">
@@ -150,7 +150,7 @@ if ($_GET['id']) {
                 </div>
             </div>
             <div>
-                <a href="?mod=bill&act=list_order"><i class="fa fa-backward" aria-hidden="true"></i> Quay lại</a>
+                <a href="?mod=bill&act=list_order"><i class="fa fa-backward" aria-hidden="true"></i>Return</a>
             </div>
         </div>
     </div>

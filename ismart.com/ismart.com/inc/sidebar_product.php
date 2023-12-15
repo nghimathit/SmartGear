@@ -33,7 +33,7 @@ $selling_products = get_selling_products();
 <div class="sidebar fl-left">
     <div class="section" id="category-product-wp">
         <div class="section-head">
-            <h3 class="section-title">Danh mục sản phẩm</h3>
+            <h3 class="section-title">Product categories</h3>
         </div>
         <div class="secion-detail">
             <?php
@@ -57,7 +57,7 @@ $selling_products = get_selling_products();
     </div>
     <div class="section" id="selling-wp">
         <div class="section-head">
-            <h3 class="section-title">Sản phẩm bán chạy</h3>
+            <h3 class="section-title">Best-selling products</h3>
         </div>
         <div class="section-detail">
             <?php
@@ -81,11 +81,11 @@ $selling_products = get_selling_products();
                                 <?php
                                 if ($item['qty_product'] > 0) {
                                     ?>
-                                    <a href="?mod=cart&act=add&id=<?php echo $item['id']; ?>" title="" class="buy-now">Mua ngay</a>
+                                    <a href="?mod=cart&act=add&id=<?php echo $item['id']; ?>" title="" class="buy-now">Buy now</a>
                                     <?php
                                 } else {
                                     ?>
-                                    <a href="" onclick="return confirmAction_detail()" title="" class="buy-now">Mua ngay</a>
+                                    <a href="" onclick="return confirmAction_detail()" title="" class="buy-now">Buy now</a>
                                     <?php
                                 }
                                 ?>

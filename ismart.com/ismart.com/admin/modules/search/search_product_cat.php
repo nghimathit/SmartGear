@@ -43,8 +43,8 @@ unset($cat);
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Danh mục sản phẩm</h3>
-                    <a href="?mod=product_cat&act=add" title="" id="add-new" class="fl-left">Thêm mới</a>
+                <h3 id="index" class="fl-left">Product categories</h3>
+                    <a href="?mod=product_cat&act=add" title="" id="add-new" class="fl-left">Add new</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -81,10 +81,10 @@ unset($cat);
                                 <thead>
                                     <tr>
                                         <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tên danh mục</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cập nhật</span></td>   
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                        <td><span class="thead-text">Category name</span></td>
+                                        <td><span class="thead-text">Date created</span></td>
+                                        <td><span class="thead-text">Updated date</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -122,11 +122,11 @@ unset($cat);
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Tên danh mục</span></td>
-                                        <td><span class="thead-text">Ngày tạo</span></td>
-                                        <td><span class="thead-text">Ngày cập nhật</span></td>   
-                                        <td><span class="thead-text">Trạng thái</span></td>
+                                    <td><span class="thead-text">STT</span></td>
+                                        <td><span class="thead-text">Category name</span></td>
+                                        <td><span class="thead-text">Date created</span></td>
+                                        <td><span class="thead-text">Updated date</span></td>
+                                        <td><span class="thead-text">Status</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -135,7 +135,7 @@ unset($cat);
                     }
                     ?>
                 </div>
-                <p class="num_rows">Có <?php echo $num_rows; ?> danh mục sản phẩm trong hệ thống</p>
+                <p class="num_rows">Yes <?php echo $num_rows; ?> product list in the system</p>
             </div>
             <div class="section" id="paging-wp">
                 <div class="section-detail clearfix">

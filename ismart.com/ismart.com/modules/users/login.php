@@ -7,13 +7,13 @@ if (isset($_POST['btn_login'])) {
     $error = array();
     //ktra username
     if (empty($_POST['username'])) {
-        $error['username'] = "không được để trống Tên đăng nhập";
+        $error['username'] = "Username cannot be left blank";
     } else {
         if (!(strlen($_POST['username']) >= 4 && strlen($_POST['username']) <= 20)) {
-            $error['username'] = "Username yêu cầu từ 4 đến 20 kí tự";
+            $error['username'] = "Username requires 4 to 20 characters";
         } else {
             if (!is_username($_POST['username'])) {
-                $error['username'] = "Tên đăng nhập không đúng định dạng";
+                $error['username'] = "Username is not in the correct format";
             } else {
                 $username = $_POST['username'];
             }
@@ -21,10 +21,10 @@ if (isset($_POST['btn_login'])) {
     }
     // ktra password
     if (empty($_POST['password'])) {
-        $error['password'] = "Không được để trống Mật khẩu";
+        $error['password'] ="Password cannot be blank";
     } else {
         if (!is_password($_POST['password'])) {
-            $error['password'] = "Mật khẩu chưa đúng định dạng";
+            $error['password'] = "Password is not in the correct format";
         } else {
             $password = md5($_POST['password']);
         }
@@ -50,7 +50,7 @@ if (isset($_POST['btn_login'])) {
                 redirect_to("?mod=home&act=main");
             }
         } else {
-            $error['acount'] = "Tên đăng nhập hoặc mật khẩu không tồn tại";
+            $error['acount'] = "Username or password does not exist";
         }
     }
 }
@@ -65,9 +65,9 @@ if (isset($_POST['btn_login'])) {
         </div>
         <div class="form-reg-wp fl-right">
             <div class="login">
-                <h1 class="post_title">Đăng nhập</h1>
+                <h1 class="post_title">Log in</h1>
                 <form id="form-login" action="" method="post">
-                    <input type="text" name="username" value="" id="username" placeholder="Tên đăng nhập">
+                    <input type="text" name="username" value="" id="username" placeholder="user name">
                     <?php
                     if (!empty($error['username'])) {
                         ?>
@@ -75,7 +75,7 @@ if (isset($_POST['btn_login'])) {
                         <?php
                     }
                     ?>
-                    <input type="password" name="password" id="password" placeholder="Mật khẩu">
+                    <input type="password" name="password" id="password" placeholder="Password">
                     <?php
                     if (!empty($error['password'])) {
                         ?>
@@ -83,7 +83,7 @@ if (isset($_POST['btn_login'])) {
                         <?php
                     }
                     ?>
-                    <a href="?mod=users&act=forgot_password" id="lost-pass">Quên mật khẩu?</a>
+                    <a href="?mod=users&act=forgot_password" id="lost-pass">Forgot your password?</a>
                     <input type="submit" name="btn_login" id="btn_login" value="Login">
                     <?php
                     if (!empty($error['acount'])) {
@@ -95,8 +95,8 @@ if (isset($_POST['btn_login'])) {
                 </form>
 
                 <div id="not-account">
-                    <span>Chưa có tài khoản?</span>
-                    <a href="?mod=users&act=register" title="Đăng ký" id="reg">Đăng ký</a>
+                    <span>Don't have an account yet?</span>
+                    <a href="?mod=users&act=register" title="Register" id="reg">Register</a>
                 </div>
             </div>
         </div>

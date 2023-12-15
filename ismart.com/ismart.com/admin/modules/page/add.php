@@ -44,7 +44,7 @@ if (isset($_POST['btn_add'])) {
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
-                    <h3 id="index" class="fl-left">Thêm trang</h3>
+                    <h3 id="index" class="fl-left">New page</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -60,13 +60,13 @@ if (isset($_POST['btn_add'])) {
                 <div class="section-detail">
                     <form action="" method="post">
 
-                        <label for="page_title">Tiêu đề</label>
+                        <label for="page_title">Title</label>
                         <input type="text" name="page_title" id="page_title" >
                         <?php echo form_error('page_title'); ?>
-                        <label for="page_content">Chi tiết</label>
+                        <label for="page_content">detail</label>
                         <textarea name="page_content" id="page_content" class="ckeditor"></textarea>
                         <?php echo form_error('page_content'); ?>
-                        <button type="submit" name="btn_add" id="btn_add">Thêm mới</button>
+                        <button type="submit" name="btn_add" id="btn_add">add new</button>
                     </form>
                 </div>
             </div>
