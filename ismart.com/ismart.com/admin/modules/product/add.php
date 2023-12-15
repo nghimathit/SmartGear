@@ -295,5 +295,5 @@ if (isset($_POST['btn_add'])) {
     </div>
 </div>
 <?php
-get_footer();
+get_footer();   
 ?>
