@@ -8,11 +8,34 @@ require_once __DIR__ . '/../../lib/users.php';
 // Define $start and $num_per_page
 $start = isset($_GET['start']) ? (int) $_GET['start'] : 0;
 $num_per_page = 10; 
+$list_bill = get_bill_user($start, $num_per_page);
+foreach ($list_bill as &$bill) {// &:tham tri
+  
+}
+unset($bill);
 if (isset($start, $num_per_page)) {
    
     $list_bill = get_bill_user($start, $num_per_page);
     ?>
 
+            <div class="clearfix"></div>
+            <?php if (isset($_SESSION['success'])) : ?>
+                <div class="alert alert-success">
+                    <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success'])
+                    ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['error'])) : ?>
+                <div class="alert alert-danger">
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error'])
+                    ?>
+                </div>
+            <?php endif; ?>
     <div id="main-content-wp" class="cart-page">
         <div class="section" id="breadcrumb-wp">
             <div class="wp-inner">
@@ -42,6 +65,8 @@ if (isset($start, $num_per_page)) {
                                         <td><span class="thead-text">Order code</span></td>
                                         <td><span class="thead-text">Full name</span></td>
                                         <td><span class="thead-text">Notes</span></td>
+                                         <td><span class="thead-text">Address</span></td>
+                                        <td><span class="thead-text">Phone number</span></td>
                                         <td><span class="thead-text">Status</span></td>
                                         <td><span class="thead-text">Purchase date</span></td>
                                         <td><span class="thead-text">Details</span></td>
@@ -51,6 +76,8 @@ if (isset($start, $num_per_page)) {
                                         <?php
                                         $temp = $start;
                                         foreach ($list_bill  as $bill) { 
+                                            $bill['url_update'] = "?mod=users&act=update&id={$bill['bill_id']}";
+                                            $bill['url_delete_cancel'] = "?mod=users&act=cancel&id={$bill['bill_id']}";
                                             $bill['url'] = "?mod=users&act=detail_order&id={$bill['bill_id']}";
                                             $temp++;
                                             ?>
@@ -65,7 +92,20 @@ if (isset($start, $num_per_page)) {
                                                     <span class="tbody-text">
                                                         <?php echo $bill['bill_id']; ?>
                                                     </span>
-
+                                                    <ul class="list-operation fl-right">
+                                                    
+                                                    <?php
+                                                    if ($bill['status'] == 1) {
+                                                        ?>
+                                                        <li><a href="<?php echo $bill['url_update']; ?>" title="edit" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <li><a href="<?php echo $bill['url_update']; ?>" title="edit" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                                        <li><a href="<?php echo $bill['url_delete_cancel']; ?>" title="cancel" onclick="return confirmAction_bill_cancel()" class="delete"><i class="fa fa-ban" aria-hidden="true"></i></a></li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </ul>
                                                 </td>
                                                 <td><span class="tbody-text">
                                                         <?php echo $bill['fullname']; ?>
@@ -83,6 +123,8 @@ if (isset($start, $num_per_page)) {
                                                         ?>
                                                     </span>
                                                 </td>
+                                                <td><span class="tbody-text"><?php echo $bill['address']; ?></span></td>
+                                                <td><span class="tbody-text"><?php echo $bill['phone']; ?></span></td>
                                                 <td>
                                                     <span class="tbody-text">
 

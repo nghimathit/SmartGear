@@ -154,9 +154,7 @@ function deleteblog($table, $id){
 function deletebill($table, $id) {
     global $conn;
     $sql = "DELETE FROM {$table} WHERE bill_id = $id ";
-//    print_r($sql);
-//    
-//    die();
+
     mysqli_query($conn, $sql) or die(" Lỗi Truy Vấn delete   --- " . mysqli_error($conn));
     return mysqli_affected_rows($conn);
 }
