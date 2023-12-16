@@ -42,7 +42,10 @@ function id_user() {
         return $user["user_id"];
     }
 }
-
+// function get_id($user_login){
+//     $result = db_fetch_row("select user_id from users where username like {$user_login}'");
+//     return $result;
+// }
 }
 function get_bill_user($start, $num_per_page) {
     $user_id = id_user();

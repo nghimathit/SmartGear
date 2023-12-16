@@ -3,8 +3,11 @@ get_header();
 ?>
 <?php
 $list_users = get_list_users_cat($_SESSION['user_login']);
-//show_array($list_users);
+
+$list_users['url'] = "?mod=users&act=change_password&id={$list_users['user_id']}";
+$list_users['url_change_pass'] =  "?mod=users&act=change_password&id={$list_users['user_id']}";
 ?>
+
 <div id="main-content-wp" class="clearfix info-member-page">
     <div class="wp-inner">
         <div class="secion" id="breadcrumb-wp">
@@ -24,12 +27,11 @@ $list_users = get_list_users_cat($_SESSION['user_login']);
                 <li>
                     <a href="?mod=users&act=info_account" title="">Personal information</a>
                 </li>
+              
                <li>
-                    <a href="?mod=users&act=update_users" title="">Cập nhật thông tin</a>
+                    <a href="<?php echo $list_users['url']; ?>">Change Password</a>
                 </li>
-               <li>
-                    <a href="?mod=users&act=change_password" title="">Đổi mật khẩu</a>
-                </li>
+    
                 <li>
                     <a href="?mod=users&act=logout" onclick="return confirmAction_users()" title="">Sign out</a>
                 </li>
