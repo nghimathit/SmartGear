@@ -24,12 +24,12 @@ $list_users = get_list_users_cat($_SESSION['user_login']);
                 <li>
                     <a href="?mod=users&act=info_account" title="">Personal information</a>
                 </li>
-<!--                <li>
+               <li>
                     <a href="?mod=users&act=update_users" title="">Cập nhật thông tin</a>
-                </li>-->
-<!--                <li>
+                </li>
+               <li>
                     <a href="?mod=users&act=change_password" title="">Đổi mật khẩu</a>
-                </li>-->
+                </li>
                 <li>
                     <a href="?mod=users&act=logout" onclick="return confirmAction_users()" title="">Sign out</a>
                 </li>

@@ -75,9 +75,9 @@ if (isset($_POST['btn_change_pass'])) {
                 <li>
                     <a href="?mod=users&act=info_account" title="">Personal information</a>
                 </li>
-<!--                <li>
+               <li>
                     <a href="?mod=users&act=update_users" title="">Cập nhật thông tin</a>
-                </li>-->
+                </li>
                 <li>
                     <a href="?mod=users&act=change_password" title="">Change password</a>
                 </li>
@@ -100,8 +100,8 @@ if (isset($_POST['btn_change_pass'])) {
                             <label for="new-pass">New password</label>
                             <input type="password" name="pass_new" id="pass_new">
                             <?php echo form_error('pass_new'); ?>
-                            <!--                        <label for="confirm_pass">Xác nhận mật khẩu</label>
-                                                    <input type="password" name="confirm_pass" id="confirm_pass">-->
+                                                   <label for="confirm_pass">Xác nhận mật khẩu</label>
+                                                    <input type="password" name="confirm_pass" id="confirm_pass">
                             <?php echo form_error('confirm_pass'); ?>
                             <button type="submit" name="btn_change_pass" id="btn_change_pass">Update</button>
                         </form>

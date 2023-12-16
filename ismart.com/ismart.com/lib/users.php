@@ -126,5 +126,26 @@ function get_list_users_cat($user_login){
     $result = db_fetch_row("select * from users where username like '{$user_login}'");
     return $result;
 }
+
+
+function get_bill_id($bill_id){
+    $result = db_fetch_row("SELECT * FROM `bill` where bill_id = $bill_id");
+    return $result;
+}
+function deletebill_detail($table, $id)  {
+    global $conn;
+    $sql = "DELETE FROM {$table} WHERE bill_id = $id ";
+    mysqli_query($conn, $sql) or die(" Lỗi Truy Vấn delete   --- " . mysqli_error($conn));
+    return mysqli_affected_rows($conn);
+}
+function deletebill($table, $id) {
+    global $conn;
+    $sql = "DELETE FROM {$table} WHERE bill_id = $id ";
+//    print_r($sql);
+//    
+//    die();
+    mysqli_query($conn, $sql) or die(" Lỗi Truy Vấn delete   --- " . mysqli_error($conn));
+    return mysqli_affected_rows($conn);
+}
 ?>
 
