@@ -4,10 +4,28 @@ get_header();
 <?php
 $list_users = get_list_users_cat($_SESSION['user_login']);
 
-$list_users['url'] = "?mod=users&act=change_password&id={$list_users['user_id']}";
-$list_users['url_change_pass'] =  "?mod=users&act=change_password&id={$list_users['user_id']}";
+$list_users['url'] = "?mod=users&act=change_password&user_id={$list_users['user_id']}";
+$list_users['url_change_pass'] =  "?mod=users&act=change_password&user_id={$list_users['user_id']}";
 ?>
+           <div class="clearfix"></div>
+            <?php if (isset($_SESSION['success'])) : ?>
+                <div class="alert alert-success">
+                    <?php
+                    echo $_SESSION['success'];
+                   
+                    ?>
+                </div>
+            <?php endif; ?>
 
+            <?php if (isset($_SESSION['error'])) : ?>
+                <div class="alert alert-danger">
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error'])
+                    ?>
+                </div>
+            <?php endif; ?>
+            
 <div id="main-content-wp" class="clearfix info-member-page">
     <div class="wp-inner">
         <div class="secion" id="breadcrumb-wp">
