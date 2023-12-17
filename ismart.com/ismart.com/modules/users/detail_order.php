@@ -48,7 +48,9 @@ if ($_GET['id']) {
     font-size: 18px;
     color: #555;
 }
-
+.detail_thumb{
+    width: 70px !important;
+}
 /* Style for the total amount and total order values */
 .total-fee {
     color: #e44d26; /* Adjust color based on your design */
@@ -131,7 +133,7 @@ if ($_GET['id']) {
                                         <td class="thead-text"><?php echo $temp; ?></td>
                                         <td class="thead-text">
                                             <div class="thumb">
-                                                <img src="admin/uploads/ <?php echo $item['product_thumb']; ?>" alt="">
+                                                <img class="detail_thumb" src="admin/uploads/<?php echo $item['product_thumb']; ?>">
                                             </div>
                                         </td>
                                         <td class="thead-text"><?php echo $item['product_name']; ?></td>
