@@ -70,6 +70,9 @@ function execPostRequest($url, $data)
     curl_close($ch);
     return $result;
 }
+
+
+
 $total = 0;
 if(isset($_POST['total'])){
     $total = $_POST['total'];
@@ -80,18 +83,18 @@ $email = "";
 $address = "";
 $phone = "";
 $note = "";
-$endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+$endpoint = "https://payment.momo.vn/v2/gateway/api/create";
 $payUrl = "";
-$partnerCode = 'MOMOBKUN20180529';
-$accessKey = 'klm05TvNBzhg7h7j';
-$secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-$orderInfo = "Thanh toán qua MoMo";
+$partnerCode = 'MOMOXS5X20221127';
+$accessKey = 'CbSgKhEZZJ2ZsI8k';
+$secretKey = 'RdjfNeuJmuRo2RRmm9SsetctD7NdaiQI';
+$orderInfo = "Thanh toán qua mã QR MoMo Cho Smart Grear";
 $amount = $total;
 $orderId = time() . "";
 $extraData = "";
 
 $requestId = time() . "";
-$requestType = "payWithATM";
+$requestType = "captureWallet";
 if(isset($_POST['payUrl'])){
     // Thực hiện các thao tác liên quan đến 'payUrl' ở đây
     $user_id = $_POST['user_id'];
