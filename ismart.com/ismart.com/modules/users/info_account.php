@@ -4,9 +4,10 @@ get_header();
 <?php
 $list_users = get_list_users_cat($_SESSION['user_login']);
 
-$list_users['url'] = "?mod=users&act=change_password&id={$list_users['user_id']}";
-$list_users['url_change_pass'] =  "?mod=users&act=change_password&id={$list_users['user_id']}";
+$list_users['url'] = "?mod=users&act=change_password&user_id={$list_users['user_id']}";
+$list_users['url_change_pass'] =  "?mod=users&act=change_password&user_id={$list_users['user_id']}";
 ?>
+<<<<<<< HEAD
 <style>
 /* Sidebar styling */
 #sidebar {
@@ -85,6 +86,27 @@ input[type="email"] {
     }
 }
 </style>
+=======
+           <div class="clearfix"></div>
+            <?php if (isset($_SESSION['success'])) : ?>
+                <div class="alert alert-success">
+                    <?php
+                    echo $_SESSION['success'];
+                   
+                    ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['error'])) : ?>
+                <div class="alert alert-danger">
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error'])
+                    ?>
+                </div>
+            <?php endif; ?>
+            
+>>>>>>> f8cc47cc43710f7fd0311f68ba1e981990e16e0f
 <div id="main-content-wp" class="clearfix info-member-page">
     <div class="wp-inner">
         <div class="secion" id="breadcrumb-wp">
