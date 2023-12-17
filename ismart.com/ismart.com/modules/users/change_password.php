@@ -11,35 +11,76 @@ $result = mysqli_query($conn, $sql);
 $item = mysqli_fetch_array($result);
 ?>
 <style>
-   .section-detail{
-    width: 300px;
-   }
+#content {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.main-content1 {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+}
+
+.section-head {
+    margin-bottom: 20px;
+}
+
+.section-titi {
+    margin: 0;
+    font-size: 35px;
+    color: #333;
+    font-weight: bold;
+    color: #2196f3;
+}
+
+.section-detail {
+    margin-top: 20px;
+}
+
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
 }
 
-input[type="password"] {
+.form-control {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
-    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
-button {
+.button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    display: block;
+    margin: 0 auto;
 }
 
+.button:hover {
+    background-color: #45a049;
+}
 
+@media only screen and (max-width: 768px) {
+    #content {
+        width: 100%;
+    }
+}
 </style>
 <div id="main-content-wp" class="clearfix info-member-page">
     <div class="wp-inner">
@@ -69,10 +110,10 @@ button {
             </ul>
         </div>
         <div id="content" class="fl-right">
-            <div class="main-content fl-right">
+            <div class="main-content1 fl-right">
                 <div class="section" id="detail-blog-wp">
                     <div class="section-head clearfix">
-                        <h3 class="section-title">Change password</h3>
+                        <h3 class="section-titi">Change password</h3>
                     </div>
                     <div class="section-detail">
                         <form method="POST" id="formChangePass">
@@ -92,7 +133,7 @@ button {
                                 <?php echo form_error('confirm_pass'); ?>
                             </div>
                             <div class="form-group">
-                                <button type="submit" name="btn_change_pass" id="btn_change_pass">Update</button>
+                                <button type="submit" name="btn_change_pass" id="btn_change_pass12">Update</button>
                             </div>
                         </form>
                     </div>

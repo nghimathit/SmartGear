@@ -270,25 +270,25 @@ if (isset($_POST['btn_add'])) {
                         </div>
 
                         <label>Product category</label>
-<select name="cat_id">
-    <option value="">-- Choose category --</option>
-    <option value="1">Mobile Phones</option>
-    <option value="2">Laptops</option>
-    <option value="3">Tablets</option>
-    <option value="4">Accessories</option>
-    <option value="5">Smartwatches</option>
-</select>
+                        <select name="cat_id">
+                            <option value="">-- Choose category --</option>
+                            <option value="1">Mobile Phones</option>
+                            <option value="2">Laptops</option>
+                            <option value="3">Tablets</option>
+                            <option value="4">Accessories</option>
+                            <option value="5">Smartwatches</option>
+                        </select>
 
                         <?php echo form_error('cat_id'); ?>
 
                         <label>Best-selling product</label>
-<select name="selling_products" id="selling_products">
-    <option value="">-- Choose best-selling product --</option>
-    <option value="Best-selling">Best-selling</option>
-    <option value="Normal">Normal</option>
-</select>
-<?php echo form_error('selling_products'); ?>
-<button type="submit" name="btn_add" id="btn_add">Add new</button>
+                        <select name="selling_products" id="selling_products">
+                            <option value="">-- Choose best-selling product --</option>
+                            <option value="Best-selling">Best-selling</option>
+                            <option value="Normal">Normal</option>
+                        </select>
+                        <?php echo form_error('selling_products'); ?>
+                        <button type="submit" name="btn_add" id="btn_add">Add new</button>
 
                     </form>
                 </div>
