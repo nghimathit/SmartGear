@@ -121,8 +121,11 @@ function confirmAction_users_logout_delete() {
                     <div class="wp-inner clearfix">
                         <a href="?page=list_post" title="" id="logo" class="fl-left">ADMIN</a>
                         <ul id="main-menu" class="fl-left">
+                        <li>
+                                <a href="?mod=home&act=main" title="">Dashbroad</a>
+                        </li>
                             <li>
-                                <a href="#" title="">Page</a>
+                                <a href="?mod=page&act=main" title="">Page</a>
                                 <ul class="sub-menu">
                                     <li>
                                         <a href="?mod=page&act=add" title="">Add new</a> 
@@ -133,7 +136,7 @@ function confirmAction_users_logout_delete() {
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" title="">Post</a>
+                                <a href="?mod=post&act=main" title="">Post</a>
                                 <ul class="sub-menu">
                                     <li>
                                         <a href="?mod=post&act=add" title="">Add new</a> 
@@ -144,7 +147,7 @@ function confirmAction_users_logout_delete() {
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" title="">Product</a>
+                                <a href="?mod=product&act=main" title="">Product</a>
                                 <ul class="sub-menu">
                                     <li>
                                         <a href="?mod=product&act=add" title="">Add new</a> 
@@ -155,7 +158,7 @@ function confirmAction_users_logout_delete() {
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" title="">Category</a>
+                                <a href="?mod=post_cat&act=main" title="">Category</a>
                                 <ul class="sub-menu">
                                     <li>
                                         <a href="?mod=product_cat&act=main" title="">Category product</a> 
@@ -166,7 +169,7 @@ function confirmAction_users_logout_delete() {
                                 </ul>
                             </li>
                             <li>
-                                <a href="" title="">Order</a>
+                                <a href="?mod=users&act=main" title="">Order</a>
                                 <ul class="sub-menu">
                                     <li>
                                         <a href="?mod=bill&act=list_order" title="">List Order</a> 

@@ -70,35 +70,97 @@ if (empty($error)) {
 ?>
 
 <style>
-   .section-detail{
-    width: 300px;
-   }
-.linhbede {
-    margin-bottom: 15px;
+#content {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.main-content1 {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+}
+
+.section-head {
+    margin-bottom: 20px;
+}
+
+.section-titi {
+    margin: 0;
+    font-size: 33px;
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.section-detail {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
 }
 
-input[type="password"] {
+.form-control {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
-    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: border-color 0.3s;
 }
 
-.btn_change_pass {
+.form-control:focus {
+    border-color: #2196f3;
+}
+
+.button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    display: block;
+    margin: 0 auto;
 }
 
+.button:hover {
+    background-color: #45a049;
+}
 
+#btn_change_pass12 {
+    background-color: #2196f3;
+    /* Màu xanh da trời */
+    color: #fff;
+    /* Màu chữ trắng */
+    padding: 12px 20px;
+    /* Kích thước nút */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    /* Kích thước chữ */
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển động khi hover */
+}
+
+#btn_change_pass12:hover {
+    background-color: #1565c0;
+    /* Màu xanh da trời đậm khi hover */
+}
 </style>
 
 <div id="main-content-wp" class="clearfix info-member-page">
@@ -154,22 +216,22 @@ input[type="password"] {
                     </div>
                     <div class="section-detail">
                         <form method="POST" id="formChangePass">
-                            <div class="linhbede">
+                            <div class="form-group">
                                 <label for="pass_old">Old password</label>
-                                <input type="password" name="pass_old" id="pass_old" class="linhbong">
+                                <input type="password" name="pass_old" id="pass_old" class="from-control">
                                 <?php echo form_error('pass_old'); ?>
                             </div>
-                            <div class="linhbede">
+                            <div class="form-group">
                                 <label for="pass_new">New password</label>
-                                <input type="password" name="pass_new" id="pass_new" class="linhbong">
+                                <input type="password" name="pass_new" id="pass_new" class="from-control">
                                 <?php echo form_error('pass_new'); ?>
                             </div>
-                            <div class="linhbede">
+                            <div class="form-group">
                                 <label for="confirm_pass">Confirm password</label>
-                                <input type="password" name="confirm_pass" id="confirm_pass" class="linhbong">
+                                <input type="password" name="confirm_pass" id="confirm_pass" class="from-control">
                                 <?php echo form_error('confirm_pass'); ?>
                             </div>
-                            <div class="linhbede">
+                            <div class="form-group">
                                 <button type="submit" name="btn_change_pass" id="btn_change_pass">Update</button>
                             </div>
                         </form>

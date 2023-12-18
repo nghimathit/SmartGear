@@ -51,7 +51,95 @@ $result = mysqli_query($conn, $sql);
 $item = mysqli_fetch_array($result);
 //show_array($item);
 ?>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
 
+#main-content-wp {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.add-cat-page {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#title-page {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+#title-page h3 {
+    margin: 0;
+}
+
+.section-detail {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+label {
+    font-family: 'Your Font Here', sans-serif;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 15px;
+    color: #3498db;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Your Font Here', sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.error {
+    color: #ff0000;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+#btn_update {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+}
+
+#btn_update:hover {
+    background-color: #2980b9;
+}
+</style>
 <div id="main-content-wp" class="add-cat-page">
     <div class="wrap clearfix">
   

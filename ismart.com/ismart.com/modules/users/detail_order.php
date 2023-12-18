@@ -21,43 +21,137 @@ if ($_GET['id']) {
 }
 ?>
 <style>
-    /* Style for the section title */
-.section-title {
+body {
+    font-family: 'Arial', sans-serif;
     color: #333;
-    font-size: 24px;
-    margin-bottom: 10px;
+}
+
+#main-content-wp {
+    background-color: #f4f4f4;
     padding: 20px;
 }
 
-/* Style for the list items */
+.add-cat-page {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#breadcrumb-wp {
+    background-color: #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#breadcrumb-wp a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+#breadcrumb-wp a:hover {
+    text-decoration: underline;
+}
+
 .list-item {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-/* Style for each list item */
 .list-item li {
-    float: left;
-    margin-right: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
 }
 
-/* Style for the total-fee and total spans */
+#info {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.title {
+    color: #3498db;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.detail {
+    color: #333;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table thead td,
+.table tbody td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.amount {
+    color: #ff0000;
+}
+
+.table thead td {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.section {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+}
+
+.total {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.section-detail {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .total-fee,
 .total {
     display: block;
     font-size: 18px;
-    color: #555;
+    margin-bottom: 10px;
+    color: #333;
 }
-.detail_thumb{
+
+/* #wrapper>div {
     width: 70px !important;
-}
+} */
+
 /* Style for the total amount and total order values */
 .total-fee {
-    color: #e44d26; /* Adjust color based on your design */
+    color: #e44d26;
+    /* Adjust color based on your design */
 }
 
 .total {
-    color: #337ab7; /* Adjust color based on your design */
+    color: #337ab7;
+    /* Adjust color based on your design */
 }
 
 /* Clear the float after each list item */
@@ -66,10 +160,11 @@ if ($_GET['id']) {
     display: table;
     clear: both;
 }
-.list-item clearfix{
-    padding: 20px;
+.detail_thumb{
+    width: 70px !important;
 }
 </style>
+
     <div id="main-content-wp" class="cart-page">
         <div class="section" id="breadcrumb-wp">
             <div class="wp-inner">
