@@ -160,7 +160,12 @@ body {
     display: table;
     clear: both;
 }
+
+.detail_thumb {
+    width: 70px !important;
+}
 </style>
+
 <div id="main-content-wp" class="cart-page">
     <div class="section" id="breadcrumb-wp">
         <div class="wp-inner">
@@ -184,9 +189,11 @@ body {
                 </li>
                 <li>
                     <h3 class="title">Customer name: <span class="detail"><?php echo $row['fullname']; ?></span></h3>
+
                 </li>
                 <li>
                     <h3 class="title">Delivery address: <span class="detail"><?php echo $row['address']; ?> </span></h3>
+
                 </li>
                 <li>
                     <h3 class="title">Phone number: <span class="detail"><?php echo $row['phone']; ?></span></h3>
@@ -199,8 +206,8 @@ body {
                 <h3 class="section-title">Order products</h3>
             </div>
             <?php
-            if (!empty($list_detail_bill)) {
-            ?>
+                if (!empty($list_detail_bill)) {
+                    ?>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -214,10 +221,10 @@ body {
                     </thead>
                     <tbody>
                         <?php
-                            $temp = 0;
-                            foreach ($list_detail_bill as $item) {
-                                $temp++;
-                            ?>
+                                $temp = 0;
+                                foreach ($list_detail_bill as $item) {
+                                    $temp++;
+                                    ?>
                         <tr>
                             <td class="thead-text"><?php echo $temp; ?></td>
                             <td class="thead-text">
@@ -231,98 +238,56 @@ body {
                             <td class="thead-text"><?php echo currency_format($item['sub_total']); ?></td>
                         </tr>
                         <?php
-                            }
-                            ?>
+                                }
+                                ?>
                     </tbody>
                 </table>
             </div>
             <?php
-            }
-            ?>
+                }
+                ?>
         </div>
-        <?php
-        if (!empty($list_detail_bill)) {
-        ?>
-        <!-- <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <td><span class="thead-text">STT</span></td>
-                        <td><span class="thead-text">Product photo</span></td>
-                        <td><span class="thead-text">Product name</span></td>
-                        <td><span class="thead-text">Unit price</span></td>
-                        <td><span class="thead-text">Quantity</span></td>
-                        <td><span class="thead-text">Amount of money</span></td>
-
-                    </thead>
-                    <tbody>
-                        <?php
-                        $temp = 0;
-                        foreach ($list_detail_bill as $item) {
-                            $temp++;
-                        ?>
-                            <tr>
-                                <td class="thead-text"><?php echo $temp; ?></td>
-                                <td class="thead-text">
-                                    <div class="thumb">
-                                        <img src="admin/uploads/ <?php echo $item['product_thumb']; ?>" alt="">
-                                    </div>
-                                </td>
-                                <td class="thead-text"><?php echo $item['product_name']; ?></td>
-                                <td class="thead-text"><?php echo currency_format($item['price_new']); ?></td>
-                                <td class="thead-text"><?php echo $item['qty']; ?></td>
-                                <td class="thead-text"><?php echo currency_format($item['sub_total']); ?></td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div> -->
-        <?php
-        }
-        ?>
-    </div>
-    <div class="sectionn">
-        <h3 class="section-title">Order value</h3>
-        <div class="section-detail">
-            <ul class="list-item clearfix">
-                <li>
-                    <span class="total-fee">Total amount</span>
-                    <span class="total">Total order</span>
-                </li>
-                <li>
-                    <span class="total-fee">
-                        <?php
-                        $sql = "SELECT SUM(qty) as tongsoluong FROM `bill_detail` WHERE bill_id = $id";
-                        $result = mysqli_query($conn, $sql);
-                        $num_rows = mysqli_num_rows($result);
-                        if ($num_rows > 0) {
-                            while ($num = mysqli_fetch_assoc($result)) {
-                                echo $num['tongsoluong'];
-                            }
-                        }
-                        ?>
-                    </span>
-                    <span class="total">
-                        <?php
-                        $sql = "SELECT SUM(sub_total) as tongdonhang FROM `bill_detail` WHERE bill_id = $id";
-                        $result = mysqli_query($conn, $sql);
-                        $num_rows = mysqli_num_rows($result);
-                        if ($num_rows > 0) {
-                            while ($num = mysqli_fetch_assoc($result)) {
-                                echo currency_format($num['tongdonhang']);
-                            }
-                        }
-                        ?>
-                    </span>
-                </li>
-            </ul>
+        <div class="section">
+            <h3 class="section-title">Order value</h3>
+            <div class="section-detail">
+                <ul class="list-item clearfix">
+                    <li>
+                        <span class="total-fee">Total amount</span>
+                        <span class="total">Total order</span>
+                    </li>
+                    <li>
+                        <span class="total-fee">
+                            <?php
+                                $sql = "SELECT SUM(qty) as tongsoluong FROM `bill_detail` WHERE bill_id = $id";
+                                $result = mysqli_query($conn, $sql);
+                                $num_rows = mysqli_num_rows($result);
+                                if ($num_rows > 0) {
+                                    while ($num = mysqli_fetch_assoc($result)) {
+                                        echo $num['tongsoluong'];
+                                    }
+                                }
+                                ?>
+                        </span>
+                        <span class="total">
+                            <?php
+                                $sql = "SELECT SUM(sub_total) as tongdonhang FROM `bill_detail` WHERE bill_id = $id";
+                                $result = mysqli_query($conn, $sql);
+                                $num_rows = mysqli_num_rows($result);
+                                if ($num_rows > 0) {
+                                    while ($num = mysqli_fetch_assoc($result)) {
+                                        echo currency_format($num['tongdonhang']);
+                                    }
+                                }
+                                ?>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
         </div>
     </div>
-    <div>
-    </div>
-</div>
 
-<?php
+    <?php
 get_footer();
 ?>
