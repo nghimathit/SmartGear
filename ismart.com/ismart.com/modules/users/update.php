@@ -49,8 +49,8 @@ if (isset($_POST['btn_update'])) {
 $sql = "SELECT bill.fullname,bill.note,bill.created_at,bill.email,bill.address ,bill.phone,bill_detail.bill_id,bill_detail.status,bill_detail.product_id FROM bill_detail,bill, product WHERE bill.bill_id = $id and bill.bill_id = bill_detail.bill_id AND product.id = bill_detail.product_id and bill_detail.status !=2 GROUP by bill.bill_id";
 $result = mysqli_query($conn, $sql);
 $item = mysqli_fetch_array($result);
-//show_array($item);
 ?>
+
 <style>
 body {
     font-family: 'Arial', sans-serif;
@@ -140,9 +140,11 @@ input {
     background-color: #2980b9;
 }
 </style>
+
+
 <div id="main-content-wp" class="add-cat-page">
     <div class="wrap clearfix">
-  
+
         <div id="content" class="fl-right">
             <div class="section" id="title-page">
                 <div class="clearfix">
@@ -151,51 +153,56 @@ input {
             </div>
             <div class="clearfix"></div>
             <?php if (isset($_SESSION['error'])) : ?>
-                <div class="alert alert-danger">
-                    <?php
+            <div class="alert alert-danger">
+                <?php
                     echo $_SESSION['error'];
                     unset($_SESSION['error'])
                     ?>
-                </div>
+            </div>
             <?php endif; ?>
             <div class="section" id="detail-page">
                 <div class="section-detail">
-                    <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
+                    <form id="form-upload-single" action="" enctype="multipart/form-data" method="post">
                         <label for="fullname">Full name</label>
-                        <input type="text" name="fullname" readonly="readonly" value="<?php if (!empty($item['fullname'])) echo $item['fullname']; ?>" id ="username" >
+                        <input type="text" name="fullname" readonly="readonly"
+                            value="<?php if (!empty($item['fullname'])) echo $item['fullname']; ?>" id="username">
 
                         <label for="email">Email</label>
-                        <input type="text" name="email" readonly="readonly" value="<?php if (!empty($item['email'])) echo $item['email']; ?>" id="username" >
+                        <input type="text" name="email" readonly="readonly"
+                            value="<?php if (!empty($item['email'])) echo $item['email']; ?>" id="username">
                         <?php
                         if (!empty($error['email'])) {
                             ?>
-                            <p class="error"><?php echo $error['email']; ?></p>
-                            <?php
+                        <p class="error"><?php echo $error['email']; ?></p>
+                        <?php
                         }
                         ?>
 
                         <label for="address">Address</label>
-                        <input type="text" name="address" value="<?php if (!empty($item['address'])) echo $item['address']; ?>" id="address" >
+                        <input type="text" name="address"
+                            value="<?php if (!empty($item['address'])) echo $item['address']; ?>" id="address">
                         <?php
                         if (!empty($error['address'])) {
                             ?>
-                            <p class="error"><?php echo $error['address']; ?></p>
-                            <?php
+                        <p class="error"><?php echo $error['address']; ?></p>
+                        <?php
                         }
                         ?>
                         <label for="phone">Phone number</label>
-                        <input type="text" name="phone" value="<?php if (!empty($item['phone'])) echo $item['phone']; ?>" id="phone" >
+                        <input type="text" name="phone"
+                            value="<?php if (!empty($item['phone'])) echo $item['phone']; ?>" id="phone">
                         <?php
                         if (!empty($error['phone'])) {
                             ?>
-                            <p class="error"><?php echo $error['phone']; ?></p>
-                            <?php
+                        <p class="error"><?php echo $error['phone']; ?></p>
+                        <?php
                         }
                         ?>
                         <label for="note">Notes</label>
-                        <input type="text" name="note" value="<?php if (!empty($item['note'])) echo $item['note']; ?>" id="note" >
+                        <input type="text" name="note" value="<?php if (!empty($item['note'])) echo $item['note']; ?>"
+                            id="note">
 
-<!--                        <label for="status">Trạng thái</label>
+                        <!--                        <label for="status">Trạng thái</label>
                         <select name="status">
                             <option <?php if (isset($item['status']) && $item['status'] == '1') echo "selected='selected'"; ?> value="Đã xử lý">Đã xử lý</option>
                             <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="Chưa xử lý">Chưa xử lý</option>
@@ -212,5 +219,3 @@ input {
 <?php
 get_footer();
 ?>
-
-

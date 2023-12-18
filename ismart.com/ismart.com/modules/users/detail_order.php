@@ -117,7 +117,9 @@ body {
     border-radius: 5px 5px 0 0;
     font-weight: bold;
 }
-
+.detail_thumb{
+    width: 70px !important;
+}
 .total {
     display: block;
     font-size: 18px;
@@ -160,11 +162,10 @@ body {
     display: table;
     clear: both;
 }
-.detail_thumb{
-    width: 70px !important;
+.list-item clearfix{
+    padding: 20px;
 }
 </style>
-
     <div id="main-content-wp" class="cart-page">
         <div class="section" id="breadcrumb-wp">
             <div class="wp-inner">
@@ -182,81 +183,81 @@ body {
         </div>
         <div id="wrapper" class="wp-inner clearfix">
         <div class="section" id="info">
-                <ul class="list-item">
-                    <li>
-                        <h1 class="title">Order code: <span class="detail"><?php echo $row['bill_id']; ?></span></h1>
-                    </li>
-                    <li>
-                        <h3 class="title">Customer name:  <span class="detail"><?php echo $row['fullname']; ?></span></h3>
-                       
-                    </li>
-                    <li>
-                        <h3 class="title">Delivery address:  <span class="detail"><?php echo $row['address']; ?> </span></h3>
-                       
-                    </li>
-                    <li>
-                        <h3 class="title">Phone number:   <span class="detail"><?php echo $row['phone']; ?></span></h3>
-                      
-                    </li>
-                </ul>
-            </div>
-            <div class="section">
-                <div class="section-head">
+            <ul class="list-item">
+                <li>
+                    <h1 class="title">Order code: <span class="detail"><?php echo $row['bill_id']; ?></span></h1>
+                </li>
+                <li>
+                    <h3 class="title">Customer name: <span class="detail"><?php echo $row['fullname']; ?></span></h3>
+
+                </li>
+                <li>
+                    <h3 class="title">Delivery address: <span class="detail"><?php echo $row['address']; ?> </span></h3>
+
+                </li>
+                <li>
+                    <h3 class="title">Phone number: <span class="detail"><?php echo $row['phone']; ?></span></h3>
+
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-head">
                 <h3 class="section-title">Order products</h3>
-                </div>
-                <?php
+            </div>
+            <?php
                 if (!empty($list_detail_bill)) {
                     ?>
-                    <div class="table-responsive">
-                    <table class="table">
-                                    <thead>
-                                        <td><span class="thead-text">STT</span></td>
-                                        <td><span class="thead-text">Product photo</span></td>
-                                        <td><span class="thead-text">Product name</span></td>
-                                        <td><span class="thead-text">Unit price</span></td>
-                                        <td><span class="thead-text">Quantity</span></td>
-                                        <td><span class="thead-text">Amount of money</span></td>                              
-                             
-                                    </thead>
-                            <tbody>
-                                <?php
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <td><span class="thead-text">STT</span></td>
+                        <td><span class="thead-text">Product photo</span></td>
+                        <td><span class="thead-text">Product name</span></td>
+                        <td><span class="thead-text">Unit price</span></td>
+                        <td><span class="thead-text">Quantity</span></td>
+                        <td><span class="thead-text">Amount of money</span></td>
+
+                    </thead>
+                    <tbody>
+                        <?php
                                 $temp = 0;
                                 foreach ($list_detail_bill as $item) {
                                     $temp++;
                                     ?>
-                                    <tr>
-                                        <td class="thead-text"><?php echo $temp; ?></td>
-                                        <td class="thead-text">
-                                            <div class="thumb">
-                                                <img class="detail_thumb" src="admin/uploads/<?php echo $item['product_thumb']; ?>">
-                                            </div>
-                                        </td>
-                                        <td class="thead-text"><?php echo $item['product_name']; ?></td>
-                                        <td class="thead-text"><?php echo currency_format($item['price_new']); ?></td>
-                                        <td class="thead-text"><?php echo $item['qty']; ?></td>
-                                        <td class="thead-text"><?php echo currency_format($item['sub_total']); ?></td>
-                                    </tr>
-                                    <?php
+                        <tr>
+                            <td class="thead-text"><?php echo $temp; ?></td>
+                            <td class="thead-text">
+                                <div class="thumb">
+                                    <img class="detail_thumb" src="admin/uploads/<?php echo $item['product_thumb']; ?>">
+                                </div>
+                            </td>
+                            <td class="thead-text"><?php echo $item['product_name']; ?></td>
+                            <td class="thead-text"><?php echo currency_format($item['price_new']); ?></td>
+                            <td class="thead-text"><?php echo $item['qty']; ?></td>
+                            <td class="thead-text"><?php echo currency_format($item['sub_total']); ?></td>
+                        </tr>
+                        <?php
                                 }
                                 ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <?php
+                    </tbody>
+                </table>
+            </div>
+            <?php
                 }
                 ?>
-            </div>
-            <div class="section">
+        </div>
+        <div class="section">
             <h3 class="section-title">Order value</h3>
-                <div class="section-detail">
-                    <ul class="list-item clearfix">
-                        <li>
-                            <span class="total-fee">Total amount</span>
-                            <span class="total">Total order</span>
-                        </li>
-                        <li>
-                            <span class="total-fee">
-                                <?php
+            <div class="section-detail">
+                <ul class="list-item clearfix">
+                    <li>
+                        <span class="total-fee">Total amount</span>
+                        <span class="total">Total order</span>
+                    </li>
+                    <li>
+                        <span class="total-fee">
+                            <?php
                                 $sql = "SELECT SUM(qty) as tongsoluong FROM `bill_detail` WHERE bill_id = $id";
                                 $result = mysqli_query($conn, $sql);
                                 $num_rows = mysqli_num_rows($result);
@@ -266,9 +267,9 @@ body {
                                     }
                                 }
                                 ?>
-                            </span>
-                            <span class="total">
-                                <?php
+                        </span>
+                        <span class="total">
+                            <?php
                                 $sql = "SELECT SUM(sub_total) as tongdonhang FROM `bill_detail` WHERE bill_id = $id";
                                 $result = mysqli_query($conn, $sql);
                                 $num_rows = mysqli_num_rows($result);
@@ -278,12 +279,12 @@ body {
                                     }
                                 }
                                 ?>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
+                        </span>
+                    </li>
+                </ul>
             </div>
-            <div>
+        </div>
+        <div>
         </div>
     </div>
 

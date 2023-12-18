@@ -6,9 +6,7 @@
     display: block;
     font-size: 24px;
     font-weight: normal;
-    line-height: normal;
     font-family: "Roboto Regular";
-    padding-bottom: 10px;
 }
 #detail-blog-wp .create-date{
     position: relative;

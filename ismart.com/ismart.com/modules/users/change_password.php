@@ -164,24 +164,24 @@ label {
 </style>
 
 <div id="main-content-wp" class="clearfix info-member-page">
-<div class="clearfix"></div>
-            <?php if (isset($_SESSION['success'])) : ?>
-                <div class="alert alert-success">
-                    <?php
+    <div class="clearfix"></div>
+    <?php if (isset($_SESSION['success'])) : ?>
+    <div class="alert alert-success">
+        <?php
                     echo $_SESSION['success'];
                     unset($_SESSION['success'])
                     ?>
-                </div>
-            <?php endif; ?>
+    </div>
+    <?php endif; ?>
 
-            <?php if (isset($_SESSION['error'])) : ?>
-                <div class="alert alert-danger">
-                    <?php
+    <?php if (isset($_SESSION['error'])) : ?>
+    <div class="alert alert-danger">
+        <?php
                     echo $_SESSION['error'];
                     unset($_SESSION['error'])
                     ?>
-                </div>
-            <?php endif; ?>
+    </div>
+    <?php endif; ?>
     <div class="wp-inner">
         <div class="secion" id="breadcrumb-wp">
             <div class="secion-detail">
