@@ -70,7 +70,6 @@ if (empty($error)) {
 ?>
 
 <style>
-<<<<<<< HEAD
 #content {
     width: 70%;
     margin: 0 auto;
@@ -92,10 +91,9 @@ if (empty($error)) {
 
 .section-titi {
     margin: 0;
-    font-size: 35px;
-    color: #333;
-    font-weight: bold;
+    font-size: 33px;
     color: #2196f3;
+    font-weight: bold;
 }
 
 .section-detail {
@@ -104,13 +102,6 @@ if (empty($error)) {
 
 .form-group {
     margin-bottom: 20px;
-=======
-   .section-detail{
-    width: 300px;
-   }
-.linhbede {
-    margin-bottom: 15px;
->>>>>>> f8cc47cc43710f7fd0311f68ba1e981990e16e0f
 }
 
 label {
@@ -124,18 +115,16 @@ label {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-<<<<<<< HEAD
     border: 1px solid #ccc;
     border-radius: 3px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #2196f3;
 }
 
 .button {
-=======
-    margin-bottom: 8px;
-}
-
-.btn_change_pass {
->>>>>>> f8cc47cc43710f7fd0311f68ba1e981990e16e0f
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
@@ -150,32 +139,49 @@ label {
     background-color: #45a049;
 }
 
-@media only screen and (max-width: 768px) {
-    #content {
-        width: 100%;
-    }
+#btn_change_pass12 {
+    background-color: #2196f3;
+    /* Màu xanh da trời */
+    color: #fff;
+    /* Màu chữ trắng */
+    padding: 12px 20px;
+    /* Kích thước nút */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    /* Kích thước chữ */
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển động khi hover */
+}
+
+#btn_change_pass12:hover {
+    background-color: #1565c0;
+    /* Màu xanh da trời đậm khi hover */
 }
 </style>
 
 <div id="main-content-wp" class="clearfix info-member-page">
-<div class="clearfix"></div>
-            <?php if (isset($_SESSION['success'])) : ?>
-                <div class="alert alert-success">
-                    <?php
+    <div class="clearfix"></div>
+    <?php if (isset($_SESSION['success'])) : ?>
+    <div class="alert alert-success">
+        <?php
                     echo $_SESSION['success'];
                     unset($_SESSION['success'])
                     ?>
-                </div>
-            <?php endif; ?>
+    </div>
+    <?php endif; ?>
 
-            <?php if (isset($_SESSION['error'])) : ?>
-                <div class="alert alert-danger">
-                    <?php
+    <?php if (isset($_SESSION['error'])) : ?>
+    <div class="alert alert-danger">
+        <?php
                     echo $_SESSION['error'];
                     unset($_SESSION['error'])
                     ?>
-                </div>
-            <?php endif; ?>
+    </div>
+    <?php endif; ?>
     <div class="wp-inner">
         <div class="secion" id="breadcrumb-wp">
             <div class="secion-detail">
@@ -203,35 +209,30 @@ label {
             </ul>
         </div>
         <div id="content" class="fl-right">
-            <div class="main-content1 fl-right">
+            <div class="main-content fl-right">
                 <div class="section" id="detail-blog-wp">
                     <div class="section-head clearfix">
-                        <h3 class="section-titi">Change password</h3>
+                        <h3 class="section-title">Change password</h3>
                     </div>
                     <div class="section-detail">
                         <form method="POST" id="formChangePass">
-                            <div class="linhbede">
+                            <div class="form-group">
                                 <label for="pass_old">Old password</label>
-                                <input type="password" name="pass_old" id="pass_old" class="linhbong">
+                                <input type="password" name="pass_old" id="pass_old" class="from-control">
                                 <?php echo form_error('pass_old'); ?>
                             </div>
-                            <div class="linhbede">
+                            <div class="form-group">
                                 <label for="pass_new">New password</label>
-                                <input type="password" name="pass_new" id="pass_new" class="linhbong">
+                                <input type="password" name="pass_new" id="pass_new" class="from-control">
                                 <?php echo form_error('pass_new'); ?>
                             </div>
-                            <div class="linhbede">
+                            <div class="form-group">
                                 <label for="confirm_pass">Confirm password</label>
-                                <input type="password" name="confirm_pass" id="confirm_pass" class="linhbong">
+                                <input type="password" name="confirm_pass" id="confirm_pass" class="from-control">
                                 <?php echo form_error('confirm_pass'); ?>
                             </div>
-<<<<<<< HEAD
                             <div class="form-group">
-                                <button type="submit" name="btn_change_pass" id="btn_change_pass12">Update</button>
-=======
-                            <div class="linhbede">
                                 <button type="submit" name="btn_change_pass" id="btn_change_pass">Update</button>
->>>>>>> f8cc47cc43710f7fd0311f68ba1e981990e16e0f
                             </div>
                         </form>
                     </div>

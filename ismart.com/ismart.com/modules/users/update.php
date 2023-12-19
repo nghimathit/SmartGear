@@ -51,8 +51,6 @@ $result = mysqli_query($conn, $sql);
 $item = mysqli_fetch_array($result);
 ?>
 
-
-
 <style>
 body {
     font-family: 'Arial', sans-serif;
