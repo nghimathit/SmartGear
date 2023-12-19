@@ -3,9 +3,29 @@ get_header();
 ?>
 
 <?php
-//if ($_SERVER['REQUEST_METHOD'] == "POST") {
-//    show_array($_POST);
-//}
+require 'db/connect.php';
+$sql = "select * from category";
+$result = mysqli_query($conn, $sql);
+$list_cat = array();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list_cat[] = $row;
+    }
+}
+//show_array($list_cat);
+?>
+<?php
+$sql = "SELECT * FROM `category` where status = 1";
+$result = mysqli_query($conn, $sql);
+$list_category = array();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list_category[] = $row;
+    }
+}
+
 ?>
 <?php
 if (isset($_POST['btn_add'])) {
@@ -272,14 +292,16 @@ if (isset($_POST['btn_add'])) {
                         <label>Product category</label>
                         <select name="cat_id">
                             <option value="">-- Choose category --</option>
-                            <option value="1">Mobile Phones</option>
-                            <option value="2">Laptops</option>
-                            <option value="3">Tablets</option>
-                            <option value="4">Accessories</option>
-                            <option value="5">Smartwatches</option>
+                            <?php   foreach($list_category as $category){ ?>
+                            <option value="<?php echo $category['cat_id'] ?>"> <?php echo $category['cat_name'] ?></option>
+                            <?php
+                }
+                ?>
                         </select>
-
-                        <?php echo form_error('cat_id'); ?>
+                     
+                        <?php echo form_error('cat_id');
+                         ?>
+                    
 
                         <label>Best-selling product</label>
                         <select name="selling_products" id="selling_products">
