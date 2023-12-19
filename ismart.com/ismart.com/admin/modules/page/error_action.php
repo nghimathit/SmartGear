@@ -10,10 +10,10 @@ $status = $list_page['status'] == 0 ? 1 : 0;
 $update = get_page_id($id);
 $update = update("page", array("status" => $status), array("id" => $id));
 if ($update > 0) {
-    $_SESSION['success'] = "Cập nhật thành công";
+    $_SESSION['success'] = "Update successful";
     redirect_to("?mod=page&act=main");
 } else {
-    $_SESSION['error'] = "Dữ liệu không thay đổi";
+    $_SESSION['error'] = "Data unchanged";
     redirect_to("?mod=page&act=main");
 }
 ?>

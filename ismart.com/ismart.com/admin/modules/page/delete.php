@@ -10,10 +10,10 @@ if ($num_rows > 0) {
     $list_page[] = $row;
 }
 if ($list_page > 0) {
-    $_SESSION['success'] = "Xóa thành công";
+    $_SESSION['success'] = "Deletion successful";
     redirect_to("?mod=page&act=main");
 } else {
-    $_SESSION['error'] = "Xóa thất bại";
+    $_SESSION['error'] = "Delete failed";
     redirect_to("?mod=page&act=main");
 }
 ?>

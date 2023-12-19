@@ -70,7 +70,7 @@ unset($cat);
                     <div class="filter-wp clearfix">
                         <form method="post" class="form-s fl-right" action="?mod=search&act=search_product_cat">
                             <input type="text" name="keyword" id="s">
-                            <input type="submit" name="btn_search" value="Tìm kiếm">
+                            <input type="submit" name="btn_search" value="search">
                         </form>
                     </div>
                     <?php

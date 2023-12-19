@@ -21,11 +21,11 @@ if ($num_rows > 0) {
 
 
 if ($list_product == NULL) {
-//    $num = deletecategory("category", $id);
+//    $num = deletecategory("category", $id);  
     $sql = "delete from category where cat_id = $id";
     $list_category = array();
     $result = mysqli_query($conn, $sql);
-    $num_rows = mysqli_num_rows($result);
+    // $num_rows = mysqli_num_rows($result);
     if ($num_rows > 0) {
         $row = $result->fetch_assoc();
         $list_category[] = $row;

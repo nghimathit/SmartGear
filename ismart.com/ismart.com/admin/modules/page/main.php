@@ -127,7 +127,7 @@ unset($page);
                     }
                     ?>
                 </div>
-                <p class="num_rows">Có <?php echo $num_rows; ?> trang trong hệ thống</p>
+                <p class="num_rows">have <?php echo $num_rows; ?> page in system</p>
             </div>
             <div class="section" id="paging-wp">
                 <div class="section-detail clearfix">

@@ -17,7 +17,7 @@ if (isset($_POST['btn_update'])) {
 //    }
 
     if (empty($_POST['post_name'])) {
-        $error['post_name'] = "Bạn chưa nhập Tên bài viết";
+        $error['post_name'] = "You have not entered a Post Name";
     } else {
         $post_name = $_POST['post_name'];
     }
@@ -26,10 +26,10 @@ if (isset($_POST['btn_update'])) {
     if (empty($error)) {
         $sql = "update `post_cat` set `post_name`='{$post_name}' where `cat_id`='{$id}'";
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['success'] = "Cập nhật thành công";
+            $_SESSION['success'] = "Update successful";
             redirect_to("?mod=post_cat&act=main");
         } else {
-            $_SESSION['error'] = "Cập nhật thất bại";
+            $_SESSION['error'] = "Update failed";
         }
     }
 }

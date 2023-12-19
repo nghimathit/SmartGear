@@ -2,7 +2,30 @@
 get_header();
 ?>
 
-
+<?php
+require 'db/connect.php';
+$sql = "select * from category";
+$result = mysqli_query($conn, $sql);
+$list_cat = array();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list_cat[] = $row;
+    }
+}
+//show_array($list_cat);
+?>
+<?php
+$sql = "SELECT * FROM `category` where status = 1";
+$result = mysqli_query($conn, $sql);
+$list_category = array();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list_category[] = $row;
+    }
+}
+?>
 <?php
 $id = (int) $_GET['id'];
 ?>
@@ -97,8 +120,8 @@ if (isset($_POST['btn_update'])) {
     }
 
     if (empty($error)) {
-        if (!empty($_FILES['file']['name']) && !empty($_FILES['file1']['name']) && !empty($_FILES['file2']['name' ]) && !empty($_FILES['file3']['name']) && !empty($_FILES['file4']['name']) && !empty($_FILES['file5']['name ']) && !empty($_FILES['file6']['name'])) {
-            $sql = "update `product` set `product_name`='{$product_name}',`price_new`='{$price_new}',`price_old`='{$price_old}',`product_desc`='{$product_desc }',`product_thumb`='{$product_thumb}',`list_thumb_1`='{$list_thumb_1}',`list_thumb_2`='{$list_thumb_2}',`list_thumb_3`='{$list_thumb_3}',`list_thumb_4` ='{$list_thumb_4}',`list_thumb_5`='{$list_thumb_5}',`list_thumb_6`='{$list_thumb_6}',`product_content`='{$product_content}',`cat_id`='{$cat_id} ',`selling_products`='{$selling_products}',`qty_product`='{$qty_product}',`featured_products`='{$featured_products}',`status`='{$status}' where `id`= '{$id}'";
+        if (!empty($_FILES['file']['name']) && !empty($_FILES['file1']['name']) && !empty($_FILES['file2']['name']) && !empty($_FILES['file3']['name']) && !empty($_FILES['file4']['name']) && !empty($_FILES['file5']['name ']) && !empty($_FILES['file6']['name'])) {
+            $sql = "update `product` set `product_name`='{$product_name}',`price_new`='{$price_new}',`price_old`='{$price_old}',`product_desc`='{$product_desc}',`product_thumb`='{$product_thumb}',`list_thumb_1`='{$list_thumb_1}',`list_thumb_2`='{$list_thumb_2}',`list_thumb_3`='{$list_thumb_3}',`list_thumb_4` ='{$list_thumb_4}',`list_thumb_5`='{$list_thumb_5}',`list_thumb_6`='{$list_thumb_6}',`product_content`='{$product_content}',`cat_id`='{$cat_id} ',`selling_products`='{$selling_products}',`qty_product`='{$qty_product}',`featured_products`='{$featured_products}',`status`='{$status}' where `id`= '{$id}'";
             if (mysqli_query($conn, $sql)) {
                 $_SESSION['success'] = "Update successful";
                 redirect_to("?mod=product&act=main");
@@ -106,7 +129,7 @@ if (isset($_POST['btn_update'])) {
                 $_SESSION['error'] = "Update failed";
             }
         } else {
-            $sql = "update `product` set `product_name`='{$product_name}',`price_new`='{$price_new}',`price_old`='{$price_old}',`product_desc`='{$product_desc }',`product_content`='{$product_content}',`cat_id`='{$cat_id}',`selling_products`='{$selling_products}',`qty_product`='{$qty_product}',`featured_products` ='{$featured_products}',`status`='{$status}' where `id`='{$id}'";
+            $sql = "update `product` set `product_name`='{$product_name}',`price_new`='{$price_new}',`price_old`='{$price_old}',`product_desc`='{$product_desc}',`product_content`='{$product_content}',`cat_id`='{$cat_id}',`selling_products`='{$selling_products}',`qty_product`='{$qty_product}',`featured_products` ='{$featured_products}',`status`='{$status}' where `id`='{$id}'";
             if (mysqli_query($conn, $sql)) {
                 $_SESSION['success'] = "Update successful";
                 redirect_to("?mod=product&act=main");
@@ -131,66 +154,85 @@ if (isset($_POST['btn_update'])) {
                 </div>
             </div>
             <div class="clearfix"></div>
-            <?php if (isset($_SESSION['error'])) : ?>
+            <?php if (isset($_SESSION['error'])): ?>
                 <div class="alert alert-danger">
                     <?php
                     echo $_SESSION['error'];
                     unset($_SESSION['error'])
-                    ?>
+                        ?>
                 </div>
             <?php endif; ?>
 
             <div class="section" id="detail-page">
                 <div class="section-detail">
-                    <form id="form-upload-single"  action="" enctype="multipart/form-data" method="post">
+                    <form id="form-upload-single" action="" enctype="multipart/form-data" method="post">
                         <label for="product_name">Product name</label>
-                        <input type="text" name="product_name" id="product_name" value="<?php if (!empty($item['product_name'])) echo $item['product_name']; ?>">
+                        <input type="text" name="product_name" id="product_name"
+                            value="<?php if (!empty($item['product_name']))
+                                echo $item['product_name']; ?>">
                         <?php
                         if (!empty($error['product_name'])) {
                             ?>
-                            <p class="error"><?php echo $error['product_name']; ?></p>
+                            <p class="error">
+                                <?php echo $error['product_name']; ?>
+                            </p>
                             <?php
                         }
                         ?>
 
                         <label for="price_new">New price</label>
-                        <input type="text" name="price_new" id="price_new" value="<?php if (!empty($item['price_new'])) echo $item['price_new']; ?>">
+                        <input type="text" name="price_new" id="price_new"
+                            value="<?php if (!empty($item['price_new']))
+                                echo $item['price_new']; ?>">
                         <?php
                         if (!empty($error['price_new'])) {
                             ?>
-                            <p class="error"><?php echo $error['price_new']; ?></p>
+                            <p class="error">
+                                <?php echo $error['price_new']; ?>
+                            </p>
                             <?php
                         }
                         ?>
 
                         <label for="price_old">Old price</label>
-                        <input type="text" name="price_old" id="price_new" value="<?php if (!empty($item['price_old'])) echo $item['price_old']; ?>">
+                        <input type="text" name="price_old" id="price_new"
+                            value="<?php if (!empty($item['price_old']))
+                                echo $item['price_old']; ?>">
                         <?php
                         if (!empty($error['price_old'])) {
                             ?>
-                            <p class="error"><?php echo $error['price_old']; ?></p>
+                            <p class="error">
+                                <?php echo $error['price_old']; ?>
+                            </p>
                             <?php
                         }
                         ?>
 
                         <label for="product_desc">Product description</label>
-                        <textarea id="post_desc" name="product_desc" ><?php if (!empty($item['product_desc'])) echo $item['product_desc']; ?>
+                        <textarea id="post_desc" name="product_desc"><?php if (!empty($item['product_desc']))
+                            echo $item['product_desc']; ?>
                         </textarea>
 
                         <?php
                         if (!empty($error['product_desc'])) {
                             ?>
-                            <p class="error"><?php echo $error['product_desc']; ?></p>
+                            <p class="error">
+                                <?php echo $error['product_desc']; ?>
+                            </p>
                             <?php
                         }
                         ?>
 
                         <label for="product_content">Product details</label>
-                        <textarea id="product_content" class="ckeditor" name="product_content"><?php if (!empty($item['product_content'])) echo $item['product_content']; ?></textarea>
+                        <textarea id="product_content" class="ckeditor"
+                            name="product_content"><?php if (!empty($item['product_content']))
+                                echo $item['product_content']; ?></textarea>
                         <?php
                         if (!empty($error['product_content'])) {
                             ?>
-                            <p class="error"><?php echo $error['product_content']; ?></p>
+                            <p class="error">
+                                <?php echo $error['product_content']; ?>
+                            </p>
                             <?php
                         }
                         ?>
@@ -199,28 +241,32 @@ if (isset($_POST['btn_update'])) {
                             <label for="detail">Hình ảnh</label>
                             <input type="file" name="file" id="file" data-uri="?mod=post&act=upload_single">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt">
-                            <div id="show_list_file" >
+                            <div id="show_list_file">
                                 <img src="uploads/<?php echo $item['product_thumb'] ?> ">
                             </div>
                             <?php
                             if (!empty($error['file'])) {
                                 ?>
-                                <p class="error"><?php echo $error['file']; ?></p>
+                                <p class="error">
+                                    <?php echo $error['file']; ?>
+                                </p>
                                 <?php
                             }
-                            ?> 
+                            ?>
                         </div>
                         <div class="form_group clearfix" id="">
                             <label for="detail">Thumb_1</label>
                             <input type="file" name="file_1" id="file_1" data-uri="?mod=product&act=upload_single_1">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_1">
-                            <div id="show_list_file_1" >
+                            <div id="show_list_file_1">
                                 <img src="uploads/<?php echo $item['list_thumb_1']; ?>">
                             </div>
                             <?php
                             if (!empty($error['file_1'])) {
                                 ?>
-                                <p class="error"><?php echo $error['file_1']; ?></p>
+                                <p class="error">
+                                    <?php echo $error['file_1']; ?>
+                                </p>
                                 <?php
                             }
                             ?>
@@ -229,13 +275,15 @@ if (isset($_POST['btn_update'])) {
                             <label for="detail">Thumb_2</label>
                             <input type="file" name="file_2" id="file_2" data-uri="?mod=product&act=upload_single_2">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_2">
-                            <div id="show_list_file_2" >
+                            <div id="show_list_file_2">
                                 <img src="uploads/<?php echo $item['list_thumb_2']; ?>">
                             </div>
                             <?php
                             if (!empty($error['file_2'])) {
                                 ?>
-                                <p class="error"><?php echo $error['file_2']; ?></p>
+                                <p class="error">
+                                    <?php echo $error['file_2']; ?>
+                                </p>
                                 <?php
                             }
                             ?>
@@ -244,13 +292,15 @@ if (isset($_POST['btn_update'])) {
                             <label for="detail">Thumb_3</label>
                             <input type="file" name="file_3" id="file_3" data-uri="?mod=product&act=upload_single_3">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_3">
-                            <div id="show_list_file_3" >
+                            <div id="show_list_file_3">
                                 <img src="uploads/<?php echo $item['list_thumb_3']; ?>">
                             </div>
                             <?php
                             if (!empty($error['file_3'])) {
                                 ?>
-                                <p class="error"><?php echo $error['file_3']; ?></p>
+                                <p class="error">
+                                    <?php echo $error['file_3']; ?>
+                                </p>
                                 <?php
                             }
                             ?>
@@ -259,13 +309,15 @@ if (isset($_POST['btn_update'])) {
                             <label for="detail">Thumb_4</label>
                             <input type="file" name="file_4" id="file_4" data-uri="?mod=product&act=upload_single_4">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_4">
-                            <div id="show_list_file_4" >
+                            <div id="show_list_file_4">
                                 <img src="uploads/<?php echo $item['list_thumb_4']; ?>">
                             </div>
                             <?php
                             if (!empty($error['file_4'])) {
                                 ?>
-                                <p class="error"><?php echo $error['file_4']; ?></p>
+                                <p class="error">
+                                    <?php echo $error['file_4']; ?>
+                                </p>
                                 <?php
                             }
                             ?>
@@ -274,13 +326,15 @@ if (isset($_POST['btn_update'])) {
                             <label for="detail">Thumb_5</label>
                             <input type="file" name="file_5" id="file_5" data-uri="?mod=product&act=upload_single_5">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_5">
-                            <div id="show_list_file_5" >
+                            <div id="show_list_file_5">
                                 <img src="uploads/<?php echo $item['list_thumb_5']; ?>">
                             </div>
                             <?php
                             if (!empty($error['file_5'])) {
                                 ?>
-                                <p class="error"><?php echo $error['file_5']; ?></p>
+                                <p class="error">
+                                    <?php echo $error['file_5']; ?>
+                                </p>
                                 <?php
                             }
                             ?>
@@ -289,13 +343,15 @@ if (isset($_POST['btn_update'])) {
                             <label for="detail">Thumb_6</label>
                             <input type="file" name="file_6" id="file_6" data-uri="?mod=product&act=upload_single_6">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_6">
-                            <div id="show_list_file_6" >
+                            <div id="show_list_file_6">
                                 <img src="uploads/<?php echo $item['list_thumb_6']; ?>">
                             </div>
                             <?php
                             if (!empty($error['file_6'])) {
                                 ?>
-                                <p class="error"><?php echo $error['file_6']; ?></p>
+                                <p class="error">
+                                    <?php echo $error['file_6']; ?>
+                                </p>
                                 <?php
                             }
                             ?>
@@ -303,47 +359,59 @@ if (isset($_POST['btn_update'])) {
 
                         <label>Article category</label>
                         <select name="cat_id">
-                            <option value="0">-- Select category --</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">Phone</option>?>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">Laptop</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">Tablet</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">Accessories</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '5') echo "selected='selected'"; ?> value="5">Smartwatch</option>
+                            <?php foreach ($list_category as $category) { ?>
+                                <option <?php if (isset($category['cat_id']) && $category['cat_id'] == $item["cat_id"])
+                                    echo "selected='selected'"; ?> value="<?php echo $category['cat_id'] ?>">
+                                    <?php echo $category['cat_name'] ?>
+                                </option>
+                            <?php } ?>
                         </select>
                         <?php
                         if (!empty($error['cat_id'])) {
                             ?>
-                            <p class="error"><?php echo $error['cat_id']; ?></p>
+                            <p class="error">
+                                <?php echo $error['cat_id']; ?>
+                            </p>
                             <?php
                         }
                         ?>
-                      <label>Best-selling products</label>
+                        <label>Best-selling products</label>
                         <select name="selling_products" id="selling_products">
                             <option value="">-- Choose best selling products --</option>
-                            <option <?php if (isset($item['selling_products']) && $item['selling_products'] == 'Bán chạy') echo "selected='selected'"; ?> value="Bán chạy">Best seller</option>
-                            <option <?php if (isset($item['selling_products']) && $item['selling_products'] == 'Bình thường') echo "selected='selected'"; ?> value="Bình thường">Normal</option>
+                            <option <?php if (isset($item['selling_products']) && $item['selling_products'] == 'Bán chạy')
+                                echo "selected='selected'"; ?> value="Bán chạy">Best seller</option>
+                            <option <?php if (isset($item['selling_products']) && $item['selling_products'] == 'Bình thường')
+                                echo "selected='selected'"; ?> value="Bình thường">Normal</option>
                         </select>
                         <?php echo form_error('featured_products'); ?>
                         <label>Featured products</label>
                         <select name="featured_products" id="featured_products">
                             <option value="">-- Select featured product --</option>
-                            <option <?php if (isset($item['featured_products']) && $item['featured_products'] == 'Nổi bật') echo "selected='selected'"; ?> value="Nổi bật">Featured</option>
-                            <option <?php if (isset($item['featured_products']) && $item['featured_products'] == 'Bình thường') echo "selected='selected'"; ?> value="Bình thường">Normal</option>
+                            <option <?php if (isset($item['featured_products']) && $item['featured_products'] == 'Nổi bật')
+                                echo "selected='selected'"; ?> value="Nổi bật">Featured</option>
+                            <option <?php if (isset($item['featured_products']) && $item['featured_products'] == 'Bình thường')
+                                echo "selected='selected'"; ?> value="Bình thường">Normal</option>
                         </select>
                         <?php echo form_error('featured_products'); ?>
                         <label>Status</label>
                         <select name="status" id="status">
                             <option value="">-- Select status --</option>
-                            <option <?php if (isset($item['status']) && $item['status'] == '0') echo "selected='selected'"; ?> value="0">Stop selling</option>
-                            <option <?php if (isset($item['status']) && $item['status'] == '1') echo "selected='selected'"; ?> value="1">For sale</option>
+                            <option <?php if (isset($item['status']) && $item['status'] == '0')
+                                echo "selected='selected'"; ?> value="0">Stop selling</option>
+                            <option <?php if (isset($item['status']) && $item['status'] == '1')
+                                echo "selected='selected'"; ?> value="1">For sale</option>
                         </select>
 
                         <label for="qty_product">Quantity in stock</label>
-                        <input type="text" name="qty_product" id="qty_product" value="<?php if (!empty($item['qty_product'])) echo $item['qty_product']; ?>">
+                        <input type="text" name="qty_product" id="qty_product"
+                            value="<?php if (!empty($item['qty_product']))
+                                echo $item['qty_product']; ?>">
                         <?php
                         if (!empty($error['qty_product'])) {
                             ?>
-                            <p class="error"><?php echo $error['qty_product']; ?></p>
+                            <p class="error">
+                                <?php echo $error['qty_product']; ?>
+                            </p>
                             <?php
                         }
                         ?>

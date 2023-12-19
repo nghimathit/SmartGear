@@ -13,7 +13,7 @@ if (isset($_POST['btn_add'])) {
 //    }
 //Ktra danh muc sp
     if (empty($_POST['post_name'])) {
-        $error['post_name'] = "Bạn chưa nhập Tên danh mục";
+        $error['post_name'] = "You have not entered a Category Name";
     } else {
         $post_name = $_POST['post_name'];
     }
@@ -28,14 +28,14 @@ if (isset($_POST['btn_add'])) {
         if (!check_post_cat_exists($post_name)) {
             $sql = "INSERT INTO `post_cat` (`post_name`)"
                     . "VALUES('{$post_name}')";
-            if (mysqli_query($conn, $sql)) {
-                $_SESSION['success'] = "Thêm mới thành công";
-                redirect_to("?mod=post_cat&act=main");
-            } else {
-                $_SESSION['error'] = "Thêm mới thất bại";
-            }
-        } else {
-            $_SESSION['error'] = "Tên danh mục bài viết đã tồn tại";
+                    if (mysqli_query($conn, $sql)) {
+                        $_SESSION['success'] = "New addition successful";
+                        redirect_to("?mod=post_cat&act=main");
+                    } else {
+                        $_SESSION['error'] = "New addition failed";
+                    }
+                } else {
+                    $_SESSION['error'] = "Article category name already exists";
         }
     }
 }

@@ -11,10 +11,10 @@ if ($num_rows > 0) {
 }
 
 if ($list_product > 0) {
-    $_SESSION['success'] = "Xóa thành công";
+    $_SESSION['success'] = "Delete successfully";
     redirect_to("?mod=product&act=main");
 } else {
-    $_SESSION['error'] = "Xóa thất bại";
+    $_SESSION['error'] = "Delete failed";
     redirect_to("?mod=product&act=main");
 }
 ?>

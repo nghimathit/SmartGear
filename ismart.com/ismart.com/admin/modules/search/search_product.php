@@ -71,7 +71,7 @@ unset($product);
                 <div class="section-detail">
                     <form method="POST" class="form-s fl-right" action="?mod=search&act=search_product">
                         <input type="text" name="keyword" id="s">
-                        <input type="submit" name="btn_search" value="Tìm kiếm">
+                        <input type="submit" name="btn_search" value="search">
                     </form>
                 </div>
                 <?php

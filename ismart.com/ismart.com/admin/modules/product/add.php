@@ -97,7 +97,7 @@ if (isset($_POST['btn_add'])) {
     } else {
         $error['file_1'] = "Bạn chưa upload thumb 1";
     }
-    // thumb2
+// thumb2
     if (isset($_FILES['file_2'])) {
         $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES['file_2']['name']);
@@ -165,7 +165,7 @@ if (isset($_POST['btn_add'])) {
         }
         $list_thumb_6 = $_FILES['file_6']['name'];
     } else {
-        $error['file_6'] = "Bạn chưa upload thumb 6";
+$error['file_6'] = "Bạn chưa upload thumb 6";
     }
 
     //Ktra sp bán chạy
@@ -227,7 +227,7 @@ if (isset($_POST['btn_add'])) {
                         <?php echo form_error('price_old'); ?>
                         <label for="product_desc">short description</label>
                         <textarea name="product_desc" id="product_desc"></textarea>
-                        <?php echo form_error('product_desc'); ?>
+<?php echo form_error('product_desc'); ?>
                         <label for="product_content">Detail</label>
                         <textarea name="product_content" id="product_content" class="ckeditor"></textarea>
                         <?php echo form_error('product_content'); ?>
@@ -272,7 +272,7 @@ if (isset($_POST['btn_add'])) {
                             </div>
                             <?php echo form_error('file_4'); ?>
                         </div>
-                        <div class="form_group clearfix" id="">
+<div class="form_group clearfix" id="">
                             <label for="detail">Thumb_5</label>
                             <input type="file" name="file_5" id="file_5" data-uri="?mod=product&act=upload_single_5">
                             <input type="submit" name="Upload" value="Upload" id="upload_single_bt_5">

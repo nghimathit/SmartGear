@@ -25,20 +25,20 @@ if ($list_post == NULL) {
     $sql = "delete from post_cat where cat_id = $id";
     $list_category = array();
     $result = mysqli_query($conn, $sql);
-    $num_rows = mysqli_num_rows($result);
+    // $num_rows = mysqli_num_rows($result);
     if ($num_rows > 0) {
         $row = $result->fetch_assoc();
         $list_category[] = $row;
     }
     if ($list_category > 0) {
-        $_SESSION['success'] = "Xóa thành công";
+        $_SESSION['success'] = "Delete successfully";
         redirect_to("?mod=post_cat&act=main");
     } else {
-        $_SESSION['error'] = "Xóa thất bại";
+        $_SESSION['error'] = "Delete failed";
         redirect_to("?mod=post_cat&act=main");
     }
 } else {
-    $_SESSION['error'] = "Danh mục có bài viết ! Bạn không thể xóa";
+    $_SESSION['error'] = "Category has posts! You cannot delete";
     redirect_to("?mod=post_cat&act=main");
 }
 ?>
