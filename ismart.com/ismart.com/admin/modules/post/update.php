@@ -2,6 +2,31 @@
 get_header();
 ?>
 <?php
+require 'db/connect.php';
+$sql = "select * from post_cat";
+$result = mysqli_query($conn, $sql);
+$list_cat = array();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list_cat[] = $row;
+    }
+}
+//show_array($list_cat);
+?>
+<?php
+$sql = "SELECT * FROM `post_cat` where status = 1";
+$result = mysqli_query($conn, $sql);
+$list_category = array();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list_category[] = $row;
+    }
+}
+?>
+
+<?php
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     show_array($_POST);
 }
@@ -159,10 +184,22 @@ if (isset($_POST['btn_update'])) {
                         <label>Category Post</label>
                         <select name="cat_id">
                             <option value="0">-- Select Category --</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">Đánh Giá </option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">Cẩm Nang</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">Tin Tức</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">So Sánh</option>
+                            <?php foreach ($list_category as $category) { ?>
+                                <option <?php if (isset($category['cat_id']) && $category['cat_id'] == $item["cat_id"])
+                                    echo "selected='selected'"; ?> value="<?php echo $category['cat_id'] ?>">
+                                    <?php echo $category['post_name'] ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <?php
+                        if (!empty($error['cat_id'])) {
+                            ?>
+                            <p class="error">
+                                <?php echo $error['cat_id']; ?>
+                            </p>
+                            <?php
+                        }
+                        ?>
                         </select>
                         <?php
                         if (!empty($error['cat_id'])) {

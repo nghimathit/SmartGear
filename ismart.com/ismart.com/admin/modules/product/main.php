@@ -79,12 +79,12 @@ unset($product);
     <td><span class="thead-text">Image</span></td>
     <td><span class="thead-text">Product Name</span></td>
     <td><span class="thead-text">New Price</span></td>
-    <td><span class="thead-text">Thumb_1</span></td>
+    <!-- <td><span class="thead-text">Thumb_1</span></td>
     <td><span class="thead-text">Thumb_2</span></td>
     <td><span class="thead-text">Thumb_3</span></td>
     <td><span class="thead-text">Thumb_4</span></td>
     <td><span class="thead-text">Thumb_5</span></td>
-    <td><span class="thead-text">Thumb_6</span></td>
+    <td><span class="thead-text">Thumb_6</span></td> -->
     <td><span class="thead-text">Category</span></td>
     <td><span class="thead-text">Status</span></td>
     <td><span class="thead-text">Inventory Quantity</span></td>
@@ -128,7 +128,7 @@ unset($product);
                                             </ul>
                                         </td>
                                         <td><span class="tbody-text"><?php echo $product['price_new']; ?></span></td>
-                                        <td>
+                                        <!-- <td>
                                             <div class="tbody-thumb">
                                                 <img src="uploads/<?php echo $product['list_thumb_1']; ?>" alt="">
                                             </div>
@@ -157,7 +157,7 @@ unset($product);
                                             <div class="tbody-thumb">
                                                 <img src="uploads/<?php echo $product['list_thumb_6']; ?>" alt="">
                                             </div>
-                                        </td>
+                                        </td> -->
 
                                         <td><span class="tbody-text"><?php echo $product['cat_name']; ?></span></td>
                                         <td>
@@ -169,7 +169,7 @@ unset($product);
                                                     <?php
                                                 } else if ($product['status'] == 0) {
                                                     ?>
-                                                    <a class="btn btn-xs btn-default">out of stock</a>
+                                                    <a class="btn btn-xs btn-default">Stop selling</a>
                                                     <?php
                                                 }
                                                 ?>
@@ -191,12 +191,12 @@ unset($product);
     <td><span class="thead-text">Image</span></td>
     <td><span class="thead-text">Product Name</span></td>
     <td><span class="thead-text">New Price</span></td>
-    <td><span class="thead-text">Thumb_1</span></td>
+    <!-- <td><span class="thead-text">Thumb_1</span></td>
     <td><span class="thead-text">Thumb_2</span></td>
     <td><span class="thead-text">Thumb_3</span></td>
     <td><span class="thead-text">Thumb_4</span></td>
     <td><span class="thead-text">Thumb_5</span></td>
-    <td><span class="thead-text">Thumb_6</span></td>
+    <td><span class="thead-text">Thumb_6</span></td> -->
     <td><span class="thead-text">Category</span></td>
     <td><span class="thead-text">Status</span></td>
     <td><span class="thead-text">Inventory Quantity</span></td>

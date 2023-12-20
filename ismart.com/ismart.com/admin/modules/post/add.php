@@ -1,7 +1,30 @@
 <?php
 get_header();
 ?>
-
+<?php
+require 'db/connect.php';
+$sql = "select * from post_cat";
+$result = mysqli_query($conn, $sql);
+$list_cat = array();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list_cat[] = $row;
+    }
+}
+//show_array($list_cat);
+?>
+<?php
+$sql = "SELECT * FROM `post_cat` where status = 1";
+$result = mysqli_query($conn, $sql);
+$list_category = array();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $list_category[] = $row;
+    }
+}
+?>
 
 <?php
 if (isset($_POST['btn_add'])) {
@@ -141,10 +164,11 @@ if (isset($_POST['btn_add'])) {
                        <label for="cat_id">Category</label>
                         <select id="cat_id" name="cat_id">
                             <option value="">-- Select category --</option>
-                            <option value="1">Review</option>
-                            <option value="2">Guide</option>
-                            <option value="3">News</option>
-                            <option value="4">Comparison</option>
+                            <?php   foreach($list_category as $category){ ?>
+                            <option value="<?php echo $category['cat_id'] ?>"> <?php echo $category['post_name'] ?></option>
+                            <?php
+                            }
+                            ?>
                         </select>
                         <?php
                         if (!empty($error['cat_id'])) {

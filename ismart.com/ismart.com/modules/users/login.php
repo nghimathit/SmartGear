@@ -2,6 +2,7 @@
 get_header();
 ?>
 <?php
+
 if (isset($_POST['btn_login'])) {
 
     $error = array();
@@ -54,9 +55,28 @@ if (isset($_POST['btn_login'])) {
         }
     }
 }
-?>
 
+?>
+<style>
+    .lele{
+        text-align: center;
+    }
+</style>
+<?php if (isset($_SESSION['success'])) : ?>
+    <div class="alert alert-success">
+        <div class="lele">
+        <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success'])
+                    ?>
+        </div>
+    </div>
+    <?php
+
+endif; ?>
 <div id="main-content-login" class="login-page">
+
+    
     <div class="wp-inner clearfix">
         <div class="info fl-left">
             <div class="thumb thumb_login">

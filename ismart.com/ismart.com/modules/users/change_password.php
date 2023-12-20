@@ -60,15 +60,14 @@ if (empty($error)) {
         $_SESSION['success'] = "Password changed successfully";
 
         // Redirect after setting the session variable
-        redirect_to("?mod=users&act=info_account");
+        redirect_to("?mod=users&act=logoutchangepass");
     } else {
-        $_SESSION['error'] = "Old password is incorrect";
+        $_SESSION['error'] = "Old Password is not correct";
     }
 }
 
 }
 ?>
-
 <style>
 #content {
     width: 70%;
@@ -161,25 +160,19 @@ label {
     background-color: #1565c0;
     /* Màu xanh da trời đậm khi hover */
 }
+.er{
+    text-align: center;
+}
 </style>
-
 <div id="main-content-wp" class="clearfix info-member-page">
-    <div class="clearfix"></div>
-    <?php if (isset($_SESSION['success'])) : ?>
-    <div class="alert alert-success">
-        <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success'])
-                    ?>
-    </div>
-    <?php endif; ?>
-
     <?php if (isset($_SESSION['error'])) : ?>
     <div class="alert alert-danger">
+        <div class="er">
         <?php
                     echo $_SESSION['error'];
                     unset($_SESSION['error'])
                     ?>
+        </div>
     </div>
     <?php endif; ?>
     <div class="wp-inner">

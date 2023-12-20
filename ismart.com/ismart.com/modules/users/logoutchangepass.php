@@ -8,5 +8,6 @@
 unset($_SESSION['is_login']);
 unset($_SESSION['user_login']);
 unset($_SESSION['cart']['buy']);
+$_SESSION['success'] = "Password changed successfully";
 redirect_to('?mod=users&act=login');
 ?>
