@@ -37,7 +37,7 @@ if ($list_post == NULL) {
         $_SESSION['error'] = "Delete failed";
         redirect_to("?mod=post_cat&act=main");
     }
-} else {
+} else{
     $_SESSION['error'] = "Category has posts! You cannot delete";
     redirect_to("?mod=post_cat&act=main");
 }

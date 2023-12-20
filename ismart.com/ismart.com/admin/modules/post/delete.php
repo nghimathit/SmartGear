@@ -3,7 +3,7 @@ $id = (int)$_GET['id'];
 $sql = "update `post` set status = 0 where id = $id";
 $list_post = array();
 $result = mysqli_query($conn, $sql);
-$num_rows = mysqli_num_rows($result);
+// $num_rows = mysqli_num_rows($result);
 if ($num_rows > 0) {
     $row = $result->fetch_assoc();
     $list_post[] = $row;

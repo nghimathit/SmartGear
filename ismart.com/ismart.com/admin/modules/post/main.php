@@ -63,7 +63,7 @@ unset($post);
             <div class="section-detail">
                 <form method="post" class="form-s fl-right" action="?mod=search&act=search_post">
                     <input type="text" name="keyword" id="s">
-                    <input type="submit" name="btn_search" value="Tìm kiếm">
+                    <input type="submit" name="btn_search" value="Search">
                 </form>
             </div>
             <div class="section" id="detail-page">
