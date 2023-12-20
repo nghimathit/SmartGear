@@ -96,7 +96,7 @@ if (isset($_POST['btn_update'])) {
         <div id="content" class="fl-right">     
             <div class="clearfix">
                 <h3 id="index" class="fl-left">Update account</h3>
-                <a href="?mod=admin&act=add" title="" id="add-new" class="fl-left">Add new</a>
+                <!-- <a href="?mod=admin&act=add" title="" id="add-new" class="fl-left">Add new</a> -->
 
             </div>
             <?php if (isset($_SESSION['error'])) : ?>
