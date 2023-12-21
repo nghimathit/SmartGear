@@ -1,6 +1,6 @@
 <?php
 // Kết nối databases
-$conn = mysqli_connect('localhost', 'root', '', 'laptop_online');
+$conn = mysqli_connect('localhost', 'root', '', 'SmartGear');
 mysqli_set_charset($conn, 'UTF8');
 if (!$conn) {
     echo "Kết nối thất bại." . mysqli_connect_error();

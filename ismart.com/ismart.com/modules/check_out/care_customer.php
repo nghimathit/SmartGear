@@ -67,8 +67,9 @@ if (isset($_GET['partnerCode'])) {
             $qty = $cart['qty'];
             $price_new = $cart['price_new'];
             $sub_total = $cart['sub_total'];
-            $sql = "INSERT INTO `bill_detail` (`bill_id`,`product_id`,`product_name`,`product_thumb`,`qty`,`price_new`,`sub_total`)"
-                . "VALUES('{$bill_id}','{$product_id}', '{$product_name}', '{$product_thumb}','{$qty}','{$price_new}','{$sub_total}')";
+            $method = "Momo";
+            $sql = "INSERT INTO `bill_detail` (`bill_id`,`product_id`,`product_name`,`product_thumb`,`qty`,`price_new`,`sub_total`,`method`)"
+                . "VALUES('{$bill_id}','{$product_id}', '{$product_name}', '{$product_thumb}','{$qty}','{$price_new}','{$sub_total}','{$method}')";
             $conn->query($sql);
         }
     }

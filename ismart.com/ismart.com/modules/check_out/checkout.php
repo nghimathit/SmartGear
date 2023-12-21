@@ -103,8 +103,8 @@ if(isset($_POST['payUrl'])){
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $note = $_POST['note'];
-    $redirectUrl = "http://localhost/SmartGear/ismart.com/ismart.com/?mod=check_out&act=care_customer" . "&user_id=" . $user_id . "&fullname=" . $fullname. "&email=" . $email. "&address=" . $address . "&phone=" . $phone. "&note=" . $note;
-    $ipnUrl = "http://localhost/SmartGear/ismart.com/ismart.com/?mod=check_out&act=care_customer" . "&user_id=" . $user_id . "&fullname=" . $fullname. "&email=" . $email. "&address=" . $address . "&phone=" . $phone. "&note=" . $note;
+    $redirectUrl = "http://localhost/SmartGear/SmartGear/ismart.com/ismart.com/?mod=check_out&act=care_customer" . "&user_id=" . $user_id . "&fullname=" . $fullname. "&email=" . $email. "&address=" . $address . "&phone=" . $phone. "&note=" . $note;
+    $ipnUrl = "http://localhost/SmartGear/SmartGear/ismart.com/ismart.com/?mod=check_out&act=care_customer" . "&user_id=" . $user_id . "&fullname=" . $fullname. "&email=" . $email. "&address=" . $address . "&phone=" . $phone. "&note=" . $note;
 
     $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl="  . $redirectUrl  . "&requestId=" . $requestId . "&requestType=" . $requestType;
     $signature = hash_hmac("sha256", $rawHash, $secretKey);
@@ -158,8 +158,9 @@ if(isset($_POST['payUrl'])){
             $qty = $cart['qty'];
             $price_new = $cart['price_new'];
             $sub_total = $cart['sub_total'];
-            $sql = "INSERT INTO `bill_detail` (`bill_id`,`product_id`,`product_name`,`product_thumb`,`qty`,`price_new`,`sub_total`)"
-                . "VALUES('{$bill_id}','{$product_id}', '{$product_name}', '{$product_thumb}','{$qty}','{$price_new}','{$sub_total}')";
+            $method = "Cash on Delivery";
+            $sql = "INSERT INTO `bill_detail` (`bill_id`,`product_id`,`product_name`,`product_thumb`,`qty`,`price_new`,`sub_total` ,`method`)"
+                . "VALUES('{$bill_id}','{$product_id}', '{$product_name}', '{$product_thumb}','{$qty}','{$price_new}','{$sub_total}','{$method}')";
             $conn->query($sql);
         }
     }

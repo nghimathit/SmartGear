@@ -47,18 +47,27 @@ if ($_GET['id']) {
                         <span class="detail"><?php echo $row['address']; ?> </span>
                     </li>
                     <li>
-                        <h3 class="title">Phone number</h3>
-                        <span class="detail"><?php echo $row['phone']; ?></span>
+                        <h3 class="title">Phone Number</h3>
+                        <span class="detail"><?php echo $row['phone']; ?> </span>
                     </li>
+                    <?php
+                                $temp = 0;
+                                foreach ($list_detail_bill as $item) {
+                                    $temp++;
+                                    ?>
+                    <li>
+                        <h3 class="title">Payment method</h3>
+                        <span class="detail"><?php echo $item['method']; ?></span>
+                    </li>
+                   
+                    
                 </ul>
             </div>
             <div class="section">
                 <div class="section-head">
                 <h3 class="section-title">Order products</h3>
                 </div>
-                <?php
-                if (!empty($list_detail_bill)) {
-                    ?>
+                
                     <div class="table-responsive">
                         <table class="table info-exhibition">
                             <thehead>
@@ -72,11 +81,7 @@ if ($_GET['id']) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $temp = 0;
-                                foreach ($list_detail_bill as $item) {
-                                    $temp++;
-                                    ?>
+                               
                                     <tr>
                                         <td class="thead-text"><?php echo $temp; ?></td>
                                         <td class="thead-text">
@@ -95,9 +100,7 @@ if ($_GET['id']) {
                             </tbody>
                         </table>
                     </div>
-                    <?php
-                }
-                ?>
+                  
             </div>
             <div class="section">
             <h3 class="section-title">Order value</h3>

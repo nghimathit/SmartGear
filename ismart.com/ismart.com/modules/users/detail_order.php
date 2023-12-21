@@ -199,15 +199,22 @@ body {
                     <h3 class="title">Phone number: <span class="detail"><?php echo $row['phone']; ?></span></h3>
 
                 </li>
+                <?php
+                                $temp = 0;
+                                foreach ($list_detail_bill as $item) {
+                                    $temp++;
+                                    ?>
+                <li>
+                    <h3 class="title">Order method: <span class="detail"><?php echo $item['method']; ?></span></h3>
+
+                </li>
             </ul>
         </div>
         <div class="section">
             <div class="section-head">
                 <h3 class="section-title">Order products</h3>
             </div>
-            <?php
-                if (!empty($list_detail_bill)) {
-                    ?>
+           
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -220,11 +227,7 @@ body {
 
                     </thead>
                     <tbody>
-                        <?php
-                                $temp = 0;
-                                foreach ($list_detail_bill as $item) {
-                                    $temp++;
-                                    ?>
+                      
                         <tr>
                             <td class="thead-text"><?php echo $temp; ?></td>
                             <td class="thead-text">
@@ -243,9 +246,7 @@ body {
                     </tbody>
                 </table>
             </div>
-            <?php
-                }
-                ?>
+        
         </div>
         <div class="section">
             <h3 class="section-title">Order value</h3>
