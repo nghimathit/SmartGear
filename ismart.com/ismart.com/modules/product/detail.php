@@ -176,20 +176,59 @@ if ($num_rows > 0) {
                             <button type="submit" title="" id="plus" onclick="updateItem(<?php echo $item['id'] ?>)"><i
                                     class="fa fa-plus"></i></button>
                         </div>
-                        <script>
-                            function updateItem(id) {
-                                sl = $(".sl_" + id).val();
-                                sl++;
-                            }
-                            function updateItem1(id) {
-                                sl = $(".sl_" + id).val();
-                                sl--;
-                            }
-                            function updateItem2(id) {
-                                sl = $(".sl_" + id).val();
-                                $.get("?mod=cart&act=add&cat_id=<?php echo $item['cat_id']; ?>&id=<?php echo $item['id']; ?>", { 'sl': sl })
-                            }
-                        </script>
+                <script>
+    function updateItem(id) {
+        var inputElement = $(".sl_" + id);
+        var sl = parseInt(inputElement.val(), 10);
+        var maxQty = <?php echo $item['qty_product']; ?>;
+     
+        if (sl < maxQty) {
+            sl++;
+        }
+
+   
+        inputElement.val(Math.min(sl, maxQty));
+    }
+
+    function updateItem1(id) {
+        var inputElement = $(".sl_" + id);
+        var sl = parseInt(inputElement.val(), 10);
+
+        // Ensure quantity does not go below 1
+        if (sl > 1) {
+            sl--;
+        }
+
+        // Update the input value
+        inputElement.val(sl);
+    }
+
+    function updateItem2(id) {
+        var sl = $(".sl_" + id).val();
+        var maxQty = <?php echo $item['qty_product']; ?>;
+
+        // Check if the quantity exceeds the available stock
+        if (sl > maxQty) {
+            alert("Quantity exceeds available stock!");
+            setTimeout(function() {
+                location.reload(true); // Hard reload the page
+            }, 100);
+            return ; // Stop further processing
+        }
+
+        // Use AJAX to update the cart
+        $.get("?mod=cart&act=add&cat_id=<?php echo $item['cat_id']; ?>&id=<?php echo $item['id']; ?>", { 'sl': sl })
+            .done(function(response) {
+                // Handle success, e.g., show a message
+                console.log(response);
+            })
+            .fail(function(error) {
+                // Handle failure, e.g., show an error message
+                console.error(error);
+            });
+    }
+</script>
+
                         <!--                        </div>-->
                         <?php
                         if ($item['qty_product'] > 0) {
